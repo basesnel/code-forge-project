@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://basesnel.github.io/code-forge-project",
+  "homepage": "https://basesnel.github.io/code-forge-project/",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /code-forge-project/"
   },
   "repository": {
     "type": "git",
