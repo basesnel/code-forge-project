@@ -87,13 +87,12 @@ body.dark {
 
 //!------------------------------------------------------
 .menu-wrapper {
-	@media screen and (max-width: 767px) {
-		display: flex;
-		align-items: center;
-	}
+	display: flex;
+	align-items: center;
 }
 
 .search-wrapper {
+	margin-right: 14px;
 }
 
 .search-form {
@@ -101,24 +100,42 @@ body.dark {
 		display: none;
 	}
 }
+.search-form.open {
+	display: block;
+}
 
 .search-form__label {
+	position: relative;
 }
 
 .search-form__btn {
+	position: absolute;
+	top: 1px;
+	left: 12px;
+
+	cursor: pointer;
 }
 
 .search-form__icon {
+}
+
+.search-form__input {
+	width: 173px;
+	height: 31px;
+	padding-left: 48px;
+
+	border: 1px solid $text;
+	border-radius: 20px;
 }
 
 .search-btn {
 	@media screen and (min-width: $tablet) {
 		display: none;
 	}
-
-	background-color: transparent;
-	border: none;
 	cursor: pointer;
+}
+.search-form.open ~ .search-btn {
+	display: none;
 }
 
 //---------------------------------------------------------
@@ -127,22 +144,58 @@ body.dark {
 	@media screen and (max-width: 767px) {
 		display: none;
 	}
+	display: flex;
+	align-items: center;
+	gap: 8px;
 }
 .theme__svg {
 }
 .sun {
 }
 .theme__light {
+	@media screen and (max-width: 1199px) {
+		display: none;
+	}
 }
 .switch {
 }
 .switch-checkbox {
+	appearance: none;
+	visibility: none;
+	display: none;
 }
-.slider {
+.slider-round {
+	position: relative;
+	display: block;
+	width: 40px;
+	height: 20px;
+
+	background-color: $whitecolor;
+	border: 1px solid #4b48db;
+	border-radius: 20px;
+	cursor: pointer;
+	overflow: hidden;
+
+	transition: background-color ease-in 250ms, color ease-in 250ms;
 }
-.round {
+.slider-round::before {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 1px;
+	width: 16px;
+	height: 16px;
+
+	background-color: #4b48db;
+	border-radius: 50%;
+
+	transition: background-color ease-in 250ms, color ease-in 250ms, transform ease-in 250ms;
 }
+
 .theme__dark {
+	@media screen and (max-width: 1199px) {
+		display: none;
+	}
 }
 .opacity {
 }
@@ -154,4 +207,5 @@ body.dark {
 	@media screen and (min-width: $tablet) {
 		display: none;
 	}
+	cursor: pointer;
 }

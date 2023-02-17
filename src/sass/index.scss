@@ -1,6 +1,9 @@
 @import "./common";
 
-// Utils
 @import "./utils/variables";
 
+@import "./base/fonts";
+@import "./base/reset";
+
 @import "./header";
+@import "./calendar";
