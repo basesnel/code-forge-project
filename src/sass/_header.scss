@@ -19,7 +19,7 @@ body.dark {
 		color: $dark-theme-text;
 
 		&::placeholder {
-			color: rgba(244, 244, 244, 1);
+			color: rgba(244, 244, 244, 0.4);
 		}
 	}
 
@@ -30,9 +30,15 @@ body.dark {
 	.sun {
 		stroke: $switcher-color;
 	}
+	.theme__light {
+		color: $switcher-color;
+	}
 
 	.moon {
 		stroke: $switcher-accent;
+	}
+	.theme__dark {
+		color: $switcher-accent;
 	}
 }
 
@@ -46,14 +52,17 @@ body.dark {
 .header-container {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 
 	@media screen and (min-width: 768px) {
-		align-items: none;
+		align-items: baseline;
+		gap: 32px;
 	}
+}
 
-	@media screen and (max-width: 767px) {
-		justify-content: space-between;
-	}
+.nav-wrapper {
+	display: flex;
+	align-items: baseline;
 }
 
 .logo {
@@ -167,6 +176,14 @@ body.dark {
 	}
 
 	transition: background-color ease-in 250ms, color ease-in 250ms, border ease-in 250ms;
+
+	@media screen and (min-width: $tablet) {
+		width: 213px;
+	}
+
+	@media screen and (min-width: $desktop) {
+		width: 288px;
+	}
 }
 
 .search-btn {
@@ -193,11 +210,17 @@ body.dark {
 	stroke: $switcher-accent;
 
 	transition: stroke ease-in 250ms;
-}
-.theme__light {
-	@media screen and (max-width: 1199px) {
+
+	@media screen and (min-width: $desktop) {
 		display: none;
 	}
+}
+.theme__light {
+	@media screen and (max-width: 1279px) {
+		display: none;
+	}
+	color: $switcher-accent;
+	transition: color ease-in 250ms;
 }
 .switch {
 }
@@ -247,15 +270,21 @@ body.dark {
 }
 
 .theme__dark {
-	@media screen and (max-width: 1199px) {
+	@media screen and (max-width: 1279px) {
 		display: none;
 	}
+	color: $switcher-color;
+	transition: stroke ease-in 250ms;
 }
 
 .moon {
 	stroke: $switcher-color;
 
 	transition: stroke ease-in 250ms;
+
+	@media screen and (min-width: $desktop) {
+		display: none;
+	}
 }
 //!-----------------------------------------------------
 
