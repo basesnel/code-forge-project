@@ -13,7 +13,7 @@ export const load = (key) => {
 		if (data === null) {
 			return undefined;
 		} else {
-			JSON.parse(data);
+			return JSON.parse(data);
 		}
 	} catch (error) {
 		console.log('Error: ', error.message);
