@@ -1,18 +1,27 @@
 :root {
---bg-color: #f4f4f4;
---text-color: #111321;
+  --bg-color: #f4f4f4;
+  --text-color: #111321;
 
-// DarkMode
-body.darkMode {
---bg-color: #2e2e2e;
---text-color: #f4f4f4;
-// switcher colors
-// --switcher-gray: #f4f4f4;
---switcher-accent-day: #f4f4f4;
-    
---switcher-gray-moon: #4440f7;
+  // DarkMode
+  body.darkMode {
+    --bg-color: #2e2e2e;
+    --text-color: #f4f4f4;
+    // switcher colors
+    // --switcher-gray: #f4f4f4;
+    --switcher-accent-day: #f4f4f4;
+
+    --switcher-gray-moon: #4440f7;
+  }
 }
-}
+
+// Colors in variables:
+$light: #f7f7f7; // light background
+$dark: #2e2e2e; // dark background
+$text: #111321; // base text color
+$accent: #4440f6; // icon and activity color
+$greycolor: #a8a8a8; // ?
+$whitecolor: #fff; // switch light-dark styles color
+$hdbottom: rgba(0, 0, 0, 0.2); // header bottom color
 
 // Adaptiv
 
