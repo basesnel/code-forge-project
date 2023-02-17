@@ -1,0 +1,90 @@
+body.darkMode {
+    .header {
+        border-bottom: 1px solid rgba(244, 244, 244, 0.2);
+    }
+
+    .theme__dark {
+        opacity: 1;
+    }
+}
+
+
+.header {
+    min-height: 81px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+
+}
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: calc(33 / 24);
+    display: inline-block;
+    padding: 24px 0;
+}
+
+.navbar {
+    display: none;
+        
+}
+
+.navbar__item {
+    padding-top: 48px;
+    padding-bottom: 36px;
+}
+
+.navbar__link {
+    font-weight: 700;
+    line-height: calc(22 / 16);
+
+   
+
+    &--current {
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--accent-color);
+        padding-left: 6px;
+        padding-right: 6px;
+
+    }
+
+    &:hover,
+    &:focus {
+        color: var(--accent-color);
+    }
+}
+
+.search-field {
+    margin-left: auto;
+    display: flex;
+    background-color: transparent;
+    height: 31px;  
+}
+
+ input {
+     font-family: 'Poppins';
+     font-size: 12px;
+     line-height: calc(21 / 12);
+     letter-spacing: 0.02em;
+     color: var(--text-color);
+     border: none;
+     background: none;
+     outline: none;
+
+     &:focus {
+         color: var(--text-color)
+     }
+
+     &:autofill,
+     &:autofill:hover,
+     &:autofill:focus,
+     &:autofill:active {
+         transition: background-color 9999s, color 9999s;
+     }
+}
+
+
+        
