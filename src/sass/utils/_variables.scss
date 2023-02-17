@@ -1,21 +1,20 @@
 :root {
---bg-color: #f4f4f4;
---text-color: #111321;
+	--bg-color: #f4f4f4;
+	--text-color: #111321;
 
-// DarkMode
-body.darkMode {
---bg-color: #2e2e2e;
---text-color: #f4f4f4;
-// switcher colors
-// --switcher-gray: #f4f4f4;
---switcher-accent-day: #f4f4f4;
-    
---switcher-gray-moon: #4440f7;
-}
+	// DarkMode
+	body.dark {
+		--bg-color: #2e2e2e;
+		--text-color: #f4f4f4;
+		// switcher colors
+		// --switcher-gray: #f4f4f4;
+		--switcher-accent-day: #f4f4f4;
+
+		--switcher-gray-moon: #4440f7;
+	}
 }
 
 // Adaptiv
-
 
 $mobile: 320px;
 $tablet: 768px;
