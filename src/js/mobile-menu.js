@@ -18,8 +18,12 @@ export default (() => {
         
     }
 
-
-
-
+   /* if (window.matchMedia("(min-width: 768px)").matches) {
+        openMenuBtn.classList.add('visually-hidden');
+        basicHeaderContainer.classList.remove('visually-hidden');
+    } else {
+        openMenuBtn.classList.remove('visually-hidden');
+        basicHeaderContainer.classList.add('visually-hidden');
+    }*/
 
 });

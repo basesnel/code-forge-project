@@ -45,17 +45,21 @@ body.dark {
 }
 
 .header-container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+   
+  padding: 24px 16px;
 
-	@media screen and (min-width: 768px) {
-		align-items: baseline;
-		gap: 32px;
-	}
+    @media screen and (min-width: 768px) {
+        padding: 32px 16px 28px 16px;
+        align-items: baseline;
+        gap: 32px;
+    }
 
-	@media (min-width: 1280px) {
-	}
+    @media (min-width: 1280px) {
+        padding: 28px 16px;
+    }
 }
 
 .nav-wrapper {
@@ -90,18 +94,17 @@ body.dark {
 }
 
 .navlist {
-	display: none;
 
-	@media screen and (min-width: 768px) {
-		display: flex;
-		margin-left: 48px;
-		gap: 44px;
-	}
+  @media screen and (min-width: 768px) {
+    display: flex;
+    margin-left: 48px;
+    gap: 44px;
+  }
 
-	@media screen and (min-width: 1280px) {
-		margin-left: 102px;
-		gap: 69px;
-	}
+  @media screen and (min-width: 1280px) {
+    margin-left: 102px;
+    gap: 69px;
+  }
 }
 
 .navlist__item {
