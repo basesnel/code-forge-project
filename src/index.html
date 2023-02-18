@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
-  </head>
-  <body class="darkMode">
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
+<html lang="en">
 
-    <include src="./partials/header.html"></include>
-    <include src="./partials/categories_calendar.html"></include>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Page title</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
+		rel="stylesheet" />
+	<link rel="stylesheet" href="./sass/index.scss" />
 
-    <include src="./partials/newsgrid.html"></include>
-    <include src="./partials/footer.html"></include>
+</head>
 
-    <script src="./js/calendar.js"></script>
-  </body>
+<body>
+
+	<include src="./partials/header.html"></include>
+	<include src="./partials/categories_calendar.html"></include>
+
+	<include src="./partials/newsgrid.html"></include>
+	<include src="./partials/footer.html"></include>
+	<script type="module" src="./index.js"></script>
+  <script src="./js/calendar.js"></script>
+</body>
+
 </html>
