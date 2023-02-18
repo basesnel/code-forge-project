@@ -21,7 +21,7 @@
         <svg class="calendar__icon-arrows calendar__icon-opened" width="15" height="9">
             <use href="./images/sprite.svg#icon-calendarArrow-opened"></use>
         </svg>
-        <svg class="calendar__icon-arrows calendar__icon-closed" width="15" height="9">
+        <svg class="calendar__icon-arrows calendar__icon-closed display-none" width="15" height="9">
             <use href="./images/sprite.svg#icon-calendarArrow-closed"></use>
         </svg>
     </div>
@@ -29,19 +29,19 @@
     <div class="calendar__modal is-hidden" data-calendar-modal>
     
         <div class="calendar__month-wrapper">
-            <p class="current-month">February 2021</p>
+            <p class="current-month"></p>
             <button type="button" class="icon-month-forward icon-calendar-arrow">
                 <svg width="7" height="12">
                     <use href="./images/sprite.svg#icon-month-forward"></use>
                 </svg>
             </button>
             <div class="calendar__btn-wrapper"> 
-                <button type="button" class="icon-calendar-arrow">
+                <button id="prev" type="button" class="icon-calendar-arrow">
                     <svg width="9" height="17">
                         <use href="./images/sprite.svg#icon-calendar-prev"></use>
                     </svg>
                 </button>
-                <button type="button" class="icon-calendar-arrow">
+                <button id="next" type="button" class="icon-calendar-arrow">
                     <svg width="9" height="17">
                         <use href="./images/sprite.svg#icon-calendar-next"></use>
                     </svg>

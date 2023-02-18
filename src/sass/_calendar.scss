@@ -54,7 +54,13 @@
     opacity: 40%;
     text-align: center;
 
+    &.is-active{
+        background-color: #4440F6;
+        color: #ffffff;
+    }
+
 }
+
 
 
 .calendar__icon-calendar{
@@ -62,18 +68,35 @@
     position: absolute;
     top: 6px;
     left: 12px;
+    fill: #4440F6;
+       
 }
 
+.change-color-icon {
+    z-index: 1;
+    fill: #ffffff;
+}
+
+
+
 .calendar__icon-arrows{
-    pointer-events: none;
-    position: absolute;
+   pointer-events: none;
+   position: absolute;
    top: 11px;
    right: 12px;
 }
 
-.calendar__icon-closed{
+
+
+.display-none{
     display: none;
 }
+
+.display-active {
+    display: block;
+}
+
+
 
 
 // Модалка календаря

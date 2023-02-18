@@ -2,8 +2,12 @@
 (() => {
   const refs = {
     openModalBtn: document.querySelector('[data-cal-modal-open-close]'),
-    // closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-calendar-modal]'),
+    iconCalendar: document.querySelector('.calendar__icon-calendar'),
+    iconCalendarOpen: document.querySelector('.calendar__icon-opened'),
+    iconCalendarClose: document.querySelector('.calendar__icon-closed'),
+
+    // closeModalBtn: document.querySelector('[data-modal-close]'),
   };
 
   refs.openModalBtn.addEventListener('click', toggleModal);
@@ -11,13 +15,17 @@
 
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
+    refs.openModalBtn.classList.toggle('is-active');
+    refs.iconCalendar.classList.toggle('change-color-icon');
+    refs.iconCalendarOpen.classList.toggle('display-none');
+    refs.iconCalendarClose.classList.toggle('display-active');
   }
 })();
 
 // обробка дати календаря
 const daysTag = document.querySelector('.days'),
   currentDate = document.querySelector('.current-month');
-// prevNextIcon = document.querySelectorAll('.icons span');
+prevNextIcon = document.querySelectorAll('.calendar__btn-wrapper button');
 
 // getting new date, current year and month
 let date = new Date(),
@@ -39,7 +47,7 @@ const months = [
   'December',
 ];
 const renderCalendar = () => {
-  let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
+  let firstDayofMonth = new Date(currYear, currMonth, 0).getDay(), // getting first day of month
     lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
     lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
     lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
@@ -59,7 +67,7 @@ const renderCalendar = () => {
         : '';
     liTag += `<li class="active ${isToday}">${i}</li>`;
   }
-  for (let i = lastDayofMonth; i < 6; i++) {
+  for (let i = lastDayofMonth; i < 7; i++) {
     // creating li of next month first days
     liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
   }
