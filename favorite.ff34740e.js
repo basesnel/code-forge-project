@@ -1,2 +1,0 @@
-!function(){var e={openMenuBtn:document.querySelector(".js-open-menu"),mobileMenuEl:document.querySelector(".mobile-menu"),basicHeaderContainer:document.querySelector(".header-container"),closeMenuBtn:document.querySelector(".js-close-button")},n=e.mobileMenuEl,t=e.basicHeaderContainer,o=e.closeMenuBtn;function c(e){n.classList.toggle("visually-hidden"),t.classList.toggle("visually-hidden")}e.openMenuBtn.addEventListener("click",c),o.addEventListener("click",c)}();
-//# sourceMappingURL=favorite.ff34740e.js.map
