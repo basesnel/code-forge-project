@@ -16,34 +16,43 @@ body.darkMode {
 .header-container {
   display: flex;
   align-items: center;
+   
+   padding: 24px 16px;
 
-  @media screen and (min-width: 768px) {
-    align-items: none;
-  }
+    @media screen and (min-width: 768px) {
+        padding: 32px 16px;
+    }
+
+    @media (min-width: 1280px) {
+        padding: 28px 16px;
+    }
 }
 
 .logo {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: calc(33 / 24);
-  color: #111321;
-  padding: 24px 0;
-  display: inline-block;
+
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: calc(33 / 24);
+    color: #111321;
+    display: inline-block;
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
     line-height: calc(44 / 32);
     padding-top: 32px;
     padding-bottom: 30px;
+
   }
-  @media screen and (min-width: 1280px) {
-    padding: 28px 0;
-    font-size: 42px;
-    line-height: calc(57 / 42);
-  }
+    @media screen and (min-width: 1280px) {
+        padding: 28px 0;
+        font-size: 42px;
+        line-height: calc(57 / 42);
+    }
 }
+
+
 .navlist {
   display: none;
 
@@ -192,6 +201,23 @@ body.darkMode {
     display: none;
 }
 
+
+.navigation {
+    display: none;
+}
+
+.search-field {
+    display: none;
+}
+
+.theme {
+    display: none;
+}
+
+.search-button {
+    margin: 0 14px 0 167px;
+}
+        
 .slider {
     position: absolute;
     cursor: pointer;
@@ -297,3 +323,4 @@ input:checked+.slider:before {
  }
 
 }
+

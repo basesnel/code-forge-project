@@ -1,0 +1,61 @@
+.js-close-button {
+    position: absolute;
+    right: 16px;
+    top: 28.5px;
+}
+
+.menu-nav {
+    margin-top: 50px;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 10px 16px;
+        width: 100vw;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        margin-right: 14px;
+    }
+
+    &__link--arrow {
+        display: flex;
+        align-items: center;
+        margin-left: 163px;
+    }
+
+    &__item:hover,
+    &__item:focus {
+        color: $whitecolor;
+    }
+}
+
+.menu-nav__item:hover,
+.menu-nav__item:focus {
+    background-color: $accent;
+}
+
+
+.menu-container {
+    padding: 24px 16px 18px 16px;
+    position: relative;
+    z-index: 100;
+}
+
+.theme-switcher {
+    margin: 248px auto 18px 16px;
+    width: 98px;
+    height: 21px;
+}
+
+.mobile-menu {
+    height: 568px;
+}
+
+
+
