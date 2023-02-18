@@ -53,6 +53,9 @@ body.dark {
 		align-items: baseline;
 		gap: 32px;
 	}
+
+	@media (min-width: 1280px) {
+	}
 }
 
 .nav-wrapper {
@@ -267,7 +270,20 @@ body.dark {
 	visibility: none;
 	display: none;
 }
+.navigation {
+}
 
+.search-field {
+	display: none;
+}
+
+.theme {
+	display: none;
+}
+
+.search-button {
+	margin: 0 14px 0 167px;
+}
 .slider-round {
 	position: relative;
 	display: block;
