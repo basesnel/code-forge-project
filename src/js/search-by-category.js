@@ -1,7 +1,7 @@
 import NewsApiService from './api/main-api'
 import Notiflix from 'notiflix';
 const newsPerPage = 20;
-const searchApiService = new NewsApiService(newsPerPage);
+const categoryApiService = new NewsApiService(newsPerPage);
 
 const refs = {
 	openSearchBtn: document.getElementById('search-btn'),
@@ -24,8 +24,8 @@ function onSearch(e) {
     return
 	}
 
-	searchApiService.query = inputValue;
-    searchApiService.resetPage();
+	newsApiService.query = inputValue;
+    newsApiService.resetPage();
 	getResponse()
 }
 
@@ -36,7 +36,7 @@ function onLoadMore(e) {
 
 async function getResponse() {
     try {
-        const response = await searchApiService.getNewsBySearch();
+        const response = await newsApiService.getNewsBySearch();
 		console.log(response);
 	} catch (error) {
 		console.log('failur')
