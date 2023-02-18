@@ -41,25 +41,25 @@ body.dark {
 	min-height: 81px;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-	transition: background-color ease-in 250ms, color ease-in 250ms;
+	// transition: background-color ease-in 250ms, color ease-in 250ms;
 }
 
 .header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-   
-  padding: 24px 16px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-    @media screen and (min-width: 768px) {
-        padding: 32px 16px 28px 16px;
-        align-items: baseline;
-        gap: 32px;
-    }
+	padding: 24px 16px;
 
-    @media (min-width: 1280px) {
-        padding: 28px 16px;
-    }
+	@media screen and (min-width: 768px) {
+		padding: 32px 16px 28px 16px;
+		align-items: baseline;
+		gap: 32px;
+	}
+
+	@media (min-width: 1280px) {
+		padding: 28px 16px;
+	}
 }
 
 .nav-wrapper {
@@ -90,21 +90,20 @@ body.dark {
 		line-height: calc(57 / 42);
 	}
 
-	transition: color ease-in 250ms;
+	// transition: color ease-in 250ms;
 }
 
 .navlist {
+	@media screen and (min-width: 768px) {
+		display: flex;
+		margin-left: 48px;
+		gap: 44px;
+	}
 
-  @media screen and (min-width: 768px) {
-    display: flex;
-    margin-left: 48px;
-    gap: 44px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    margin-left: 102px;
-    gap: 69px;
-  }
+	@media screen and (min-width: 1280px) {
+		margin-left: 102px;
+		gap: 69px;
+	}
 }
 
 .navlist__item {
@@ -187,7 +186,7 @@ body.dark {
 .search-form__icon {
 	fill: $text;
 
-	transition: fill ease-in 250ms;
+	// transition: fill ease-in 250ms;
 }
 
 .search-form__input {
@@ -210,10 +209,10 @@ body.dark {
 	background-color: transparent;
 
 	&::placeholder {
-		transition: color ease-in 250ms;
+		// transition: color ease-in 250ms;
 	}
 
-	transition: color ease-in 250ms, border ease-in 250ms;
+	// transition: color ease-in 250ms, border ease-in 250ms;
 
 	@media screen and (min-width: $tablet) {
 		width: 213px;
@@ -254,7 +253,7 @@ body.dark {
 .sun {
 	stroke: $switcher-accent;
 
-	transition: stroke ease-in 250ms;
+	// transition: stroke ease-in 250ms;
 
 	@media screen and (min-width: $desktop) {
 		display: none;
@@ -265,7 +264,7 @@ body.dark {
 		display: none;
 	}
 	color: $switcher-accent;
-	transition: color ease-in 250ms;
+	// transition: color ease-in 250ms;
 }
 //.switch {
 //}
@@ -287,7 +286,7 @@ body.dark {
 	cursor: pointer;
 	overflow: hidden;
 
-	transition: background-color ease-in 250ms, color ease-in 250ms;
+	// transition: background-color ease-in 250ms, color ease-in 250ms;
 
 	&::before {
 		content: "";
@@ -300,7 +299,7 @@ body.dark {
 		background-color: $switcher-accent;
 		border-radius: 50%;
 
-		transition: background-color ease-in 250ms, color ease-in 250ms, transform ease-in 250ms;
+		// transition: background-color ease-in 250ms, color ease-in 250ms, transform ease-in 250ms;
 	}
 
 	.switch-checkbox:checked ~ & {
@@ -319,13 +318,13 @@ body.dark {
 		display: none;
 	}
 	color: $switcher-color;
-	transition: stroke ease-in 250ms;
+	// transition: stroke ease-in 250ms;
 }
 
 .moon {
 	stroke: $switcher-color;
 
-	transition: stroke ease-in 250ms;
+	// transition: stroke ease-in 250ms;
 
 	@media screen and (min-width: $desktop) {
 		display: none;
