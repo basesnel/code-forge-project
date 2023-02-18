@@ -1,0 +1,2 @@
+(()=>{const e={openMenuBtn:document.querySelector(".js-open-menu"),mobileMenuEl:document.querySelector(".mobile-menu"),basicHeaderContainer:document.querySelector(".header-container"),closeMenuBtn:document.querySelector(".js-close-button")},{openMenuBtn:n,mobileMenuEl:t,basicHeaderContainer:o,closeMenuBtn:c}=e;function l(e){t.classList.toggle("visually-hidden"),o.classList.toggle("visually-hidden")}n.addEventListener("click",l),c.addEventListener("click",l)})();
+//# sourceMappingURL=favorite.d8afa8ab.js.map
