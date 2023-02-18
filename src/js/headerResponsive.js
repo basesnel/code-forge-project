@@ -10,14 +10,21 @@ export default (() => {
 
     window.addEventListener('resize', onResize);
 
+    chooseElementsByViewportWidth();
+
     function onResize(e) {
-        if (window.matchMedia("(min-width: 768px)").matches) {
+        chooseElementsByViewportWidth();
+    } 
+
+
+    function chooseElementsByViewportWidth() {
+
+         if (window.matchMedia("(min-width: 768px)").matches) {
             tablet();
+         } else {
+             mobile()
         }
 
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            mobile();
-        }
     }
 
     function tablet() {
