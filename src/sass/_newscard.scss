@@ -1,0 +1,137 @@
+// .container {
+//   padding-left: 15px;
+//   padding-right: 15px;
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 100%;
+//   @media screen and (min-width: 480px) {
+//     width: 480px;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+
+//   @media screen and (min-width: 768px) {
+//     width: 768px;
+//   }
+
+//   @media screen and (min-width: 1440px) {
+//     width: 1440px;
+//   }
+// }
+
+// .gallery,
+// .info {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
+
+// .gallery {
+//   justify-content: center;
+//   margin-left: 16px;
+//   margin-right: 16px;
+//   padding-top: 60px;
+//   padding: 16px 16px 16px 16px;
+// }
+
+.news-card {
+  position: relative;
+}
+
+.news-card__image {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.news-card__category {
+  font-family: 'Manrope';
+  width: 124px;
+  height: 24px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-align: center;
+
+  color: #ffffff;
+  background-color: rgba(68, 64, 246, 0.7);
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  border-radius: 0px 4px 4px 0px;
+}
+
+.news-card__add-favorite {
+  font-family: 'Manrope';
+  width: 126px;
+  height: 28px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.37;
+  text-align: center;
+
+  color: #111321;
+  background-color: #ffffff;
+  position: absolute;
+  top: 350px;
+  left: 140px;
+  border-radius: 20px;
+  left: 154px;
+  top: 355px;
+}
+
+.news-card__icon {
+}
+
+.news-card__title {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.375;
+  letter-spacing: -0.01em;
+  color: #111321;
+  margin-bottom: 20px;
+}
+
+.news-card__text {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.357;
+  color: #111321;
+  margin-bottom: 20px;
+}
+
+.news-card__details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.news-card__date-link {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.357;
+
+  color: #a8a8a8;
+}
+
+.news-card__news-link {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.357;
+  color: #4440f7;
+}
+
+.link {
+}
