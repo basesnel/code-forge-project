@@ -1,3 +1,6 @@
+
+import { save, load } from './js/locale-storage';
+
 // HEADER SCRIPTS
 import "./js/open-search-form";
 import './js/switcher-theme';
@@ -9,7 +12,4 @@ import "./js/category";
 mobileMenu();
 headerResponsive();
 
-// api.getNewsPopular()
-//     .then(res => {
-//         console.log(res);
-// })
+

@@ -1,80 +1,169 @@
-
-.container {
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .categories-calendar {
-    margin: auto;
-    max-width: $desktop;
-    display: flex;
-    padding-top: 28px;
-    padding-bottom: 28px;
-
+  max-width: $desktop;
+  display: flex;
+  padding-top: 28px;
+  padding-bottom: 28px;
 }
 
 .calendar {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
+  position: relative;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
-.calendar__text{
-    margin-top: 0;
-    margin-bottom: 0;
+.calendar__text {
+  margin-top: 0;
+  margin-bottom: 0;
 
-    margin-right: 37px;
-
-    font-family: Manrope;
-    font-style: Bold;
-    font-size: 18px;
-    line-height: 1.39; 
-    color: #111321;
+  margin-right: 37px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.39;
+  color: #111321;
 }
-.calendar__wrapper-input{
-    max-width: 168px;
-    position: relative;
+.calendar__wrapper-input {
+  max-width: 168px;
+  position: relative;
 }
 
-.calendar__input{
-    margin-right: 36px;
-    width: 168px;
-    height: 31px;
-    border-radius: 20px;
-    border: 1px solid #111321;
+.calendar__input {
+  cursor: pointer;
+  margin-right: 36px;
+  width: 168px;
+  height: 31px;
+  border-radius: 20px;
+  border: 1px solid #111321;
 
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.2;
+  color: #111321;
+  opacity: 40%;
+  text-align: center;
 
-    &::placeholder{
-        font-family: Manrope;
-        font-style: Regular;
-        font-size: 14px;
-        line-height: 1.5;
-       letter-spacing: 2%;
-       color: #111321;
-       opacity: 40%;
-       text-align: center;
-    }
+  &.is-active {
+    background-color: #4440f6;
+    color: #ffffff;
+  }
 }
 
-
-.calendar__icon-calendar{
-    position: absolute;
-    top: 6px;
-    left: 12px;
+.calendar__icon-calendar {
+  pointer-events: none;
+  position: absolute;
+  top: 6px;
+  left: 12px;
+  fill: #4440f6;
 }
 
-.calendar__icon-arrows{
-    position: absolute;
-   top: 11px;
-   right: 12px;
+.change-color-icon {
+  z-index: 1;
+  fill: #ffffff;
 }
 
-.calendar__icon-closed{
-    display: none;
+.calendar__icon-arrows {
+  pointer-events: none;
+  position: absolute;
+  top: 11px;
+  right: 12px;
 }
 
+.display-none {
+  display: none;
+}
+
+.display-active {
+  display: block;
+}
+
+// Модалка календаря
+
+.calendar__modal {
+  position: absolute;
+  top: 31px;
+  right: 0;
+  padding: 16px 16px 20px 16px;
+  width: 250px;
+  min-height: 250px;
+  // background-color: #f8f8f8;
+  background-color: bisque;
+  border-radius: 20px;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(0, 100%) scale(0.2);
+  }
+}
+
+// Вибір дати календаря
+
+.calendar__month-wrapper {
+  display: flex;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  margin-bottom: 2px;
+}
+
+.current-month {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.38;
+  letter-spacing: -0.41px;
+}
+
+.icon-month-forward {
+  margin-left: 8px;
+}
+
+.calendar__btn-wrapper {
+  margin-left: auto;
+  display: flex;
+  width: 51px;
+  justify-content: space-between;
+}
+
+.icon-calendar-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weeks {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+
+  cursor: default;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+  color: rgba(60, 60, 67, 0.3);
+}
+
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 12px;
+  column-gap: 17px;
+}
+
+.inactive,
+.active {
+  width: 16px;
+  height: 25px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.inactive {
+  opacity: 0.6;
+}
 
 // *{
 //     outline: 1px solid tomato;

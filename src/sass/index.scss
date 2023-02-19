@@ -1,12 +1,16 @@
-@import "./common";
-@import "./base/basic";
+@import './common';
 
-@import "./utils/variables";
+@import './utils/variables';
 
-@import "./base/fonts";
-@import "./base/reset";
+@import './base/fonts';
+@import './base/reset';
+@import './base/basic';
 
-@import "./header";
-@import "./mobile-menu";
-@import "./calendar";
-@import "./favourite";
+@import './header';
+@import './mobile-menu';
+@import './calendar';
+@import './favourite';
+@import './read-page';
+
+@import './utils/category';
+@import './utils/news';
