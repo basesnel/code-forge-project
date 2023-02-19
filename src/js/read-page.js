@@ -1,4 +1,5 @@
-import { load } from "./locale-storage";
+import readListTpl from "../templates/read-page.hbs";
+// import { load } from "./locale-storage";
 
 const refs = {
     undefinedThumb: document.querySelector('.undefined'),
@@ -6,7 +7,8 @@ const refs = {
     readListBtn: document.querySelector('.read-list__button')
 }
 
-function creatMarcupReadPage() {
+function creatMarcupReadPage(data) {
+    
     if (load('readNews') != undefined) {
         refs.undefinedThumb.classList.add('is-hidden');
         creatPageList();
@@ -14,6 +16,20 @@ function creatMarcupReadPage() {
         undefinedNews();
     }
 }
+
+function loadLS(key) {
+    try {
+		const data = localStorage.getItem(key);
+		if (data === null) {
+			return undefined;
+		} else {
+			return JSON.parse(data);
+		}
+	} catch (error) {
+		console.log('Error: ', error.message);
+	}
+}
+
 
 // function creatPageList() {
     
