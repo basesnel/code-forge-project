@@ -9,10 +9,16 @@ import headerResponsive from './js/headerResponsive';
 import NewsApiService from './js/api/main-api';
 import "./js/news-data/news-category";
 
+
 // MAIN SCRIPTS
 import "./js/news-data/news-popular";
 
+
+
+import favorite from './js/favorite';
+
 mobileMenu();
 headerResponsive();
+favorite();
 
 
