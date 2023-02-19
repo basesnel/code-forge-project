@@ -1,5 +1,5 @@
 <section class="container categories-calendar">
-
+<!-- Секція категорій -->
   <div class="category">
     <ul class="category__list">
       <li class="category__item">Admin</li>
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-
+<!-- Секція календаря -->
   <div class="calendar">
     <p class="calendar__text">Search date news</p>
 
@@ -77,7 +77,7 @@
         class="calendar__input"
         value="Select a date..."
         placeholder="Select a date..."
-        data-cal-modal-open-close
+        data-calendar-input
       />
 
       <svg
@@ -128,7 +128,7 @@
         <li>Su</li>
       </ul>
 
-      <ul class="days"></ul>
+      <ul class="days" data-calendar-days></ul>
     </div>
   </div>
 </section>

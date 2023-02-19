@@ -13,6 +13,11 @@
 }
 
 .calendar__text {
+
+  @media screen and (max-width:calc($desktop - 1px)) {
+      display:none ;
+    }
+
   margin-top: 0;
   margin-bottom: 0;
 
@@ -41,7 +46,7 @@
   letter-spacing: 0.2;
   color: #111321;
   opacity: 40%;
-  text-align: center;
+  // text-align: center;
 
   &.is-active {
     background-color: #4440f6;
@@ -81,6 +86,7 @@
 
 .calendar__modal {
   position: absolute;
+  z-index: 10;
   top: 31px;
   right: 0;
   padding: 16px 16px 20px 16px;
@@ -107,6 +113,7 @@
 }
 
 .current-month {
+    cursor: default;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.38;
@@ -144,25 +151,47 @@
   color: rgba(60, 60, 67, 0.3);
 }
 
+.weeks > li{
+  width: 26px;
+  text-align: center;
+}
+
 .days {
   display: flex;
   flex-wrap: wrap;
   row-gap: 12px;
-  column-gap: 17px;
+  column-gap: 6px;
 }
 
 .inactive,
 .active {
-  width: 16px;
-  height: 25px;
+  width: 26px;
+  height: 26px;
   text-align: center;
-  padding-top: 5px;
+  padding-top: 3px;
   padding-bottom: 5px;
   cursor: pointer;
+  
 }
+
+.active{
+  &:hover {
+    background-color: #4440F6;
+    color: #ffffff;
+    border-radius: 50%;
+  }
+}
+
 
 .inactive {
   opacity: 0.6;
+  cursor: default;
+}
+
+.selected-date {
+  background-color: #4440F6;
+    color: #ffffff;
+    border-radius: 50%;
 }
 
 // *{
