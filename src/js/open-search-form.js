@@ -39,7 +39,6 @@ async function getResponse() {
         const response = await searchApiService.getNewsBySearch();
 		console.log(response);
 	} catch (error) {
-		console.log('failur')
         Notiflix.Notify.failure('There are problems with your request.Please try again later.')
     }
 }
