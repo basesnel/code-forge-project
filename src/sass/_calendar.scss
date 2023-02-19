@@ -1,15 +1,15 @@
 .categories-calendar {
-  max-width: $desktop;
-  display: flex;
-  padding-top: 28px;
-  padding-bottom: 28px;
+	max-width: $desktop;
+	display: flex;
+	padding-top: 28px;
+	padding-bottom: 28px;
 }
 
 .calendar {
-  position: relative;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
+	position: relative;
+	margin-left: auto;
+	display: flex;
+	align-items: center;
 }
 
 .calendar__text {
@@ -21,65 +21,65 @@
   margin-top: 0;
   margin-bottom: 0;
 
-  margin-right: 37px;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.39;
-  color: #111321;
+	margin-right: 37px;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 1.39;
+	color: #111321;
 }
 .calendar__wrapper-input {
-  max-width: 168px;
-  position: relative;
+	max-width: 168px;
+	position: relative;
 }
 
 .calendar__input {
-  cursor: pointer;
-  margin-right: 36px;
-  width: 168px;
-  height: 31px;
-  border-radius: 20px;
-  border: 1px solid #111321;
+	cursor: pointer;
+	margin-right: 36px;
+	width: 168px;
+	height: 31px;
+	border-radius: 20px;
+	border: 1px solid #111321;
 
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: 0.2;
-  color: #111321;
-  opacity: 40%;
-  // text-align: center;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.5;
+	letter-spacing: 0.2;
+	color: rgba(17, 19, 33, 0.4);
+	text-align: center;
+	background-color: transparent;
 
-  &.is-active {
-    background-color: #4440f6;
-    color: #ffffff;
-  }
+	&.is-active {
+		background-color: #4440f6;
+		color: #ffffff;
+	}
 }
 
 .calendar__icon-calendar {
-  pointer-events: none;
-  position: absolute;
-  top: 6px;
-  left: 12px;
-  fill: #4440f6;
+	pointer-events: none;
+	position: absolute;
+	top: 6px;
+	left: 12px;
+	fill: #4440f6;
 }
 
 .change-color-icon {
-  z-index: 1;
-  fill: #ffffff;
+	z-index: 1;
+	fill: #ffffff;
 }
 
 .calendar__icon-arrows {
-  pointer-events: none;
-  position: absolute;
-  top: 11px;
-  right: 12px;
+	pointer-events: none;
+	position: absolute;
+	top: 11px;
+	right: 12px;
 }
 
 .display-none {
-  display: none;
+	display: none;
 }
 
 .display-active {
-  display: block;
+	display: block;
 }
 
 // Модалка календаря
@@ -96,20 +96,20 @@
   background-color: bisque;
   border-radius: 20px;
 
-  &.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(0, 100%) scale(0.2);
-  }
+	&.is-hidden {
+		opacity: 0;
+		pointer-events: none;
+		transform: translate(0, 100%) scale(0.2);
+	}
 }
 
 // Вибір дати календаря
 
 .calendar__month-wrapper {
-  display: flex;
-  padding-top: 11px;
-  padding-bottom: 11px;
-  margin-bottom: 2px;
+	display: flex;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	margin-bottom: 2px;
 }
 
 .current-month {
@@ -121,34 +121,34 @@
 }
 
 .icon-month-forward {
-  margin-left: 8px;
+	margin-left: 8px;
 }
 
 .calendar__btn-wrapper {
-  margin-left: auto;
-  display: flex;
-  width: 51px;
-  justify-content: space-between;
+	margin-left: auto;
+	display: flex;
+	width: 51px;
+	justify-content: space-between;
 }
 
 .icon-calendar-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .weeks {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 14px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 14px;
 
-  cursor: default;
+	cursor: default;
 
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.5;
-  letter-spacing: -0.08px;
-  color: rgba(60, 60, 67, 0.3);
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 1.5;
+	letter-spacing: -0.08px;
+	color: rgba(60, 60, 67, 0.3);
 }
 
 .weeks > li{

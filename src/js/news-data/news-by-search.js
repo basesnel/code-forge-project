@@ -1,4 +1,4 @@
-import NewsApiService from './api/main-api'
+import NewsApiService from '../api/main-api'
 import Notiflix from 'notiflix';
 const newsPerPage = 20;
 const searchApiService = new NewsApiService(newsPerPage);
