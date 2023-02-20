@@ -1,88 +1,79 @@
 <section class="container categories-calendar">
-<!-- Секція категорій -->
-  <div class="category">
-    <ul class="category__list js-category">
-      <!-- тут рендериться динамічно список категорій -->
-    </ul>
-    <div class="category__others-container">
-      <button class="category__others-button">
-        <span class="category__text">Others</span>
-        <svg></svg>
-      </button>
-      <div class="category__others-div">
-        <ul class="category__others-list js-category-others">
-          <!-- тут рендериться динамічно випадаючий список категорій others -->
-        </ul>
-      </div>
-    </div>
-  </div>
+	<!-- Секція категорій -->
+	<div class="category">
+		<ul class="category__list js-category">
+			<!-- тут рендериться динамічно список категорій -->
+		</ul>
+		<div class="category__others-container others">
+			<div class="others__wrapper js-others-wrapper">
+				<ul class="others__list js-category-others">
+					<!-- тут рендериться динамічно випадаючий список категорій others -->
+				</ul>
+			</div>
+			<button class="others__button js-others-btn">
+				<span class="others__text-btn js-text-btn">Others</span>
+				<svg class="others__icon-open" width="14" height="14">
+					<use href="./images/sprite.svg#icon-categoriesList-closed"></use>
+				</svg>
+				<svg class="others__icon-close" width="14" height="14">
+					<use href="./images/sprite.svg#icon-categoriesList-opened"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
 
-<!-- Секція календаря -->
-  <div class="calendar">
-    <p class="calendar__text">Search date news</p>
+	<!-- Секція календаря -->
+	<div class="calendar">
+		<p class="calendar__text">Search date news</p>
 
-    <div class="calendar__wrapper-input">
-      <svg class="calendar__icon-calendar" width="20" height="20">
-        <use href="./images/sprite.svg#icon-calendar"></use>
-      </svg>
+		<div class="calendar__wrapper-input">
+			<svg class="calendar__icon-calendar" width="20" height="20">
+				<use href="./images/sprite.svg#icon-calendar"></use>
+			</svg>
 
-      <input
-        type="button"
-        readonly
-        class="calendar__input"
-        value="Select a date..."
-        placeholder="Select a date..."
-        data-calendar-input
-      />
+			<input type="button" readonly class="calendar__input js-calendar-input" value="Select a date..." />
 
-      <svg
-        class="calendar__icon-arrows calendar__icon-opened"
-        width="15"
-        height="9"
-      >
-        <use href="./images/sprite.svg#icon-calendarArrow-opened"></use>
-      </svg>
-      <svg
-        class="calendar__icon-arrows calendar__icon-closed display-none"
-        width="15"
-        height="9"
-      >
-        <use href="./images/sprite.svg#icon-calendarArrow-closed"></use>
-      </svg>
-    </div>
+			<svg class="calendar__icon-arrows calendar__icon-opened" width="15" height="9">
+				<use href="./images/sprite.svg#icon-calendarArrow-opened"></use>
+			</svg>
+			<svg class="calendar__icon-arrows calendar__icon-closed display-none" width="15" height="9">
+				<use href="./images/sprite.svg#icon-calendarArrow-closed"></use>
+			</svg>
+		</div>
 
-    <div class="calendar__modal is-hidden" data-calendar-modal>
-      <div class="calendar__month-wrapper">
-        <p class="current-month"></p>
-        <button type="button" class="icon-month-forward icon-calendar-arrow">
-          <svg width="7" height="12">
-            <use href="./images/sprite.svg#icon-month-forward"></use>
-          </svg>
-        </button>
-        <div class="calendar__btn-wrapper">
-          <button id="prev" type="button" class="icon-calendar-arrow">
-            <svg width="9" height="17">
-              <use href="./images/sprite.svg#icon-calendar-prev"></use>
-            </svg>
-          </button>
-          <button id="next" type="button" class="icon-calendar-arrow">
-            <svg width="9" height="17">
-              <use href="./images/sprite.svg#icon-calendar-next"></use>
-            </svg>
-          </button>
-        </div>
-      </div>
+		<div class="calendar__modal is-hidden" data-calendar-modal>
+			<div class="calendar__month-wrapper">
+				<p class="current-month"></p>
+				<button type="button" class="icon-month-forward icon-calendar-arrow">
+					<svg width="7" height="12">
+						<use href="./images/sprite.svg#icon-month-forward"></use>
+					</svg>
+				</button>
+				<div class="calendar__btn-wrapper">
+					<button id="prev" type="button" class="icon-calendar-arrow">
+						<svg width="9" height="17">
+							<use href="./images/sprite.svg#icon-calendar-prev"></use>
+						</svg>
+					</button>
+					<button id="next" type="button" class="icon-calendar-arrow">
+						<svg width="9" height="17">
+							<use href="./images/sprite.svg#icon-calendar-next"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
 
-      <ul class="weeks">
-        <li>Mo</li>
-        <li>Tu</li>
-        <li>We</li>
-        <li>Fr</li>
-        <li>Sa</li>
-        <li>Su</li>
-      </ul>
+			<ul class="weeks">
+				<li>Mo</li>
+				<li>Tu</li>
+				<li>We</li>
+				<li>Th</li>
+				<li>Fr</li>
+				<li>Sa</li>
+				<li>Su</li>
+			</ul>
 
-      <ul class="days" data-calendar-days></ul>
-    </div>
-  </div>
+			<ul class="days" data-calendar-days></ul>
+		</div>
+	</div>
 </section>

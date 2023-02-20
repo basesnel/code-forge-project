@@ -13,13 +13,12 @@
 }
 
 .calendar__text {
+	@media screen and (max-width: calc($desktop - 1px)) {
+		display: none;
+	}
 
-  @media screen and (max-width:calc($desktop - 1px)) {
-      display:none ;
-    }
-
-  margin-top: 0;
-  margin-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 
 	margin-right: 37px;
 	font-weight: 700;
@@ -85,16 +84,16 @@
 // Модалка календаря
 
 .calendar__modal {
-  position: absolute;
-  z-index: 10;
-  top: 31px;
-  right: 0;
-  padding: 16px 16px 20px 16px;
-  width: 250px;
-  min-height: 250px;
-  // background-color: #f8f8f8;
-  background-color: bisque;
-  border-radius: 20px;
+	position: absolute;
+	z-index: 10;
+	top: 31px;
+	right: 0;
+	padding: 16px 16px 20px 16px;
+	width: 250px;
+	min-height: 250px;
+	// background-color: #f8f8f8;
+	background-color: bisque;
+	border-radius: 20px;
 
 	&.is-hidden {
 		opacity: 0;
@@ -113,11 +112,11 @@
 }
 
 .current-month {
-    cursor: default;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.38;
-  letter-spacing: -0.41px;
+	cursor: default;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 1.38;
+	letter-spacing: -0.41px;
 }
 
 .icon-month-forward {
@@ -151,47 +150,45 @@
 	color: rgba(60, 60, 67, 0.3);
 }
 
-.weeks > li{
-  width: 26px;
-  text-align: center;
+.weeks > li {
+	width: 26px;
+	text-align: center;
 }
 
 .days {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 12px;
-  column-gap: 6px;
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 12px;
+	column-gap: 6px;
 }
 
 .inactive,
 .active {
-  width: 26px;
-  height: 26px;
-  text-align: center;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  cursor: pointer;
-  
+	width: 26px;
+	height: 26px;
+	text-align: center;
+	padding-top: 3px;
+	padding-bottom: 5px;
+	cursor: pointer;
 }
 
-.active{
-  &:hover {
-    background-color: #4440F6;
-    color: #ffffff;
-    border-radius: 50%;
-  }
+.active {
+	&:hover {
+		background-color: #4440f6;
+		color: #ffffff;
+		border-radius: 50%;
+	}
 }
-
 
 .inactive {
-  opacity: 0.6;
-  cursor: default;
+	opacity: 0.6;
+	cursor: default;
 }
 
 .selected-date {
-  background-color: #4440F6;
-    color: #ffffff;
-    border-radius: 50%;
+	background-color: #4440f6;
+	color: #ffffff;
+	border-radius: 50%;
 }
 
 // *{

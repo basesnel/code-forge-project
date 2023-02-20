@@ -1,5 +1,5 @@
 const refs = {
-  calendarInput: document.querySelector('[data-calendar-input]'),
+  calendarInput: document.querySelector('.js-calendar-input'),
   modal: document.querySelector('[data-calendar-modal]'),
   iconCalendar: document.querySelector('.calendar__icon-calendar'),
   iconCalendarOpen: document.querySelector('.calendar__icon-opened'),
@@ -11,10 +11,12 @@ const refs = {
 };
 
 // відкриття закриття календаря
-(() => {
+function openAndCloseCalendar() {
   refs.calendarInput.addEventListener('click', toggleModal);
   //   refs.closeModalBtn.addEventListener('click', toggleModal);
-})();
+}
+
+openAndCloseCalendar();
 
 // refs.clickToBody.addEventListener('click', closedModalCalendar);
 
@@ -116,6 +118,18 @@ prevNextIcon.forEach(icon => {
     renderCalendar(); // calling renderCalendar function
   });
 });
+// =======================================
+// Зміна року
+
+const btnChangeOfYear = document.querySelector('.icon-month-forward');
+
+btnChangeOfYear.addEventListener('click', changeOfYear);
+
+function changeOfYear() {
+  currYear = currYear - 1;
+
+  renderCalendar();
+}
 
 // =======================================
 
@@ -125,6 +139,7 @@ function selectionDate(evt) {
   }
   // Запис інформації в інпут
   const selectedItem = evt.target;
+  let selectedList = evt.currentTarget.children;
   let selectedDateToInput = selectedItem.textContent;
 
   refs.calendarInput.value = `${addLeadingZero(
@@ -134,5 +149,12 @@ function selectionDate(evt) {
 
   // Виділення активної дати кольором
 
-  // selectedItem.classList.add('selected-date');
+  selectedItem.classList.add('selected-date');
+
+  Array.from(selectedList).map(element => {
+    if (element.classList.contains('selected-date')) {
+      element.classList.remove('selected-date');
+      selectedItem.classList.add('selected-date');
+    }
+  });
 }
