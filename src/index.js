@@ -11,8 +11,16 @@ import './js/category';
 import './js/calendar';
 import './js/news-data/news-category';
 
+
 // MAIN SCRIPTS
 import './js/news-data/news-popular';
 
+
+
+import favorite from './js/favorite';
+
 mobileMenu();
 headerResponsive();
+
+favorite();
+
