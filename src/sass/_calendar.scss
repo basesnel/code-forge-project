@@ -25,7 +25,7 @@
 	font-weight: 700;
 	font-size: 18px;
 	line-height: 1.39;
-	color: #111321;
+	color: $text;
 }
 .calendar__wrapper-input {
 	max-width: 168px;
@@ -33,12 +33,23 @@
 }
 
 .calendar__input {
+
+	@media screen and (max-width:calc($tablet - 1px)) {
+			width: 152px;
+			font-size: 12px;
+			line-height: 1.75;
+		}
+
+		@media screen and (min-width:$desktop) {
+		margin-right: 36px;
+		}
+
 	cursor: pointer;
-	margin-right: 36px;
+	// margin-right: 36px;
 	width: 168px;
 	height: 31px;
 	border-radius: 20px;
-	border: 1px solid #111321;
+	border: 1px solid $text;
 
 	font-weight: 400;
 	font-size: 14px;
@@ -47,11 +58,22 @@
 	color: rgba(17, 19, 33, 0.4);
 	text-align: center;
 	background-color: transparent;
+ 
+		
 
 	&.is-active {
-		background-color: #4440f6;
-		color: #ffffff;
+		background-color: $accent;
+		color:$whitecolor;
 	}
+
+		transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:hover,
+	&:focus {
+		box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+	}
+
+	
 }
 
 .calendar__icon-calendar {
@@ -59,12 +81,12 @@
 	position: absolute;
 	top: 6px;
 	left: 12px;
-	fill: #4440f6;
+	fill: $accent;
 }
 
 .change-color-icon {
 	z-index: 1;
-	fill: #ffffff;
+	fill: $whitecolor;
 }
 
 .calendar__icon-arrows {
@@ -92,9 +114,10 @@
   padding: 16px 16px 20px 16px;
   width: 250px;
   min-height: 250px;
-  // background-color: #f8f8f8;
-  background-color: bisque;
+  background-color: $backgroundColorModal;
   border-radius: 20px;
+	box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
+
 
 	&.is-hidden {
 		opacity: 0;
@@ -135,6 +158,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	
+		&:hover,
+		&:focus {
+			box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+			
+		}
 }
 
 .weeks {
@@ -168,16 +199,19 @@
   width: 26px;
   height: 26px;
   text-align: center;
-  padding-top: 3px;
-  padding-bottom: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   cursor: pointer;
   
 }
 
 .active{
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
-    background-color: #4440F6;
-    color: #ffffff;
+    background-color: $accent;
+	opacity: 0.7;
+    color: $whitecolor;
     border-radius: 50%;
   }
 }
@@ -189,11 +223,11 @@
 }
 
 .selected-date {
-  background-color: #4440F6;
-    color: #ffffff;
+  background-color: $accent;
+    color: $whitecolor;
     border-radius: 50%;
 }
 
-// *{
-//     outline: 1px solid tomato;
-// }
+*{
+    outline: 1px solid tomato;
+}
