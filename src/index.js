@@ -15,10 +15,10 @@ import './js/news-data/news-popular';
 import './js/category-others-open';
 
 import favorite from './js/favoriteAddToLS';
-import renderFavorite from './js/render-favorite';
+//import renderFavorite from './js/render-favorite';
 
 mobileMenu();
 headerResponsive();
 
 favorite();
-renderFavorite();
+//renderFavorite();

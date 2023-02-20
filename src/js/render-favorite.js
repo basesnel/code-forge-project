@@ -1,6 +1,9 @@
-import LSFavorite from './favoriteAddToLS';
+//import LSFavorite from './favoriteAddToLS';
 import { load } from './locale-storage';
-LSFavorite()
+//LSFavorite()
+import mobileMenu from '../js/mobile-menu';
+import headerResponsive from '../js/headerResponsive';
+import '../js/switcher-theme';
 
 export default (() => {
     const FAV_KEY = 'favorite';
