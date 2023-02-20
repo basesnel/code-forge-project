@@ -46,9 +46,9 @@ function addLeadingZero(value) {
 }
 
 // обробка дати календаря
-const daysTag = document.querySelector('.days'),
-  currentDate = document.querySelector('.current-month');
-prevNextIcon = document.querySelectorAll('.calendar__btn-wrapper button');
+const daysTag = document.querySelector('.days');
+const currentDate = document.querySelector('.current-month');
+const prevNextIcon = document.querySelectorAll('.calendar__btn-wrapper button');
 
 // getting new date, current year and month
 let date = new Date(),
