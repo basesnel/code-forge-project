@@ -55,7 +55,7 @@ async function rejection() {
 
 // It's function for rendering block of weather:
 function weatherDetails({ temp, icon, description, country, city }) {
-  markup = `
+  const markup = `
   <div class="weather">
     <div class="weather__horisontal">
       <span class="weather__temp">${Math.floor(temp)}°</span>
