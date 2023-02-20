@@ -20,7 +20,7 @@ async function getResponse() {
 
 function renderMainNewsListDesctop(results) {
     let markup = '';
-	for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 8; i++) {
     markup += `<li class="list-news__item">
         
   <div class="news-card">
@@ -32,11 +32,12 @@ function renderMainNewsListDesctop(results) {
     height="395"
   />
   <p class="news-card__category">${results[i].section}</p>
-  <p class="news-card__add-favorite">
-    Add to favorite<svg class="news-card__icon" width="16" height="16">
-      <use href="./images/sprite.svg#icon-heart-transparent"></use>
+  <button type="button" class="js-to-fav">
+  <p class="news-card__add-favorite">Add to favorite</p>
+    <svg class="news-card__icon" width="16" height="16">
+      <use href=${'/sprite.f14d31f7.svg#icon-heart-transparent'}></use>
     </svg>
-  </p>
+  </button>
   <h3 class="news-card__title">
     ${results[i].title}
   </h3>
