@@ -1,7 +1,31 @@
+import LSFavorite from './favoriteAddToLS';
+import { load } from './locale-storage';
+LSFavorite()
+
 export default (() => {
+    const FAV_KEY = 'favorite';
+    
+    const refs = {
+        favList: document.querySelector('.favorite-list'),
+    }
+
+    const { favList } = refs;
+    const dataArr = load(FAV_KEY);
+
+    insertMarkupToUL();
 
 
+    function makeFavoriteMarkup() {
+        return dataArr.reduce((markup, obj) => {
+            markup + obj.dataString
+        }, "");
+    }
 
+    function insertMarkupToUL() {
+        favList.insertAdjacentHTML('beforeend', makeFavoriteMarkup());
+    }
+
+    
 
 
 
