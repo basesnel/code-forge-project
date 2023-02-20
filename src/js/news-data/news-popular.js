@@ -26,8 +26,8 @@ function renderMainNewsListDesctop(results) {
   <div class="news-card">
   <img
     class="news-card__image"
-    src="./images/1-asia-businesswoman-mob.jpg"
-    alt="asia-businesswoman"
+    src="${results[i].media[0]['media-metadata'][2].url}"
+    alt="${results[i].media[0].caption}"
     width="288"
     height="395"
   />
@@ -52,6 +52,7 @@ function renderMainNewsListDesctop(results) {
 
 </li>
             `;
+    //   console.log(results[i].media[0]['media-metadata'][1].url);
     };
     refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
     return 
