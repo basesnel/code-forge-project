@@ -12,7 +12,7 @@ import './js/weather'
 
 // MAIN SCRIPTS
 import './js/news-data/news-popular';
-import './js/category-others-open';
+import './js/categories';
 
 import favorite from './js/favoriteAddToLS';
 
