@@ -1,31 +1,54 @@
+const refs = {
+  calendarInput: document.querySelector('[data-calendar-input]'),
+  modal: document.querySelector('[data-calendar-modal]'),
+  iconCalendar: document.querySelector('.calendar__icon-calendar'),
+  iconCalendarOpen: document.querySelector('.calendar__icon-opened'),
+  iconCalendarClose: document.querySelector('.calendar__icon-closed'),
+
+  clickToBody: document.querySelector('body'),
+
+  // closeModalBtn: document.querySelector('[data-modal-close]'),
+};
+
 // відкриття закриття календаря
 (() => {
-  const refs = {
-    openModalBtn: document.querySelector('[data-cal-modal-open-close]'),
-    modal: document.querySelector('[data-calendar-modal]'),
-    iconCalendar: document.querySelector('.calendar__icon-calendar'),
-    iconCalendarOpen: document.querySelector('.calendar__icon-opened'),
-    iconCalendarClose: document.querySelector('.calendar__icon-closed'),
-
-    // closeModalBtn: document.querySelector('[data-modal-close]'),
-  };
-
-  refs.openModalBtn.addEventListener('click', toggleModal);
+  refs.calendarInput.addEventListener('click', toggleModal);
   //   refs.closeModalBtn.addEventListener('click', toggleModal);
-
-  function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
-    refs.openModalBtn.classList.toggle('is-active');
-    refs.iconCalendar.classList.toggle('change-color-icon');
-    refs.iconCalendarOpen.classList.toggle('display-none');
-    refs.iconCalendarClose.classList.toggle('display-active');
-  }
 })();
 
+// refs.clickToBody.addEventListener('click', closedModalCalendar);
+
+// function closedModalCalendar(evt) {
+//   if (refs.iconCalendar.classList === false) {
+//     return;
+//   }
+//   toggleModal();
+// }
+
+// Toggle class
+
+function toggleModal() {
+  refs.modal.classList.toggle('is-hidden');
+  refs.calendarInput.classList.toggle('is-active');
+  refs.iconCalendar.classList.toggle('change-color-icon');
+  refs.iconCalendarOpen.classList.toggle('display-none');
+  refs.iconCalendarClose.classList.toggle('display-active');
+}
+
+// Вибір дати по кліку
+
+const dateSelection = document.querySelector('[data-calendar-days]');
+
+dateSelection.addEventListener('click', selectionDate);
+
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
+}
+
 // обробка дати календаря
-const daysTag = document.querySelector('.days'),
-  currentDate = document.querySelector('.current-month');
-prevNextIcon = document.querySelectorAll('.calendar__btn-wrapper button');
+const daysTag = document.querySelector('.days');
+const currentDate = document.querySelector('.current-month');
+const prevNextIcon = document.querySelectorAll('.calendar__btn-wrapper button');
 
 // getting new date, current year and month
 let date = new Date(),
@@ -93,3 +116,23 @@ prevNextIcon.forEach(icon => {
     renderCalendar(); // calling renderCalendar function
   });
 });
+
+// =======================================
+
+function selectionDate(evt) {
+  if (evt.target.nodeName !== 'LI') {
+    return;
+  }
+  // Запис інформації в інпут
+  const selectedItem = evt.target;
+  let selectedDateToInput = selectedItem.textContent;
+
+  refs.calendarInput.value = `${addLeadingZero(
+    selectedDateToInput
+  )}/${addLeadingZero(currMonth + 1)}/${currYear}`;
+  toggleModal();
+
+  // Виділення активної дати кольором
+
+  // selectedItem.classList.add('selected-date');
+}

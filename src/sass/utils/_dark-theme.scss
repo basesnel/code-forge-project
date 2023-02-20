@@ -1,0 +1,83 @@
+body.dark {
+	background-color: $dark-theme-bg;
+	color: $dark-theme-text;
+
+	.header {
+		border-bottom: 1px solid rgba(244, 244, 244, 0.2);
+
+		.icon {
+			stroke: $dark-theme-text;
+		}
+
+		.icon-close {
+			stroke: $dark-theme-text;
+		}
+
+		.logo {
+			color: $dark-theme-text;
+		}
+
+		.search-form__input {
+			border-color: $dark-theme-text;
+			color: $dark-theme-text;
+
+			&::placeholder {
+				color: rgba(244, 244, 244, 0.4);
+			}
+		}
+
+		.search-form__icon {
+			fill: $dark-theme-text;
+		}
+
+		.sun {
+			stroke: $switcher-color;
+		}
+		.theme__light {
+			color: $switcher-color;
+		}
+
+		.moon {
+			stroke: $switcher-accent;
+		}
+		.theme__dark {
+			color: $switcher-accent;
+		}
+	}
+
+	.calendar {
+		color: #000;
+
+		.calendar__text {
+			color: $dark-theme-text;
+		}
+
+		.calendar__input {
+			color: rgba(244, 244, 244, 0.4);
+			border-color: $dark-theme-text;
+
+			&.is-active {
+				color: $whitecolor;
+				border-color: $accent;
+			}
+		}
+	}
+
+	.read-page {
+		.read-list {
+			&__data {
+				color: $dark-theme-text;
+			}
+
+			&__icon {
+				fill: $whitecolor;
+			}
+		}
+	}
+
+	.newsgrid {
+		.page-container {
+			background-color: $dark-theme-bg;
+		}
+	}
+}
