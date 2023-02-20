@@ -1,0 +1,64 @@
+// existing colors:
+$accent: #4440f6;
+$whitecolor: #fff;
+
+$txt-roboto: 'Roboto';
+
+.weather {
+  padding: 45px 53px 60px;
+  background-color: $accent;
+  color: $whitecolor;
+
+  font-family: 'Roboto';
+
+  width: 395px;
+  height: 675px;
+  border-radius: 4px;
+
+  &__horisontal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 90px;
+  }
+
+  &__temp {
+    padding-right: 8px;
+    border-right: 1px solid $whitecolor;
+    font-size: 64px;
+    line-height: 1.17;
+  }
+
+  &__desc,
+  &__date {
+    display: block;
+    width: 199px;
+    font-size: 36px;
+    line-height: 1.16;
+  }
+
+  &__date {
+    text-align: center;
+    margin: 0 auto 28px;
+  }
+
+  &__imgwrap {
+    width: 200px;
+    margin: 0 auto 30px;
+  }
+
+  &__city,
+  &__week {
+    display: block;
+    width: 177px;
+    padding: 10px 12px 9px 12px;
+    background: rgba(254, 254, 255, 0.3);
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 1.15;
+  }
+
+  &__week {
+    margin: 0 auto;
+  }
+}
