@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 
 const categoryApiService = new NewsApiService();
 
+
 const refs = {
     categories: document.querySelector('.js-category'),
     categoriesOthers:document.querySelector('.js-category-others'),
@@ -11,7 +12,7 @@ getResponse();
 
 async function getResponse() {
     try {
-        const response = await categoryApiService.getNewsCategoryList();
+		const response = await categoryApiService.getNewsCategoryList();
         renderCategoriesDesctop(response.results);
         renderCategoriesOtherDesctop(response.results);
 	} catch (error) {
@@ -23,7 +24,7 @@ function renderCategoriesDesctop(results) {
     let markup = '';
     for (let i = 0; i < 6; i++) {
         markup += `
-            <li class="category__item"><button type="button">${results[i].display_name}</button></li>
+            <li class="category__item"><button class="category__btn" type="button">${results[i].display_name}</button></li>
             `;
     };
     refs.categories.insertAdjacentHTML('beforeend', markup);
@@ -34,8 +35,8 @@ function renderCategoriesOtherDesctop(results) {
     let markup = '';
     for (let i = 6; i < 50; i++) {
         markup += `
-          <li class="category__others-list-item">
-            <button class="category__others-list-button">${results[i].display_name}</button>
+          <li class="others__item">
+            <button class="others__item-button">${results[i].display_name}</button>
           </li>
             `;
     };
