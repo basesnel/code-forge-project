@@ -12,6 +12,7 @@ import './js/weather'
 
 // MAIN SCRIPTS
 import './js/news-data/news-popular';
+import './js/categories';
 
 import favorite from './js/favoriteAddToLS';
 

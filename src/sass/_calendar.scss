@@ -13,13 +13,12 @@
 }
 
 .calendar__text {
+	@media screen and (max-width: calc($desktop - 1px)) {
+		display: none;
+	}
 
-  @media screen and (max-width:calc($desktop - 1px)) {
-      display:none ;
-    }
-
-  margin-top: 0;
-  margin-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 
 	margin-right: 37px;
 	font-weight: 700;
@@ -119,6 +118,7 @@
 	box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
 
 
+
 	&.is-hidden {
 		opacity: 0;
 		pointer-events: none;
@@ -136,11 +136,11 @@
 }
 
 .current-month {
-    cursor: default;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.38;
-  letter-spacing: -0.41px;
+	cursor: default;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 1.38;
+	letter-spacing: -0.41px;
 }
 
 .icon-month-forward {
@@ -182,20 +182,21 @@
 	color: rgba(60, 60, 67, 0.3);
 }
 
-.weeks > li{
-  width: 26px;
-  text-align: center;
+.weeks > li {
+	width: 26px;
+	text-align: center;
 }
 
 .days {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 12px;
-  column-gap: 6px;
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 12px;
+	column-gap: 6px;
 }
 
 .inactive,
 .active {
+
   width: 26px;
   height: 26px;
   text-align: center;
@@ -214,20 +215,18 @@ transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     color: $whitecolor;
     border-radius: 50%;
   }
+
 }
 
-
 .inactive {
-  opacity: 0.6;
-  cursor: default;
+	opacity: 0.6;
+	cursor: default;
 }
 
 .selected-date {
+
   background-color: $accent;
     color: $whitecolor;
     border-radius: 50%;
-}
 
-*{
-    outline: 1px solid tomato;
 }
