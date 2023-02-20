@@ -7,7 +7,8 @@ const categoryApiService = new NewsApiService();
 
 const refs = {
     categories: document.querySelector('.js-category'),
-    categoriesOthers: document.querySelector('.js-category-others'),
+	categoriesOthers: document.querySelector('.js-category-others'),
+	othersTextInBtn: document.querySelector('.js-text-btn'),
 }
 getResponse();
 
@@ -34,6 +35,7 @@ function renderCategoriesDesktop(results) {
 }
 
 function renderCategoriesOtherDesktop(results) {
+	refs.othersTextInBtn.textContent = 'Others';
     let markup = '';
     for (let i = 6; i < 50; i++) {
         markup += `
@@ -58,6 +60,7 @@ function renderCategoriesTablet(results) {
 }
 
 function renderCategoriesOtherTablet(results) {
+	refs.othersTextInBtn.textContent = 'Others';
     let markup = '';
     for (let i = 4; i < 50; i++) {
         markup += `
@@ -71,6 +74,8 @@ function renderCategoriesOtherTablet(results) {
 }
 
 function renderCategoriesOtherMobile(results) {
+	refs.othersTextInBtn.textContent = 'Categories';
+
     let markup = '';
     for (let i = 0; i < 50; i++) {
         markup += `
@@ -90,23 +95,20 @@ function clearCategoriesMarkup() {
 
 
 //-------------------------------ViewportWidth----------------------------------- 
-    function onResize(e) {
-        getResponse();
-    } 
+function onResize(e) {
+    getResponse();
+} 
 
 function chooseElementsByViewportWidth(data) {
 	if (window.matchMedia("(min-width: 1280px)").matches) {
-		// console.log("DESKTOP");
 		clearCategoriesMarkup();
 		renderCategoriesDesktop(data);
 		renderCategoriesOtherDesktop(data);
 	} else if (window.matchMedia("(min-width: 768px)").matches) {
-		// console.log("TABLET");
 		clearCategoriesMarkup();
         renderCategoriesTablet(data);
 		renderCategoriesOtherTablet(data);
 	} else {
-		// console.log("MOBILE");
 		clearCategoriesMarkup();
 		renderCategoriesOtherMobile(data);
     }
