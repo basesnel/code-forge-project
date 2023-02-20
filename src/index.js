@@ -8,6 +8,7 @@ import headerResponsive from './js/headerResponsive';
 import NewsApiService from './js/api/main-api';
 import './js/calendar';
 import './js/news-data/news-category';
+import './js/weather'
 
 // MAIN SCRIPTS
 import './js/news-data/news-popular';

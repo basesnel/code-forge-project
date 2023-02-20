@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page title</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Page title</title>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
-		rel="stylesheet" />
-	<link rel="stylesheet" href="./sass/index.scss" />
+  <body>
+    <include src="./partials/header.html"></include>
+    <include src="./partials/categories_calendar.html"></include>
 
-</head>
+    <include src="./partials/newsgrid.html"></include>
+    <include src="./partials/footer.html"></include>
+    <button id="find-me">Show my location</button><br />
 
-<body>
+    <div class="js-weather"></div>
 
-	<include src="./partials/header.html"></include>
-	<include src="./partials/categories_calendar.html"></include>
-
-	<include src="./partials/newsgrid.html"></include>
-	<include src="./partials/footer.html"></include>
-	<script type="module" src="./index.js"></script>
-</body>
-
+    <!-- <include src="./partials/example.html"></include> -->
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>
