@@ -1,4 +1,4 @@
-import { save } from './locale-storage';
+import { save, load } from './locale-storage';
 import Notiflix from 'notiflix';
 
 
@@ -11,7 +11,7 @@ export default (() => {
     //refs and variables
     const { favoriteList } = refs;
     const FAV_KEY = 'favorite';
-    let clickedLiArr = [];
+   // let clickedLiArr = [];
 
     // event listener
     favoriteList.addEventListener('click', onAddBtnClick);
@@ -39,13 +39,18 @@ export default (() => {
 
 
     function addLiToArrayInLS(e, targetLiClasses) {
-    targetLiClasses.add('clicked');
 
+        if (load(FAV_KEY) === undefined) {
+            save(FAV_KEY, []);
+        }
+
+    const clickedLiArr = load(FAV_KEY); 
+    targetLiClasses.add('clicked');
+    
     let clickedLi = Array.from(e.currentTarget.children).find(li => li.classList.contains('clicked'));
            
         clickedLiArr.push({
             dataString: clickedLi.innerHTML,
-           // heading: Array.from(clickedLi.firstElementChild.children).find(el => el.classList.contains('news-card__title').textContent),
         });
            
     save(FAV_KEY, clickedLiArr);
@@ -53,7 +58,7 @@ export default (() => {
     targetLiClasses.remove('clicked');
     targetLiClasses.add('favorite-chosen');
 
-    return clickedLiArr;
+   // return clickedLiArr;
 }
 });
 
