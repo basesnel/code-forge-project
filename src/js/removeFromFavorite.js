@@ -53,11 +53,7 @@ export default (() => {
     }*/
 
     function insertMarkupToUL(dataArr) {
-        favList.insertAdjacentHTML('beforeend', `<li class="favorite-item">${modifyData(dataArr)}</li>`);
+        favList.innerHTML = `<li class="favorite-item">${modifyData(dataArr)}</li>`;
     }
     
-
-
-
-
 });
