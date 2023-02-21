@@ -21,22 +21,21 @@ function onClickSearchBtn(e) {
 
 function onSearch(e) {
 	e.preventDefault();
-	const inputValue = e.target.elements[1].value.trim();
-
+	const inputValue = e.target.elements[0].value.trim();
 	if (!inputValue) {
     Notiflix.Notify.warning('Empty search! Please enter some criteria for search.')
     return
 	}
 
 	searchApiService.query = inputValue;
-    searchApiService.resetPage();
+  searchApiService.resetPage();
 	getResponse()
 }
 
-function onLoadMore(e) {
-    e.preventDefault();
-    getResponse()
-}
+// function onLoadMore(e) {
+//     e.preventDefault();
+//     getResponse()
+// }
 
 async function getResponse() {
     try {
