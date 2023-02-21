@@ -45,7 +45,7 @@
 }
 
 .read-list {
-
+		
 	&__item {
 		margin-bottom: 60px;
 	}
@@ -74,6 +74,36 @@
 }
 
 .card-list {
-	display: flex;
+	display: grid;
 	padding-top: 40px;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: 32px;
+
+	@media screen and (min-width: $tablet) {
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 30px;
+	}
+
+	@media screen and (min-width: $desktop) {
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 32px;
+	}
 }
+
+.news-card {
+	position: relative;
+}
+
+.read-card-text {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	position: absolute;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 1.36;
+	color: #00DD73;
+	top: 20;
+	right: 20;
+}
+
