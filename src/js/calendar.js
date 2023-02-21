@@ -35,7 +35,7 @@ function toggleModal() {
   refs.iconCalendar.classList.toggle('change-color-icon');
   refs.iconCalendarOpen.classList.toggle('display-none');
   refs.iconCalendarClose.classList.toggle('display-active');
-  refs.clickToBackdrop.classList.toggle('is-hidden');
+  refs.clickToBackdrop.classList.toggle('display-none');
 }
 
 // Вибір дати по кліку
