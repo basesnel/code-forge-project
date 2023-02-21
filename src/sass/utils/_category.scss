@@ -41,6 +41,11 @@
 		background-color: $accent;
 	}
 }
+.category__btn.category-active {
+	color: $whitecolor;
+	background-color: $accent;
+}
+
 // @media screen and (min-width: 1280px).category__item{
 //     margin-left: 16px;
 // }
@@ -167,4 +172,7 @@
 	&:focus {
 		text-decoration-line: underline;
 	}
+}
+.others__item-button.category-active {
+	text-decoration-line: underline;
 }

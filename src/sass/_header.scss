@@ -120,6 +120,7 @@
 }
 
 .search-form {
+	position: relative;
 	@media screen and (max-width: 767px) {
 		display: none;
 	}
@@ -129,7 +130,6 @@
 }
 
 .search-form__label {
-	position: relative;
 	display: inline-block;
 }
 

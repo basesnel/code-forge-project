@@ -7,6 +7,8 @@ const weatherService = new WeatherApiService();
 // Rendering default weather:
 toDefaultWeather();
 
+let weatherMarkup = '';
+
 // Button event for get and render weather:
 document.querySelector('#find-me').addEventListener('click', geoFindMe);
 
@@ -55,7 +57,7 @@ async function rejection() {
 
 // It's function for rendering block of weather:
 function weatherDetails({ temp, icon, description, country, city }) {
-  const markup = `
+  weatherMarkup = `
   <div class="weather">
     <div class="weather__horisontal">
       <span class="weather__temp">${Math.floor(temp)}°</span>
@@ -73,10 +75,13 @@ function weatherDetails({ temp, icon, description, country, city }) {
   </div>`;
 
   // console.log(markup);
-  weatherBlock.innerHTML = markup;
+  weatherBlock.innerHTML = weatherMarkup;
 }
 
 function getDataToFormat() {
   const td = new Date().toDateString().split(' ');
   return `${td[0]}</br>${td[2]} ${td[1]} ${td[3]}`;
 }
+
+console.log(weatherMarkup);
+export default weatherMarkup;
