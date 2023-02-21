@@ -35,6 +35,23 @@
 
 .news-card {
   position: relative;
+  max-width: 288px;
+  // @media screen and (max-width: 767px) {
+  //   max-width: 288px;
+  // }
+
+  // @media screen and (min-width: 768px) and (max-width: 1279px) {
+  //   max-width: 353px;
+  // }
+  @media screen and (min-width: $tablet) {
+    max-width: 353px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 395px;
+    // padding: 23px;
+    border: 1px solid #fa0410;
+  }
 }
 
 .news-card__image {
@@ -64,25 +81,41 @@
 }
 
 .news-card__add-favorite {
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  gap: 4px;
   font-family: 'Manrope';
   width: 126px;
   height: 28px;
+  background-color: #f51212;
+  color: #111321;
+
   padding-top: 6px;
   padding-bottom: 6px;
+  // margin-left: auto;
+  // margin-right: auto;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.37;
   text-align: center;
 
-  color: #111321;
-  background-color: #ffffff;
   position: absolute;
-  top: 350px;
+  top: 355px;
   left: 140px;
   border-radius: 20px;
-  left: 154px;
-  top: 355px;
+
+  @media screen and (min-width: $tablet) {
+    top: 355px;
+    left: 210px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    // display: flex;
+    top: 355px;
+    left: 260px;
+  }
 }
 
 .news-card__icon {
@@ -93,10 +126,19 @@
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
-  line-height: 1.375;
+  line-height: 1.38;
   letter-spacing: -0.01em;
   color: #111321;
   margin-bottom: 20px;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 32px;
+    // line-height: 1.38;
+  }
+
+  // @media screen and (min-width: $desktop) {
+  //   font-size: 32px;
+  //   line-height: 1.38;
 }
 
 .news-card__text {
@@ -107,6 +149,11 @@
   line-height: 1.357;
   color: #111321;
   margin-bottom: 20px;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 16px;
+    line-height: 1.38;
+  }
 }
 
 .news-card__details {
@@ -119,9 +166,14 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.357;
-
+  line-height: 1.36;
+  // text-align: right;
   color: #a8a8a8;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 16px;
+    line-height: 1.38;
+  }
 }
 
 .news-card__news-link {
@@ -129,8 +181,14 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.357;
+  line-height: 1.36;
   color: #4440f7;
+
+  @media screen and (min-width: $desktop) {
+    padding-right: 26px;
+    font-size: 16px;
+    line-height: 1.38;
+  }
 }
 
 .link {

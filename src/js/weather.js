@@ -5,7 +5,7 @@ import WeatherApiService from './api/weater-service';
 const weatherService = new WeatherApiService();
 
 // Rendering default weather:
-toDefaultWeather();
+// toDefaultWeather();
 
 let weatherMarkup = '';
 
@@ -52,7 +52,7 @@ async function rejection() {
 
   const weather = await weatherService.getCurrentWeather(position);
 
-  weatherDetails(weather);
+  // weatherDetails(weather);
 }
 
 // It's function for rendering block of weather:

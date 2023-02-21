@@ -1,10 +1,12 @@
+import { getDates } from './news-by-search-by-date';
+import { getResponseForFilterByDate } from './news-by-search-by-date';
 import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
 const DEFAULT_CAPTION = "photo";
 const searchApiService = new NewsApiService();
-
+const dates = [];
 const refs = {
 	openSearchBtn: document.getElementById('search-btn'),
 	searchForm: document.getElementById('form-field'),
@@ -45,13 +47,29 @@ async function getResponse() {
     try {
         const response = await searchApiService.getNewsBySearch();
 		      console.log(response);
-		      clearmainNewsListContainer();
+          clearmainNewsListContainer();
+          addData(response.response.docs);
+          filterData(response.response.docs)
           renderMainNewsListDesctop(response.response.docs);
 	} catch (error) {
         Notiflix.Notify.failure('There are problems with your request.Please try again later.')
     }
 }
 
+// додавання об'єкту відповіді до фільтру по даті
+function filterData(docs) {
+  getResponseForFilterByDate(docs);
+}
+
+// додаваня дати для фільтру по даті
+function addData(docs) {
+  for (let doc of docs) {
+      dates.push(doc.pub_date);
+  }
+  getDates(dates);
+}
+
+// рендер карток
 function renderMainNewsListDesctop(docs) {
   let markup = '';
  
