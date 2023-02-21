@@ -40,8 +40,9 @@ function onAddBtnClick(e) {
     e.preventDefault()
     if (e.target.classList.contains('news-card__news-link')) {
         let targetLi = e.target.parentNode.parentNode.parentNode;
-        console.log(targetLi);
-        addLiToArrayInLS(targetLi);                
+        targetLi.firstElementChild.firstElementChild.classList.remove('visually-hidden')
+        targetLi.style.opacity = 0.5;
+        addLiToArrayInLS(targetLi);
     }
 }
 

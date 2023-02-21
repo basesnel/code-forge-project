@@ -37,6 +37,10 @@ function renderMainNewsListDesctop(results) {
     markup += `<li class="list-news__item">
         
   <div class="news-card">
+  <span class="read-card-text visually-hidden">Already read<svg width="18" heigth="18" viewBox="0 0 32 32">
+			<path fill="#00dd73" style="fill: var(--color1, #00dd73)"
+				d="M28.78 6.39c-0.277 0.008-0.54 0.124-0.733 0.323l-16.313 16.313-6.713-6.713c-0.098-0.102-0.216-0.184-0.346-0.24s-0.27-0.086-0.412-0.088c-0.142-0.001-0.283 0.025-0.414 0.079s-0.251 0.133-0.351 0.233c-0.1 0.1-0.18 0.22-0.233 0.351s-0.081 0.272-0.079 0.414c0.001 0.142 0.031 0.282 0.087 0.412s0.138 0.248 0.24 0.346l7.467 7.467c0.2 0.2 0.471 0.312 0.754 0.312s0.554-0.112 0.754-0.312l17.067-17.067c0.154-0.15 0.259-0.343 0.302-0.553s0.021-0.429-0.063-0.627c-0.084-0.198-0.225-0.366-0.406-0.482s-0.393-0.175-0.607-0.168z">
+			</path>>></svg></span>
   <img
     class="news-card__image"
     src="${results[i].media.length==0? DEFAULT_PHOTO : results[i].media[0]['media-metadata'][2].url}" 
