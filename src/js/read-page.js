@@ -1,6 +1,7 @@
 import { load } from "../js/locale-storage";
 import mobileMenu from '../js/mobile-menu';
 import headerResponsive from '../js/headerResponsive';
+import './news-data/news-by-search';
 import '../js/switcher-theme';
 // import onClickSearchBtn from './news-data/news-by-search'
 
