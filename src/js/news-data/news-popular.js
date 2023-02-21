@@ -125,3 +125,4 @@ function getDataToFormat() {
   const td = new Date().toDateString().split(' ');
   return `${td[0]}</br>${td[2]} ${td[1]} ${td[3]}`;
 }
+

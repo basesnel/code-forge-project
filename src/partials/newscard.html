@@ -1,27 +1,22 @@
 <div class="news-card">
   <img
     class="news-card__image"
-    src="./images/1-asia-businesswoman-mob.jpg"
-    alt="asia-businesswoman"
+    src="${results[i].media[0]['media-metadata'][2].url}"
+    alt="${results[i].media[0].caption}"
     width="288"
     height="395"
   />
-  <p class="news-card__category">Job searching</p>
-  <button type="button" class="js-to-fav">
-  <p class="news-card__add-favorite">Add to favorite</p>
+  <p class="news-card__category">${results[i].section}</p>
+  <button type="button" class="js-to-fav news-card__add-favorite">
+    aDD favorite
     <svg class="news-card__icon" width="16" height="16">
-      <use href="./images/sprite.svg#icon-heart-transparent"></use>
+      <use href=${'/sprite.f14d31f7.svg#icon-heart-transparent'}></use>
     </svg>
   </button>
-  <h3 class="news-card__title">
-    8 tips for passing an online interview that will help you get a job
-  </h3>
-  <p class="news-card__text">
-    Before you start looking for a job, it is useful to familiarize yourself
-    with the job prospects offered by these...
-  </p>
+  <h3 class="news-card__title">${results[i].title}</h3>
+  <p class="news-card__text">${results[i].abstract}</p>
   <div class="news-card__details">
-    <a class="news-card__date-link link" href="#">20/02/23</a>
-    <a class="news-card__news-link link" href="#">Read more</a>
+    <a class="news-card__date-link link" href="">${results[i].updated}</a>
+    <a class="news-card__news-link link" href="${results[i].url}">Read more</a>
   </div>
 </div>
