@@ -52,7 +52,7 @@ function addLiToArrayInLS(targetLi) {
     if (load(READ_KEY) === undefined) {
     save(READ_KEY, []);
     }
-    let data = { dataRead: '22/02/2023', dataString: targetLi.innerHTML }
+    let data = { dataRead: dateWithoutTime, dataString: targetLi.innerHTML }
     const arr = load(READ_KEY)
     arr.push(data);
     save(READ_KEY, arr);
