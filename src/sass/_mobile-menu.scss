@@ -1,38 +1,57 @@
+.mobile-menu {
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
+	padding-bottom: 18px;
+}
+.menu-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 44px;
+}
 .js-close-button {
-	position: absolute;
-	right: 16px;
-	top: 28.5px;
+}
+.icon-close {
 }
 
+// !===================================================================
 .menu-nav {
-	margin-top: 50px;
-
-	&__item {
-		display: flex;
-		align-items: center;
-		padding: 10px 16px;
-		width: 100vw;
+	flex-grow: 1;
+}
+.menu-nav__list {
+}
+.menu-nav__item {
+	&:not(:last-child) {
+		margin-bottom: 18px;
 	}
+}
+.menu-nav__link {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 6px 0 6px;
 
-	&__link {
-		display: flex;
-		align-items: center;
-	}
-
-	&__icon {
-		margin-right: 14px;
-	}
-
-	&__link--arrow {
-		display: flex;
-		align-items: center;
-		margin-left: 163px;
-	}
-
-	&__item:hover,
-	&__item:focus {
+	&:hover,
+	&:focus {
 		color: $whitecolor;
 	}
+}
+.link-text-wrapper {
+	display: flex;
+	align-items: center;
+}
+.menu-nav__icon {
+	margin-right: 14px;
+}
+.menu-nav__text {
+}
+.menu-nav__link--arrow {
+	display: flex;
+	align-items: center;
+	// margin-left: 163px;
 }
 
 .menu-nav__item:hover,
@@ -41,9 +60,12 @@
 }
 
 .menu-container {
-	padding: 24px 16px 18px 16px;
 	position: relative;
 	z-index: 100;
+}
+//! =======================================================================
+.mobile-theme {
+	display: flex;
 }
 
 .theme-switcher {
