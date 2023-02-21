@@ -1,6 +1,6 @@
 <header class="header">
 	<div class="mobile-menu visually-hidden">
-		<div class="menu-container">
+		<div class="container menu-container">
 			<a href="./index.html" class="logo">News</a>
 			<button class="js-close-button">
 				<svg class="icon-close" width="24px" height="24px">
@@ -11,55 +11,65 @@
 		<nav class="menu-nav">
 			<ul class="menu-nav__list">
 				<li class="menu-nav__item">
-					<a class="menu-nav__link" href="./index.html">
-						<svg class="menu-nav__icon" width="32" height="32">
-							<use href="./images/sprite.svg#icon-home"></use>
-						</svg>
-						<p class="menu-nav_text">Home</p>
-					</a>
-					<a class="menu-nav__link--arrow" href="./index.html">
-						<svg width="24" height="24">
-							<use href="./images/sprite.svg#icon-mobileMenu-rightArrow"></use>
-						</svg>
-					</a>
-				</li>
-				<li class="menu-nav__item">
-					<a class="menu-nav__link" href="./favorite.html">
-						<svg class="menu-nav__icon" width="32" height="32">
-							<use href="./images/sprite.svg#icon-heart-menu"></use>
-						</svg>
-						<p class="menu-nav__text">Favourite</p>
-					</a>
-					<a class="menu-nav__link--arrow" href="./favorite.html">
-						<svg width="24" height="24">
-							<use href="./images/sprite.svg#icon-mobileMenu-rightArrow"></use>
-						</svg>
+					<a class="container menu-nav__link menu-nav__link--current" href="./index.html">
+						<div class="link-back-wrapper">
+							<div class="link-text-wrapper">
+								<svg class="menu-nav__icon" width="32" height="32">
+									<use href="./images/sprite.svg#icon-home"></use>
+								</svg>
+
+								<p class="menu-nav__text">Home</p>
+							</div>
+
+							<svg class="menu-nav__link--arrow" width="24" height="24">
+								<use href="./images/sprite.svg#icon-mobileMenu-rightArrow"></use>
+							</svg>
+						</div>
 					</a>
 				</li>
 				<li class="menu-nav__item">
-					<a class="menu-nav__link" href="./read.html">
-						<svg class="menu-nav__icon" width="32" height="32">
-							<use href="./images/sprite.svg#icon-read"></use>
-						</svg>
-						<p class="menu-nav__text">Read</p>
+					<a class="container menu-nav__link" href="./favorite.html">
+						<div class="link-back-wrapper">
+							<div class="link-text-wrapper">
+								<svg class="menu-nav__icon" width="32" height="32">
+									<use href="./images/sprite.svg#icon-heart-menu"></use>
+								</svg>
+								<p class="menu-nav__text">Favourite</p>
+							</div>
+							<svg class="menu-nav__link--arrow" width="24" height="24">
+								<use href="./images/sprite.svg#icon-mobileMenu-rightArrow"></use>
+							</svg>
+						</div>
 					</a>
-					<a class="menu-nav__link--arrow" href="./read.html">
-						<svg width="24" height="24">
-							<use href="./images/sprite.svg#icon-mobileMenu-rightArrow"></use>
-						</svg>
+				</li>
+				<li class="menu-nav__item">
+					<a class="container menu-nav__link" href="./read.html">
+						<div class="link-back-wrapper">
+							<div class="link-text-wrapper">
+								<svg class="menu-nav__icon" width="32" height="32">
+									<use href="./images/sprite.svg#icon-read"></use>
+								</svg>
+								<p class="menu-nav__text">Read</p>
+							</div>
+							<svg class="menu-nav__link--arrow" width="24" height="24">
+								<use href="./images/sprite.svg#icon-mobileMenu-rightArrow"></use>
+							</svg>
+						</div>
 					</a>
 				</li>
 			</ul>
 		</nav>
-		<div class="theme-switcher">
-			<svg class="theme-switcher__icon" width="21" height="21">
-				<use href="./images/sprite.svg#icon-sun-active"></use>
+		<div class="container theme mobile-theme">
+			<svg class="theme__svg sun" width="21" height="21">
+				<use href="./images/sprite.svg#icon-sun"></use>
 			</svg>
-			<label>
-				<input type="checkbox" class="switcher" />
-				<span class="check"></span>
+
+			<label class="switch">
+				<input type="checkbox" class="switch-checkbox-mobile" />
+				<span class="slider-round"></span>
 			</label>
-			<svg class="theme-switcher__icon" width="21" height="21">
+
+			<svg class="theme__svg moon" width="21" height="21">
 				<use href="./images/sprite.svg#icon-moon"></use>
 			</svg>
 		</div>

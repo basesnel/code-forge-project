@@ -2,6 +2,7 @@ import { load } from "../js/locale-storage";
 import mobileMenu from '../js/mobile-menu';
 import headerResponsive from '../js/headerResponsive';
 import '../js/switcher-theme';
+// import onClickSearchBtn from './news-data/news-by-search'
 
 mobileMenu();
 headerResponsive();
@@ -9,8 +10,12 @@ headerResponsive();
 const refs = {
     undefinedThumb: document.querySelector('.undefined'),
     readList: document.querySelector('.read-list'),
+    // openSearchBtn: document.getElementById('search-btn'),
+    formSearch: document.getElementById('form-field')
 }
 
+// refs.openSearchBtn.addEventListener('click', onClickSearchBtn)
+refs.formSearch.addEventListener('submit', onSubmitForm)
 refs.readList.addEventListener('click', onDataClick)
 
 creatMarcupReadPage();
@@ -35,7 +40,7 @@ function creatPageList() {
             <button class="read-list__button" type="button">
               <span class="read-list__data">${data}</span>
               <svg class="read-list__icon" width="9" height="15" >
-                <use href=${'/sprite.f14d31f7.svg#icon-categoriesList-closed'}></use>
+                <use href=${'./sprite.f14d31f7.svg#icon-categoriesList-closed'}></use>
               </svg>
             </button>
             <ul class="card-list visually-hidden">
@@ -48,6 +53,7 @@ function creatPageList() {
 function onDataClick(e) {
     if (e.target.classList.contains('read-list__button')) {
         const cardDate = e.target.nextElementSibling;
+        console.log(e.target);
         const arrayCardRead = load('read');
         cardDate.classList.toggle('visually-hidden');
         cardDate.innerHTML = arrayCardRead
@@ -70,3 +76,8 @@ function undefinedNews() {
     return refs.undefinedThumb.classList.remove('visually-hidden')
 }
 
+function onSubmitForm(e) {
+    e.preventDefault()
+    let value = e.target.firstElementChild.firstElementChild.value
+    
+}

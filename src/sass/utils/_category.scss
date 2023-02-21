@@ -90,10 +90,6 @@
 	top: 100%;
 	left: 0;
 	z-index: 2;
-	// !---------------------
-	// transition-duration: 250ms;
-	// transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	// !---------------------
 	pointer-events: none;
 	visibility: hidden;
 }
@@ -105,40 +101,16 @@
 
 	background: #f8f8f8;
 	border-radius: 20px;
-	// !---------------------
-	// transform: translateY(-100%);
-	// transition-duration: 250ms;
-	// transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	// !---------------------
+
 	filter: drop-shadow(0px 10px 60px rgba(0, 0, 0, 0.1));
 }
-// !-----------------------------------------------------
-// .calendar__text{
-//     font-weight: 700;
-//     font-size: 18px;
-//     line-height: 25px;
-
-//     color: #111321;
-//     margin-left: 111px;
-//     margin-right: 37px;
-// }
-// !-----------------------------------------------------
 
 .others__wrapper.is-open {
 	pointer-events: auto;
 	visibility: visible;
-
-	// !---------------------
-	// transform: scale(1);
-	// !---------------------
 }
 
 .others__wrapper.is-open .others__list {
-	// !---------------------
-	// transition-duration: 250s;
-	// transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	// transform: translateY(0);
-	// !---------------------
 }
 
 .others__wrapper.is-open ~ .others__button {

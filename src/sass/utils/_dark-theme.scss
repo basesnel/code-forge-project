@@ -5,6 +5,10 @@ body.dark {
 	.header {
 		border-bottom: 1px solid rgba(244, 244, 244, 0.2);
 
+		.mobile-menu {
+			background-color: $dark-theme-bg;
+		}
+
 		.icon {
 			stroke: $dark-theme-text;
 		}
