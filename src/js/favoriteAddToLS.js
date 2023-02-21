@@ -27,7 +27,9 @@ export default (() => {
             if (targetLiClasses.contains('favorite-chosen')) {
                 Notiflix.Notify.warning('It is in favorites already')
             } else {
-                addLiToArrayInLS(e, targetLiClasses);    
+                addLiToArrayInLS(e, targetLiClasses);   
+                e.target.textContent = 'Added to favorite';
+                e.target.lastElementChild.firstElementChild.style.fill = '#4B48DA';
             }
                         
         } else {
