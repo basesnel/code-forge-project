@@ -1,7 +1,4 @@
 import { load } from './locale-storage';
-//import mobileMenu from '../js/mobile-menu';
-//import headerResponsive from '../js/headerResponsive';
-//import '../js/switcher-theme';
 
 export default (() => {
     const FAV_KEY = 'favorite';
@@ -12,12 +9,8 @@ export default (() => {
 
     const { favList } = refs;
     const dataArr = load(FAV_KEY);
-   // console.log(dataArr[0].dataString);
-  //  console.log(favList)
+   
     insertMarkupToUL();
-
-    //console.log(modifyData().join(""));
-    //console.log(makeFavoriteMarkup()) //undefined
 
     //returns array of strings
     function modifyData() {
@@ -29,12 +22,12 @@ export default (() => {
       }    
     }
 
-    // returns undefined
+    // returns markup
     function makeFavoriteMarkup() {
         return modifyData().join("");  
     }
 
     function insertMarkupToUL() {
-        favList.insertAdjacentHTML('beforeend', makeFavoriteMarkup());
+        favList.insertAdjacentHTML('beforeend', `<li class="favorite-item">${makeFavoriteMarkup()}</li>`);
     }
 });

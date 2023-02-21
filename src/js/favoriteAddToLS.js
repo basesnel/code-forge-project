@@ -29,7 +29,7 @@ export default (() => {
             } else {
                 addLiToArrayInLS(e, targetLiClasses);   
                 e.target.textContent = 'Added to favorite';
-                e.target.lastElementChild.firstElementChild.style.fill = '#4B48DA';
+               // e.target.lastElementChild.firstElementChild.style.fill = '#4B48DA';
             }
                         
         } else {
@@ -43,7 +43,10 @@ export default (() => {
 
     let clickedLi = Array.from(e.currentTarget.children).find(li => li.classList.contains('clicked'));
            
-    clickedLiArr.push( {dataString: clickedLi.innerHTML} );
+        clickedLiArr.push({
+            dataString: clickedLi.innerHTML,
+           // heading: Array.from(clickedLi.firstElementChild.children).find(el => el.classList.contains('news-card__title').textContent),
+        });
            
     save(FAV_KEY, clickedLiArr);
 
