@@ -49,7 +49,7 @@ function renderMainNewsListDesctop(results) {
   for (let i = 0; i < 8; i++) {
     markup += `<li class="list-news__item">
         
-  <div class="news-card">
+  <div class="news-card" id="${results[i].asset_id}">
   <img
     class="news-card__image"
     src="${results[i].multimedia.length==0? DEFAULT_PHOTO : results[i].multimedia[2].url}" 

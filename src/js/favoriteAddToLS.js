@@ -15,7 +15,8 @@ export default (() => {
 
     // event listener
     favoriteList.addEventListener('click', onAddBtnClick);
-  
+    const dataStringArray = load(FAV_KEY).flatMap(obj => obj.dataString);
+    
     //click handler
     function onAddBtnClick(e) {
        
@@ -25,11 +26,17 @@ export default (() => {
             //console.log('a');
 
             if (targetLiClasses.contains('favorite-chosen')) {
-                Notiflix.Notify.warning('It is in favorites already')
+                
+                Notiflix.Notify.warning('It is in favorites already');
             } else {
+
+                const heart = e.target.lastElementChild.firstElementChild;
+                heart.setAttribute('fill', '#4b48da');
+                heart.setAttribute('style', "fill: var(--color1, #4b48da)");
+                heart.parentNode.previousElementSibling.textContent = "Added to favorites";
+
                 addLiToArrayInLS(e, targetLiClasses);   
-                e.target.textContent = 'Added to favorite';
-               // e.target.lastElementChild.firstElementChild.style.fill = '#4B48DA';
+               
             }
                         
         } else {
@@ -50,7 +57,7 @@ export default (() => {
     let clickedLi = Array.from(e.currentTarget.children).find(li => li.classList.contains('clicked'));
            
         clickedLiArr.push({
-            dataString: clickedLi.innerHTML,
+            dataString: clickedLi.innerHTML
         });
            
     save(FAV_KEY, clickedLiArr);

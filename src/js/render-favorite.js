@@ -18,7 +18,7 @@ export default (() => {
             return dataArr.map(obj =>
                 obj.dataString.replace("js-to-fav", "js-from-fav")
                     .replace("news-card__add-favorite", "news-card__remove-favorite")
-                    .replace("Add to favorite", "Remove from favorite"));       
+                    .replace("Added to favorites", "Remove from favorites"));       
       }    
     }
 
