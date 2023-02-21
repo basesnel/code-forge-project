@@ -40,7 +40,10 @@ export default (() => {
    function modifyData(dataArr) {
        if (dataArr.length > 0) {
             
-            return dataArr.map(obj => obj.dataString).join("");
+        return dataArr.map(obj =>
+                obj.dataString.replace("js-to-fav", "js-from-fav")
+                    .replace("news-card__add-favorite", "news-card__remove-favorite")
+                    .replace("Add to favorite", "Remove from favorite"));       
             
        } 
 
@@ -48,16 +51,12 @@ export default (() => {
     }
 
      // returns markup
-   /* function makeFavoriteMarkup(dataArr) {
-        return modifyData(dataArr);  
-    }*/
+    function makeFavoriteMarkup(dataArr) {
+        return modifyData(dataArr).join("");  
+    }
 
     function insertMarkupToUL(dataArr) {
-        favList.insertAdjacentHTML('beforeend', `<li class="favorite-item">${modifyData(dataArr)}</li>`);
+        favList.innerHTML = `<li class="favorite-item">${makeFavoriteMarkup(dataArr)}</li>`;
     }
     
-
-
-
-
 });
