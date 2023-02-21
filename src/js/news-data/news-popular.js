@@ -1,3 +1,5 @@
+import { getDatesPopular } from './news-popular-by-date';
+import { getResponseForFilterByDatePopular } from './news-popular-by-date';
 import NewsApiService from '../api/news-main-api';
 import WeatherApiService from '../api/weater-service';
 import Notiflix from 'notiflix';
@@ -5,7 +7,7 @@ import '../weather';
 const DEFAULT_PHOTO =
   'https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png';
 const DEFAULT_CAPTION = 'photo';
-
+const dates = [];
 const popularApiService = new NewsApiService();
 
 // Object of Class WeatherApiService:
@@ -32,12 +34,28 @@ async function getResponse() {
     const response = await popularApiService.getNewsPopular();
     const weather = await weatherService.getDefaultWeather();
     console.log(response);
+    addData(response.results);
+    filterData(response.results)
     renderMainNewsListDesctop(response.results, weather);
   } catch (error) {
     Notiflix.Notify.failure('Error, no popular response.');
   }
 }
 
+// додавання об'єкту відповіді до фільтру по даті
+function filterData(results) {
+  getResponseForFilterByDatePopular(results);
+}
+
+// додаваня дати для фільтру по даті
+function addData(results) {
+  for (let result of results) {
+      dates.push(result.updated);
+  }
+  getDatesPopular(dates);
+}
+
+// рендер карток
 function renderMainNewsListDesctop(
   results,
   { temp, icon, description, country, city }
@@ -118,10 +136,6 @@ function renderMainNewsListDesctop(
 
 </li>`;
     }
-    // if (i == 2) {
-    //   let weather = `
-    //   `
-    // }
   }
 
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
