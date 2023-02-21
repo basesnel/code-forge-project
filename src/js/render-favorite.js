@@ -12,25 +12,28 @@ export default (() => {
 
     const { favList } = refs;
     const dataArr = load(FAV_KEY);
-
+   // console.log(dataArr[0].dataString);
+  //  console.log(favList)
     insertMarkupToUL();
 
+    console.log(modifyData());
+    console.log(makeFavoriteMarkup()) //undefined
+
+    //returns array of strings
     function modifyData() {
         if (dataArr !== undefined) {
-
-            return dataArr.map(obj => obj.dataString.replace(`<button type="button" class="js-to-fav">
-  <p class="news-card__add-favorite">Add to favorite</p>
-    `, `<button type="button" class="js-from-fav">
-  <p class="news-card__remove-favorite">Remove from favorite</p>
-    `));
-            
+            return dataArr.map(obj =>
+                obj.dataString.replace("js-to-fav", "js-from-fav")
+                    .replace("news-card__add-favorite", "news-card__remove-favorite")
+                    .replace("Add to favorite", "Remove from favorite"));       
       }    
     }
 
+    // returns undefined
     function makeFavoriteMarkup() {
 
-            return modifyData().reduce((markup, obj) => {
-            markup + obj.dataString
+            return modifyData().reduce((markup, string) => {
+            markup + string
             }, "");
         
     }

@@ -16,10 +16,9 @@ import './js/news-data/news-popular';
 import './js/categories';
 
 import favorite from './js/favoriteAddToLS';
-//import renderFavorite from './js/render-favorite';
 
 mobileMenu();
 headerResponsive();
 
 favorite();
-//renderFavorite();
+
