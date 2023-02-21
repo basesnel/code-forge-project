@@ -1,28 +1,30 @@
-import NewsApiService from '../api/main-api'
+import NewsApiService from '../api/main-api';
 import Notiflix from 'notiflix';
 const popularApiService = new NewsApiService();
 
 const refs = {
-	mainNewsList: document.querySelector('.js-list-new'),
-}
+  mainNewsList: document.querySelector('.js-list-new'),
+};
 
 getResponse();
 
 async function getResponse() {
-    try {
-		const response = await popularApiService.getNewsPopular();
-		// console.log(response);
-        renderMainNewsListDesctop(response.results);
-	} catch (error) {
-        Notiflix.Notify.failure('There are problems with your request.Please try again later.')
-    }
-    }
+  try {
+    const response = await popularApiService.getNewsPopular();
+    console.log(response);
+    // renderMainNewsListDesctop(response.results);
+  } catch (error) {
+    Notiflix.Notify.failure(
+      'There are problems with your request.Please try again later.'
+    );
+  }
+}
 
 function renderMainNewsListDesctop(results) {
-    let markup = '';
+  let markup = '';
   for (let i = 0; i < 8; i++) {
     markup += `<li class="list-news__item">
-        
+
   <div class="news-card">
   <img
     class="news-card__image"
@@ -53,7 +55,7 @@ function renderMainNewsListDesctop(results) {
 </li>
             `;
     //   console.log(results[i].media[0]['media-metadata'][1].url);
-    };
-    refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
-    return 
+  }
+  refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
+  return;
 }
