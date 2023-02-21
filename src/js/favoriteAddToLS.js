@@ -15,7 +15,7 @@ export default (() => {
 
     // event listener
     favoriteList.addEventListener('click', onAddBtnClick);
-    const dataStringArray = load(FAV_KEY).flatMap(obj => obj.dataString);
+    //const dataStringArray = load(FAV_KEY).flatMap(obj => obj.dataString);
     
     //click handler
     function onAddBtnClick(e) {
@@ -57,7 +57,8 @@ export default (() => {
     let clickedLi = Array.from(e.currentTarget.children).find(li => li.classList.contains('clicked'));
            
         clickedLiArr.push({
-            dataString: clickedLi.innerHTML
+            dataString: clickedLi.innerHTML,
+            id: clickedLi.firstElementChild.getAttribute(id),
         });
            
     save(FAV_KEY, clickedLiArr);
