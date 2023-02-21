@@ -16,8 +16,8 @@ export default (() => {
   //  console.log(favList)
     insertMarkupToUL();
 
-    console.log(modifyData());
-    console.log(makeFavoriteMarkup()) //undefined
+    //console.log(modifyData().join(""));
+    //console.log(makeFavoriteMarkup()) //undefined
 
     //returns array of strings
     function modifyData() {
@@ -31,11 +31,7 @@ export default (() => {
 
     // returns undefined
     function makeFavoriteMarkup() {
-
-            return modifyData().reduce((markup, string) => {
-            markup + string
-            }, "");
-        
+        return modifyData().join("");  
     }
 
     function insertMarkupToUL() {
