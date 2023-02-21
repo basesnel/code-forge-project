@@ -1,6 +1,15 @@
 
 .read-page {
 	padding-top: 60px;
+	padding-bottom: 140px;
+
+	@media screen and(min-width:$tablet) {
+		padding-bottom: 180px;
+	}
+
+	@media screen and(min-width:$desktop) {
+		padding-bottom: 210px;
+	}
 }
 
 .undefined {
@@ -56,6 +65,7 @@
 		font-size: 14px;
 		line-height: 1.71;
 		letter-spacing: 0.02em;
+		
 	}
 
 	&__icon {
