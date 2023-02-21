@@ -40,7 +40,7 @@ function renderMainNewsListDesctop(results) {
   <p class="news-card__category">${results[i].section}</p>
   <button type="button" class="js-to-fav">
   <p class="news-card__add-favorite">Add to favorite</p>
-    <svg class="news-card__icon" width="16" height="16">
+  <svg class="news-card__icon" width="16" height="16">
       <use href=${'/sprite.f14d31f7.svg#icon-heart-transparent'}></use>
     </svg>
   </button>

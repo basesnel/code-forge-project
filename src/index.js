@@ -21,6 +21,7 @@ mobileMenu();
 headerResponsive();
 
 favorite();
+
 // localStorage.removeItem('read')
 
 function addLeadingZero(value) {
@@ -53,5 +54,6 @@ function addLiToArrayInLS(targetLi) {
     arr.push(data);
     save(READ_KEY, arr);
 }
+
 
 
