@@ -1,5 +1,5 @@
-import { getDates } from './news-by-search-by-date';
-import { getResponseForFilterByDate } from './news-by-search-by-date';
+import { getDatesBySearch } from './news-by-search-by-date';
+import { getResponseForFilterByDateBySearch } from './news-by-search-by-date';
 import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
@@ -58,7 +58,7 @@ async function getResponse() {
 
 // додавання об'єкту відповіді до фільтру по даті
 function filterData(docs) {
-  getResponseForFilterByDate(docs);
+  getResponseForFilterByDateBySearch(docs);
 }
 
 // додаваня дати для фільтру по даті
@@ -66,7 +66,7 @@ function addData(docs) {
   for (let doc of docs) {
       dates.push(doc.pub_date);
   }
-  getDates(dates);
+  getDatesBySearch(dates);
 }
 
 // рендер карток

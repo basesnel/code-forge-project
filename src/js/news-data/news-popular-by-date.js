@@ -6,15 +6,15 @@ const refs = {
 	mainNewsList: document.querySelector('.js-list-new'),
 }
 
-let docs = null;
+let results = null;
 let datesString = [];
 let selectedDate = null;
 
-export async function getResponseForFilterByDateBySearch(response) {
-    docs = response;
+export async function getResponseForFilterByDatePopular(response) {
+    results = response;
 }
 
-export async function getDatesBySearch(requestDate) {
+export async function getDatesPopular(requestDate) {
 
     for (let date of requestDate) {
 
@@ -27,11 +27,12 @@ export async function getDatesBySearch(requestDate) {
     datesString.push(dateString);
         
     }
+
 }
 
-export async function getCalendarDateBySearch(currentDate) {
-    if (docs) {
-           filterByDate(currentDate); 
+export async function getCalendarDatePopular(currentDate) {
+    if (results) {
+       filterByDate(currentDate); 
     }
 }
 
@@ -43,76 +44,96 @@ function filterByDate(currentDate) {
 
 function renderMainNewsListDesctop() {
   let markup = '';
-  console.log(datesString, selectedDate);
-  if (docs.length > 8) {
+  if (results.length > 8) {
       for (let i = 0; i < 8; i++) {
          
         if (datesString[i] === selectedDate) {
-            
-      markup += `<li class="list-news__item">
-        
+  
+     markup += `<li class="list-news__item">
+
   <div class="news-card">
   <img
     class="news-card__image"
-    src="${docs[i].multimedia.length == 0 ? DEFAULT_PHOTO : DEFAULT_BASE_URL + docs[i].multimedia[0].url}"
-    alt="${docs[i].multimedia.length == 0 ? DEFAULT_CAPTION : docs[i].keywords[0].value}"
+    src="${
+      results[i].media.length == 0
+        ? DEFAULT_PHOTO
+        : results[i].media[0]['media-metadata'][2].url
+    }"
+    alt="${
+      results[i].media.length == 0
+        ? DEFAULT_CAPTION
+        : results[i].media[0].caption
+    }"
     width="288"
     height="395"
   />
-  <p class="news-card__category">${docs[i].section_name}</p>
+  <p class="news-card__category">${results[i].section}</p>
   <button type="button" class="js-to-fav">
   <p class="news-card__add-favorite">Add to favorite</p>
-    <svg class="news-card__icon" width="16" height="16">
-      <use href=${'/sprite.f14d31f7.svg#icon-heart-transparent'}></use>
+  <svg class="news-card__icon" width="16" height="16">
+      <use href=${'./sprite.f14d31f7.svg#icon-heart-transparent'}></use>
     </svg>
   </button>
   <h3 class="news-card__title">
-    ${docs[i].headline.main}
+    ${results[i].title}
   </h3>
   <p class="news-card__text">
-		${docs[i].abstract}
+		${results[i].abstract}
   </p>
   <div class="news-card__details">
-    <a class="news-card__date-link link" href="">${docs[i].pub_date}</a>
-    <a class="news-card__news-link link" href="${docs[i].web_url}">Read more</a>
+    <a class="news-card__date-link link" href="">${results[i].updated}</a>
+    <a class="news-card__news-link link" href="${
+      results[i].url
+    }" target="_blank">Read more</a>
   </div>
 </div>
 
 </li>`;
         };
     };
+
   }
 
   else {
-      for (let i = 0; i = docs.length; i++) {
+      for (let i = 0; i = results.length; i++) {
           if (datesString[i] === selectedDate) {
-              console.log('a');
-        markup += `<li class="list-news__item">
-        
+              
+    markup += `<li class="list-news__item">
+
   <div class="news-card">
   <img
     class="news-card__image"
-    src="${docs[i].multimedia.length == 0 ? DEFAULT_PHOTO : DEFAULT_BASE_URL + docs[i].multimedia[0].url}"
-    alt="${docs[i].multimedia.length == 0 ? DEFAULT_CAPTION : docs[i].keywords[0].value}"
+    src="${
+      results[i].media.length == 0
+        ? DEFAULT_PHOTO
+        : results[i].media[0]['media-metadata'][2].url
+    }"
+    alt="${
+      results[i].media.length == 0
+        ? DEFAULT_CAPTION
+        : results[i].media[0].caption
+    }"
     width="288"
     height="395"
   />
-  <p class="news-card__category">${docs[i].section_name}</p>
+  <p class="news-card__category">${results[i].section}</p>
   <button type="button" class="js-to-fav">
   <p class="news-card__add-favorite">Add to favorite</p>
-    <svg class="news-card__icon" width="16" height="16">
-      <use href=${'/sprite.f14d31f7.svg#icon-heart-transparent'}></use>
+  <svg class="news-card__icon" width="16" height="16">
+      <use href=${'./sprite.f14d31f7.svg#icon-heart-transparent'}></use>
     </svg>
   </button>
   <h3 class="news-card__title">
-    ${docs[i].headline.main}
+    ${results[i].title}
   </h3>
   <p class="news-card__text">
-		${docs[i].abstract}
+		${results[i].abstract}
   </p>
   <div class="news-card__details">
-    <a class="news-card__date-link link" href="">${docs[i].pub_date}</a>
-    <a class="news-card__news-link link" href="${docs[i].web_url}">Read more</a>
+    <a class="news-card__date-link link" href="">${results[i].updated}</a>
+    <a class="news-card__news-link link" href="${
+      results[i].url
+    }" target="_blank">Read more</a>
   </div>
 </div>
 
@@ -121,7 +142,6 @@ function renderMainNewsListDesctop() {
     };
   };
     refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
-
     if (markup = '') {
         Notiflix.Notify.info('Sorry, no matches for this request!')
     }
