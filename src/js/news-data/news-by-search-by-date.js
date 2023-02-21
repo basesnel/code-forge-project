@@ -49,7 +49,7 @@ function renderMainNewsListDesctop() {
   
       markup += `<li class="list-news__item">
         
-  <div class="news-card">
+  <div class="news-card" id="${docs[i].asset_id}">
   <img
     class="news-card__image"
     src="${docs[i].multimedia.length == 0 ? DEFAULT_PHOTO : DEFAULT_BASE_URL + docs[i].multimedia[0].url}"
