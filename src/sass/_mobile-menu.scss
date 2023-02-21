@@ -1,10 +1,20 @@
 .mobile-menu {
-	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	// overflow-y: overflow;
+
 	display: flex;
 	flex-direction: column;
-
 	padding-bottom: 18px;
+
+	background-color: $dark-theme-text;
+	z-index: 999;
 }
+
 .menu-container {
 	display: flex;
 	align-items: center;
@@ -37,6 +47,10 @@
 	&:hover,
 	&:focus {
 		color: $whitecolor;
+
+		.menu-nav__link--arrow {
+			stroke: $dark-theme-text;
+		}
 	}
 }
 .link-text-wrapper {
@@ -51,7 +65,8 @@
 .menu-nav__link--arrow {
 	display: flex;
 	align-items: center;
-	// margin-left: 163px;
+
+	stroke: none;
 }
 
 .menu-nav__item:hover,
@@ -68,14 +83,20 @@
 	display: flex;
 }
 
-.theme-switcher {
-	margin: 248px auto 18px 16px;
-	width: 98px;
-	height: 21px;
+.switch-checkbox-mobile {
+	appearance: none;
+	visibility: none;
+	display: none;
 }
 
-.mobile-menu {
-	height: 568px;
+.switch-checkbox-mobile:checked ~ .slider-round {
+	background-color: $switcher-accent;
+	border-color: $whitecolor;
+}
+
+.switch-checkbox-mobile:checked ~ .slider-round::before {
+	transform: translateX(20px);
+	background-color: $whitecolor;
 }
 
 .icon {

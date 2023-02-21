@@ -1,4 +1,5 @@
 .header {
+	position: relative;
 	// min-height: 81px;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
@@ -244,8 +245,6 @@
 	cursor: pointer;
 	overflow: hidden;
 
-	// transition: background-color ease-in 250ms, color ease-in 250ms;
-
 	&::before {
 		content: "";
 		position: absolute;
@@ -256,8 +255,6 @@
 
 		background-color: $switcher-accent;
 		border-radius: 50%;
-
-		// transition: background-color ease-in 250ms, color ease-in 250ms, transform ease-in 250ms;
 	}
 
 	.switch-checkbox:checked ~ & {
@@ -276,13 +273,10 @@
 		display: none;
 	}
 	color: $switcher-color;
-	// transition: stroke ease-in 250ms;
 }
 
 .moon {
 	stroke: $switcher-color;
-
-	// transition: stroke ease-in 250ms;
 
 	@media screen and (min-width: $desktop) {
 		display: none;

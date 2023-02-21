@@ -9,21 +9,24 @@ export default (() => {
 
     const { openMenuBtn, mobileMenuEl, basicHeaderContainer, closeMenuBtn } = refs;
     
-    openMenuBtn.addEventListener('click', onMenuBtnClick);
-    closeMenuBtn.addEventListener('click', onMenuBtnClick);
+    openMenuBtn.addEventListener('click', onMenuOpenBtnClick);
+    closeMenuBtn.addEventListener('click', onMenuCloseBtnClick);
 
-    function onMenuBtnClick(e) {        
-        mobileMenuEl.classList.toggle('visually-hidden');
-        basicHeaderContainer.classList.toggle('visually-hidden');
-        
+    function onMenuOpenBtnClick(e) {        
+		mobileMenuEl.classList.toggle('visually-hidden');
+		document.body.classList.add('locked');
+	}
+	function onMenuCloseBtnClick(e) {        
+		mobileMenuEl.classList.toggle('visually-hidden');
+		document.body.classList.remove('locked');
     }
 
-   /* if (window.matchMedia("(min-width: 768px)").matches) {
-        openMenuBtn.classList.add('visually-hidden');
-        basicHeaderContainer.classList.remove('visually-hidden');
-    } else {
-        openMenuBtn.classList.remove('visually-hidden');
-        basicHeaderContainer.classList.add('visually-hidden');
-    }*/
+    // if (window.matchMedia("(min-width: 768px)").matches) {
+    //     openMenuBtn.classList.add('visually-hidden');
+    //     basicHeaderContainer.classList.remove('visually-hidden');
+    // } else {
+    //     openMenuBtn.classList.remove('visually-hidden');
+    //     basicHeaderContainer.classList.add('visually-hidden');
+    // }
 
 });
