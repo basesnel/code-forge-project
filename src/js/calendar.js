@@ -134,9 +134,13 @@ function changeOfYear() {
 // =======================================
 
 function selectionDate(evt) {
-  if (evt.target.nodeName !== 'LI') {
+  if (
+    evt.target.nodeName !== 'LI' ||
+    evt.target.classList.contains('inactive')
+  ) {
     return;
   }
+
   // Запис інформації в інпут
   const selectedItem = evt.target;
   let selectedList = evt.currentTarget.children;

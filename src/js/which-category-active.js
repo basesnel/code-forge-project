@@ -2,11 +2,13 @@ const refs = {
 	categories: document.querySelector('.js-category'),
 	otherCategories: document.querySelector('.js-category-others'),
 	othersWrapper: document.querySelector('.js-others-wrapper'),
+	searchFormInHeader: document.querySelector('#form-field'),
 }
 let previosBtn = null;
 
 refs.categories.addEventListener('click', onClickCategories);
 refs.otherCategories.addEventListener('click', onClickOtherCategories);
+refs.searchFormInHeader.addEventListener('submit', onSearchFormSubmit);
 
 function onClickCategories(e) {
 	refs.othersWrapper.classList.remove('is-open');
@@ -31,4 +33,9 @@ function addAndRemoveActiveCategory(currentEl) {
 		previosBtn = currentEl.classList;
 		previosBtn.add('category-active');
 	}
+}
+
+function onSearchFormSubmit(e) {
+	refs.othersWrapper.classList.remove('is-open');
+	previosBtn.remove('category-active');
 }
