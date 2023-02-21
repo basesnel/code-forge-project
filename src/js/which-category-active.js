@@ -37,5 +37,7 @@ function addAndRemoveActiveCategory(currentEl) {
 
 function onSearchFormSubmit(e) {
 	refs.othersWrapper.classList.remove('is-open');
-	previosBtn.remove('category-active');
+	if (previosBtn !== null) {
+		previosBtn.remove('category-active');
+	}
 }
