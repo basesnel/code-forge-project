@@ -17,12 +17,12 @@ import './js/weather'
 import './js/news-data/news-popular';
 import './js/categories';
 
-import favorite from './js/favoriteAddToLS';
+//import favorite from './js/favoriteAddToLS';
 
 mobileMenu();
 headerResponsive();
 
-favorite();
+//favorite();
 
 // localStorage.removeItem('read')
 
@@ -42,8 +42,9 @@ function onAddBtnClick(e) {
     e.preventDefault()
     if (e.target.classList.contains('news-card__news-link')) {
         let targetLi = e.target.parentNode.parentNode.parentNode;
-        console.log(targetLi);
-        addLiToArrayInLS(targetLi);                
+        targetLi.firstElementChild.firstElementChild.classList.remove('visually-hidden')
+        targetLi.style.opacity = 0.5;
+        addLiToArrayInLS(targetLi);
     }
 }
 
@@ -51,7 +52,7 @@ function addLiToArrayInLS(targetLi) {
     if (load(READ_KEY) === undefined) {
     save(READ_KEY, []);
     }
-    let data = { dataRead: '22/02/2023', dataString: targetLi.innerHTML }
+    let data = { dataRead: dateWithoutTime, dataString: targetLi.innerHTML }
     const arr = load(READ_KEY)
     arr.push(data);
     save(READ_KEY, arr);
