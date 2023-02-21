@@ -1,25 +1,27 @@
-import NewsApiService from '../api/main-api'
+import NewsApiService from '../api/main-api';
 import Notiflix from 'notiflix';
 const popularApiService = new NewsApiService();
 
 const refs = {
-	mainNewsList: document.querySelector('.js-list-new'),
-}
+  mainNewsList: document.querySelector('.js-list-new'),
+};
 
 getResponse();
 
 async function getResponse() {
-    try {
-		const response = await popularApiService.getNewsPopular();
-		// console.log(response);
-        renderMainNewsListDesctop(response.results);
-	} catch (error) {
-        Notiflix.Notify.failure('There are problems with your request.Please try again later.')
-    }
-    }
+  try {
+    const response = await popularApiService.getNewsPopular();
+    // console.log(response);
+    renderMainNewsListDesctop(response.results);
+  } catch (error) {
+    Notiflix.Notify.failure(
+      'There are problems with your request.Please try again later.'
+    );
+  }
+}
 
 function renderMainNewsListDesctop(results) {
-    let markup = '';
+  let markup = '';
   for (let i = 0; i < 8; i++) {
     markup += `<li class="list-news__item">
         
@@ -32,8 +34,8 @@ function renderMainNewsListDesctop(results) {
     height="395"
   />
   <p class="news-card__category">${results[i].section}</p>
-  <button type="button" class="js-to-fav">
-  <p class="news-card__add-favorite">Add to favorite</p>
+  <button type="button" class="js-to-fav news-card__add-favorite">
+    Add to favorite
     <svg class="news-card__icon" width="16" height="16">
       <use href=${'/sprite.f14d31f7.svg#icon-heart-transparent'}></use>
     </svg>
@@ -53,7 +55,7 @@ function renderMainNewsListDesctop(results) {
 </li>
             `;
     //   console.log(results[i].media[0]['media-metadata'][1].url);
-    };
-    refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
-    return 
+  }
+  refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
+  return;
 }
