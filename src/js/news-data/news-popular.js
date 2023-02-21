@@ -1,9 +1,14 @@
-import NewsApiService from '../api/main-api'
+import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
+import '../weather';
+const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
+const DEFAULT_CAPTION = "photo";
+
 const popularApiService = new NewsApiService();
 
 const refs = {
-	mainNewsList: document.querySelector('.js-list-new'),
+  mainNewsList: document.querySelector('.js-list-new'),
+  weather:document.querySelector('.js-weather'),
 }
 
 getResponse();
@@ -11,12 +16,13 @@ getResponse();
 async function getResponse() {
     try {
 		const response = await popularApiService.getNewsPopular();
-		// console.log(response);
+		    console.log(response);
         renderMainNewsListDesctop(response.results);
 	} catch (error) {
-        Notiflix.Notify.failure('There are problems with your request.Please try again later.')
+        Notiflix.Notify.failure('Error, no popular response.')
     }
-    }
+}
+    
 
 function renderMainNewsListDesctop(results) {
     let markup = '';
@@ -26,8 +32,8 @@ function renderMainNewsListDesctop(results) {
   <div class="news-card">
   <img
     class="news-card__image"
-    src="${results[i].media[0]['media-metadata'][2].url}"
-    alt="${results[i].media[0].caption}"
+    src="${results[i].media.length==0? DEFAULT_PHOTO : results[i].media[0]['media-metadata'][2].url}" 
+    alt="${results[i].media.length==0? DEFAULT_CAPTION : results[i].media[0].caption}"
     width="288"
     height="395"
   />
@@ -46,13 +52,15 @@ function renderMainNewsListDesctop(results) {
   </p>
   <div class="news-card__details">
     <a class="news-card__date-link link" href="">${results[i].updated}</a>
-    <a class="news-card__news-link link" href="${results[i].url}">Read more</a>
+    <a class="news-card__news-link link" href="${results[i].url}" target="_blank">Read more</a>
   </div>
 </div>
 
-</li>
-            `;
-    //   console.log(results[i].media[0]['media-metadata'][1].url);
+</li>`;
+    // if (i == 2) {
+    //   let weather = `
+    //   `
+    // }
     };
     refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
     return 

@@ -1,7 +1,9 @@
-import NewsApiService from '../api/main-api'
+import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
-const newsPerPage = 20;
-const searchApiService = new NewsApiService(newsPerPage);
+const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
+const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
+const DEFAULT_CAPTION = "photo";
+const searchApiService = new NewsApiService();
 
 const refs = {
 	openSearchBtn: document.getElementById('search-btn'),
@@ -10,6 +12,7 @@ const refs = {
 }
 
 refs.openSearchBtn.addEventListener('click', onClickSearchBtn);
+
 refs.searchForm.addEventListener('submit', onSearch);
 
 function onClickSearchBtn(e) {
@@ -38,9 +41,9 @@ function onLoadMore(e) {
 async function getResponse() {
     try {
         const response = await searchApiService.getNewsBySearch();
-		console.log(response);
-		clearmainNewsListContainer();
-        renderMainNewsListDesctop(response.response.docs);
+		      console.log(response);
+		      clearmainNewsListContainer();
+          renderMainNewsListDesctop(response.response.docs);
 	} catch (error) {
         Notiflix.Notify.failure('There are problems with your request.Please try again later.')
     }
@@ -54,8 +57,8 @@ function renderMainNewsListDesctop(docs) {
   <div class="news-card">
   <img
     class="news-card__image"
-    src="https://static01.nyt.com/${docs[i].multimedia[0].url}"
-    alt="${docs[i].keywords[0].value}"
+    src="${docs[i].multimedia.length==0? DEFAULT_PHOTO : DEFAULT_BASE_URL+docs[i].multimedia[0].url }"
+    alt="${docs[i].multimedia.length==0? DEFAULT_CAPTION : docs[i].keywords[0].value}"
     width="288"
     height="395"
   />
@@ -80,7 +83,6 @@ function renderMainNewsListDesctop(docs) {
 
 </li>
             `;
- 	console.log(docs[i].multimedia[0].url);
     };
     refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
     return 

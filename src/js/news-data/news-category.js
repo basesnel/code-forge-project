@@ -1,4 +1,4 @@
-import NewsApiService from '../api/main-api'
+import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
 import debounce from 'lodash.debounce';
 
@@ -7,7 +7,7 @@ const categoryApiService = new NewsApiService();
 
 const refs = {
     categories: document.querySelector('.js-category'),
-	categoriesOthers: document.querySelector('.js-category-others'),
+    categoriesOthers: document.querySelector('.js-category-others'),
 	othersTextInBtn: document.querySelector('.js-text-btn'),
 }
 getResponse();
@@ -19,7 +19,7 @@ async function getResponse() {
 		const response = await categoryApiService.getNewsCategoryList();
 		chooseElementsByViewportWidth(response.results);
 	} catch (error) {
-        Notiflix.Notify.failure('There are problems with your request.Please try again later.')
+        Notiflix.Notify.failure('Error, no category response.')
     }
 }
 
