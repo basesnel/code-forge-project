@@ -26,54 +26,57 @@
 	<div class="calendar">
 		<p class="calendar__text">Search date news</p>
 
-		<div class="calendar__wrapper-input">
-			<svg class="calendar__icon-calendar" width="20" height="20">
-				<use href="./images/sprite.svg#icon-calendar"></use>
-			</svg>
+			<div class="backdrop is-hidden">
+			</div>
+			<div class="calendar__wrapper-input">
+				<svg class="calendar__icon-calendar" width="20" height="20">
+					<use href="./images/sprite.svg#icon-calendar"></use>
+				</svg>
 
-			<input type="button" readonly class="calendar__input js-calendar-input" value="Select a date..." />
+				<input type="button" class="calendar__input js-calendar-input" value="Select a date..." />
 
-			<svg class="calendar__icon-arrows calendar__icon-opened" width="15" height="9">
-				<use href="./images/sprite.svg#icon-calendarArrow-opened"></use>
-			</svg>
-			<svg class="calendar__icon-arrows calendar__icon-closed display-none" width="15" height="9">
-				<use href="./images/sprite.svg#icon-calendarArrow-closed"></use>
-			</svg>
-		</div>
-
-		<div class="calendar__modal is-hidden" data-calendar-modal>
-			<div class="calendar__month-wrapper">
-				<p class="current-month"></p>
-				<button type="button" class="icon-month-forward icon-calendar-arrow">
-					<svg width="7" height="12">
-						<use href="./images/sprite.svg#icon-month-forward"></use>
-					</svg>
-				</button>
-				<div class="calendar__btn-wrapper">
-					<button id="prev" type="button" class="icon-calendar-arrow">
-						<svg width="9" height="17">
-							<use href="./images/sprite.svg#icon-calendar-prev"></use>
-						</svg>
-					</button>
-					<button id="next" type="button" class="icon-calendar-arrow">
-						<svg width="9" height="17">
-							<use href="./images/sprite.svg#icon-calendar-next"></use>
-						</svg>
-					</button>
-				</div>
+				<svg class="calendar__icon-arrows calendar__icon-opened" width="15" height="9">
+					<use href="./images/sprite.svg#icon-calendarArrow-opened"></use>
+				</svg>
+				<svg class="calendar__icon-arrows calendar__icon-closed display-none" width="15" height="9">
+					<use href="./images/sprite.svg#icon-calendarArrow-closed"></use>
+				</svg>
 			</div>
 
-			<ul class="weeks">
-				<li>Mo</li>
-				<li>Tu</li>
-				<li>We</li>
-				<li>Th</li>
-				<li>Fr</li>
-				<li>Sa</li>
-				<li>Su</li>
-			</ul>
+			<div class="calendar__modal is-hidden" data-calendar-modal>
+				<div class="calendar__month-wrapper">
+					<p class="current-month"></p>
+					<button type="button" class="icon-month-forward icon-calendar-arrow">
+						<svg width="7" height="12">
+							<use href="./images/sprite.svg#icon-month-forward"></use>
+						</svg>
+					</button>
+					<div class="calendar__btn-wrapper">
+						<button id="prev" type="button" class="icon-calendar-arrow">
+							<svg width="9" height="17">
+								<use href="./images/sprite.svg#icon-calendar-prev"></use>
+							</svg>
+						</button>
+						<button id="next" type="button" class="icon-calendar-arrow">
+							<svg width="9" height="17">
+								<use href="./images/sprite.svg#icon-calendar-next"></use>
+							</svg>
+						</button>
+					</div>
+				</div>
 
-			<ul class="days" data-calendar-days></ul>
+				<ul class="weeks">
+					<li>Mo</li>
+					<li>Tu</li>
+					<li>We</li>
+					<li>Th</li>
+					<li>Fr</li>
+					<li>Sa</li>
+					<li>Su</li>
+				</ul>
+
+				<ul class="days" data-calendar-days></ul>
+
 		</div>
 	</div>
 </section>

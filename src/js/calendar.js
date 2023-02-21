@@ -5,7 +5,7 @@ const refs = {
   iconCalendarOpen: document.querySelector('.calendar__icon-opened'),
   iconCalendarClose: document.querySelector('.calendar__icon-closed'),
 
-  clickToBody: document.querySelector('body'),
+  clickToBackdrop: document.querySelector('.backdrop'),
 
   // closeModalBtn: document.querySelector('[data-modal-close]'),
 };
@@ -13,19 +13,19 @@ const refs = {
 // відкриття закриття календаря
 function openAndCloseCalendar() {
   refs.calendarInput.addEventListener('click', toggleModal);
-  //   refs.closeModalBtn.addEventListener('click', toggleModal);
 }
 
 openAndCloseCalendar();
 
-// refs.clickToBody.addEventListener('click', closedModalCalendar);
+// закриття календаря по кліку в бекдроп
 
-// function closedModalCalendar(evt) {
-//   if (refs.iconCalendar.classList === false) {
-//     return;
-//   }
-//   toggleModal();
-// }
+refs.clickToBackdrop.addEventListener('click', closeCalendarClickToBackdrop);
+
+function closeCalendarClickToBackdrop(evt) {
+  if (evt.currentTarget === evt.target) {
+    toggleModal();
+  }
+}
 
 // Toggle class
 
@@ -35,6 +35,7 @@ function toggleModal() {
   refs.iconCalendar.classList.toggle('change-color-icon');
   refs.iconCalendarOpen.classList.toggle('display-none');
   refs.iconCalendarClose.classList.toggle('display-active');
+  refs.clickToBackdrop.classList.toggle('is-hidden');
 }
 
 // Вибір дати по кліку
@@ -115,7 +116,9 @@ prevNextIcon.forEach(icon => {
     } else {
       date = new Date(); // pass the current date as date value
     }
+
     renderCalendar(); // calling renderCalendar function
+    selectedDayInInput();
   });
 });
 // =======================================
@@ -129,6 +132,7 @@ function changeOfYear() {
   currYear = currYear - 1;
 
   renderCalendar();
+  selectedDayInInput();
 }
 
 // =======================================
@@ -142,9 +146,10 @@ function selectionDate(evt) {
   }
 
   // Запис інформації в інпут
+
   const selectedItem = evt.target;
-  let selectedList = evt.currentTarget.children;
-  let selectedDateToInput = selectedItem.textContent;
+  const selectedList = evt.currentTarget.children;
+  const selectedDateToInput = selectedItem.textContent;
 
   refs.calendarInput.value = `${addLeadingZero(
     selectedDateToInput
@@ -159,6 +164,30 @@ function selectionDate(evt) {
     if (element.classList.contains('selected-date')) {
       element.classList.remove('selected-date');
       selectedItem.classList.add('selected-date');
+    }
+  });
+}
+
+// =======================================
+// фіксація дати в календарі
+
+function selectedDayInInput() {
+  let valueInput = refs.calendarInput.value;
+  const currentNumberInInput = Number.parseInt(valueInput);
+
+  if (typeof valueInput === Number) {
+    return;
+  }
+  Array.from(daysTag.children).map(elem => {
+    if (
+      +elem.textContent === currentNumberInInput &&
+      elem.classList.contains('active')
+    ) {
+      elem.classList.add('selected-date');
+      valueInput = '';
+      refs.calendarInput.value = `${addLeadingZero(
+        currentNumberInInput
+      )}/${addLeadingZero(currMonth + 1)}/${currYear}`;
     }
   });
 }

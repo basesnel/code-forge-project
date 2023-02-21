@@ -26,7 +26,22 @@
 	line-height: 1.39;
 	color: $text;
 }
+
+.backdrop{
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	// background-color: antiquewhite;
+}
+
+
+
 .calendar__wrapper-input {
+	z-index: 5;
 	max-width: 168px;
 	position: relative;
 }
