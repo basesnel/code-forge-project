@@ -30,26 +30,28 @@ const now = new Date()
 const dateWithoutTime = `${addLeadingZero(now.getDate())}/${addLeadingZero(now.getMonth())}/${addLeadingZero(now.getFullYear())}`
 
 
-    const List = document.querySelector('.js-list-new')
-  
-    const READ_KEY = 'read';
-    let clickedLiArr = [];
+const List = document.querySelector('.js-list-new') 
+const READ_KEY = 'read';
 
-    List.addEventListener('click', onAddBtnClick);
+List.addEventListener('click', onAddBtnClick);
   
-    function onAddBtnClick(e) {
+function onAddBtnClick(e) {
     e.preventDefault()
-        if (e.target.classList.contains('news-card__news-link')) {
-            let targetLi = e.target.parentNode.parentNode.parentNode;
-            console.log(targetLi);
-            addLiToArrayInLS(targetLi);                
-        }
+    if (e.target.classList.contains('news-card__news-link')) {
+        let targetLi = e.target.parentNode.parentNode.parentNode;
+        console.log(targetLi);
+        addLiToArrayInLS(targetLi);                
     }
-
-    function addLiToArrayInLS(targetLi) {
-        let data = { dataRead: dateWithoutTime, dataString: targetLi.innerHTML }
-        clickedLiArr.push(data);
-        save(READ_KEY, clickedLiArr);
-        return clickedLiArr;
 }
+
+function addLiToArrayInLS(targetLi) {
+    if (load(READ_KEY) === undefined) {
+    save(READ_KEY, []);
+    }
+    let data = { dataRead: '22/02/2023', dataString: targetLi.innerHTML }
+    const arr = load(READ_KEY)
+    arr.push(data);
+    save(READ_KEY, arr);
+}
+
 
