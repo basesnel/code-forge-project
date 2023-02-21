@@ -6,12 +6,14 @@ import './js/switcher-theme';
 import mobileMenu from './js/mobile-menu';
 import headerResponsive from './js/headerResponsive';
 import NewsApiService from './js/api/news-main-api';
+
+
+// MAIN SCRIPTS
 import './js/calendar';
+import './js/news-data/news-by-search-by-date';
 import './js/news-data/news-category';
 import './js/news-data/news-search-by-category';
 import './js/weather'
-
-// MAIN SCRIPTS
 import './js/news-data/news-popular';
 import './js/categories';
 
@@ -40,8 +42,9 @@ function onAddBtnClick(e) {
     e.preventDefault()
     if (e.target.classList.contains('news-card__news-link')) {
         let targetLi = e.target.parentNode.parentNode.parentNode;
-        console.log(targetLi);
-        addLiToArrayInLS(targetLi);                
+        targetLi.firstElementChild.firstElementChild.classList.remove('visually-hidden')
+        targetLi.style.opacity = 0.5;
+        addLiToArrayInLS(targetLi);
     }
 }
 

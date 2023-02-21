@@ -1,0 +1,15 @@
+.footer {
+	height: 120px;
+	background-color: #7a7a7a;
+	@media screen and (min-width: $tablet) {
+		height: 146px;
+	}
+}
+.footer__container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+.footer__copy {
+	color: $dark-theme-text;
+}
