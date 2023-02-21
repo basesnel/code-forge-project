@@ -24,7 +24,7 @@ export default class NewsApiService {
     }
 
     async getNewsByCategory() {
-        return this.createRequest(`news/v3/content/inyt/${this.searchCategory}.json`)
+        return this.createRequest(`news/v3/content/inyt/${this.searchCategory}.json?`)
     }
 
     async getNewsBySearch() {
@@ -54,5 +54,12 @@ get query(){
 }
 set query(newQuery){
 this.searchQuery=newQuery;
+    }
+    
+get category(){
+    return this.category;
+}
+set category(newCategory){
+this.searchCategory=newCategory;
 }
 }

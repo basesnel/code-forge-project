@@ -21,16 +21,20 @@ function onClickSearchBtn(e) {
 
 function onSearch(e) {
 	e.preventDefault();
-	const inputValue = e.target.elements[0].value.trim();
-	if (!inputValue) {
+  const inputValue = e.target.elements[0].value.trim().toLowerCase();
+  const encoded = encodeURIComponent(inputValue);
+
+	if (!encoded) {
     Notiflix.Notify.warning('Empty search! Please enter some criteria for search.')
     return
 	}
 
-	searchApiService.query = inputValue;
+	searchApiService.query = encoded;
   searchApiService.resetPage();
 	getResponse()
 }
+
+// Заготовка для пагінації
 
 // function onLoadMore(e) {
 //     e.preventDefault();
@@ -49,15 +53,17 @@ async function getResponse() {
 }
 
 function renderMainNewsListDesctop(docs) {
-    let markup = '';
-  for (let i = 0; i < 8; i++) {
-    markup += `<li class="list-news__item">
+  let markup = '';
+ 
+  if (docs.length >= 8) {
+    for (let i = 0; i < 8; i++) {
+      markup += `<li class="list-news__item">
         
   <div class="news-card">
   <img
     class="news-card__image"
-    src="${docs[i].multimedia.length==0? DEFAULT_PHOTO : DEFAULT_BASE_URL+docs[i].multimedia[0].url }"
-    alt="${docs[i].multimedia.length==0? DEFAULT_CAPTION : docs[i].keywords[0].value}"
+    src="${docs[i].multimedia.length == 0 ? DEFAULT_PHOTO : DEFAULT_BASE_URL + docs[i].multimedia[0].url}"
+    alt="${docs[i].multimedia.length == 0 ? DEFAULT_CAPTION : docs[i].keywords[0].value}"
     width="288"
     height="395"
   />
@@ -69,7 +75,7 @@ function renderMainNewsListDesctop(docs) {
     </svg>
   </button>
   <h3 class="news-card__title">
-    ${docs[i].headline}
+    ${docs[i].headline.main}
   </h3>
   <p class="news-card__text">
 		${docs[i].abstract}
@@ -80,9 +86,45 @@ function renderMainNewsListDesctop(docs) {
   </div>
 </div>
 
-</li>
-            `;
+</li>`;
     };
+
+  }
+
+  else {
+    for (let doc of docs) {
+      markup += `<li class="list-news__item">
+        
+  <div class="news-card">
+  <img
+    class="news-card__image"
+    src="${doc.multimedia.length == 0 ? DEFAULT_PHOTO : DEFAULT_BASE_URL + doc.multimedia[0].url}"
+    alt="${doc.multimedia.length == 0 ? DEFAULT_CAPTION : doc.keywords[0].value}"
+    width="288"
+    height="395"
+  />
+  <p class="news-card__category">${doc.section_name}</p>
+  <button type="button" class="js-to-fav">
+  <p class="news-card__add-favorite">Add to favorite</p>
+    <svg class="news-card__icon" width="16" height="16">
+      <use href=${'/sprite.f14d31f7.svg#icon-heart-transparent'}></use>
+    </svg>
+  </button>
+  <h3 class="news-card__title">
+    ${doc.headline}
+  </h3>
+  <p class="news-card__text">
+		${doc.abstract}
+  </p>
+  <div class="news-card__details">
+    <a class="news-card__date-link link" href="">${doc.pub_date}</a>
+    <a class="news-card__news-link link" href="${doc.web_url}">Read more</a>
+  </div>
+</div>
+
+</li>`
+    };
+  };
     refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
     return 
 }

@@ -13,6 +13,13 @@ const refs = {
 
 getResponse();
 
+// Заготовка для пагінації
+
+// function onLoadMore(e) {
+//     e.preventDefault();
+//     getResponse()
+// }
+
 async function getResponse() {
     try {
 		const response = await popularApiService.getNewsPopular();
