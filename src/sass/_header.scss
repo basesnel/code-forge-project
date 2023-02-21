@@ -15,7 +15,7 @@ body.locked {
 	align-items: center;
 	justify-content: space-between;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: $tablet) {
 		align-items: baseline;
 		gap: 32px;
 	}
@@ -40,14 +40,14 @@ body.locked {
 	padding: 24px 0;
 	display: inline-block;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: $tablet) {
 		font-size: 32px;
 		line-height: calc(44 / 32);
 		padding-top: 32px;
 		padding-bottom: 30px;
 	}
 
-	@media screen and (min-width: 1280px) {
+	@media screen and (min-width: $desktop) {
 		padding: 28px 0;
 		font-size: 42px;
 		line-height: calc(57 / 42);
@@ -57,46 +57,60 @@ body.locked {
 }
 
 .navlist {
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: $tablet) {
 		display: flex;
 		margin-left: 48px;
 		gap: 44px;
 	}
 
-	@media screen and (min-width: 1280px) {
+	@media screen and (min-width: $desktop) {
 		margin-left: 102px;
 		gap: 69px;
 	}
 }
 
 .navlist__item {
-	padding-top: 48px;
-	padding-bottom: 36px;
-
-	@media screen and (min-width: 1280px) {
-		padding-top: 55px;
-		padding-bottom: 33px;
-	}
 }
 
 .navlist__link {
+	padding-top: 48px;
+	padding-bottom: 36px;
+
 	font-weight: 700;
 	font-size: 16px;
 	line-height: calc(22 / 16);
 
-	@media screen and (min-width: 1280px) {
+	@media screen and (min-width: $desktop) {
+		padding-top: 55px;
+		padding-bottom: 33px;
+
 		font-size: 18px;
 		line-height: calc(25 / 18);
 	}
 
-	&--current {
-		padding-bottom: 8px;
-		border-bottom: 1px solid #4440f6;
-		padding-left: 6px;
-		padding-right: 6px;
+	// &--current {
+	// 	padding-bottom: 8px;
+	// 	border-bottom: 1px solid #4440f6;
+	// 	padding-left: 6px;
+	// 	padding-right: 6px;
 
-		@media screen and (min-width: 1280px) {
-			padding-bottom: 5px;
+	// 	@media screen and (min-width: $desktop) {
+	// 		padding-bottom: 5px;
+	// 	}
+	// }
+
+	&--current::after {
+		z-index: 1;
+		content: "";
+		display: block;
+		margin-top: 8px;
+		width: 100%;
+		height: 1px;
+		border-radius: 2px;
+		background-color: $accent;
+
+		@media screen and (min-width: $desktop) {
+			margin-top: 5px;
 		}
 	}
 
