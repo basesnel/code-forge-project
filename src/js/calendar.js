@@ -1,3 +1,4 @@
+import { getCalendarDate } from './news-data/news-by-search-by-date';
 const refs = {
   calendarInput: document.querySelector('.js-calendar-input'),
   modal: document.querySelector('[data-calendar-modal]'),
@@ -36,6 +37,7 @@ function toggleModal() {
   refs.iconCalendarOpen.classList.toggle('display-none');
   refs.iconCalendarClose.classList.toggle('display-active');
   refs.clickToBackdrop.classList.toggle('display-none');
+
 }
 
 // Вибір дати по кліку
@@ -155,7 +157,7 @@ function selectionDate(evt) {
     selectedDateToInput
   )}/${addLeadingZero(currMonth + 1)}/${currYear}`;
   toggleModal();
-
+  
   // Виділення активної дати кольором
 
   selectedItem.classList.add('selected-date');
@@ -166,6 +168,7 @@ function selectionDate(evt) {
       selectedItem.classList.add('selected-date');
     }
   });
+  getCalendarDate(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
 }
 
 // =======================================
