@@ -74,8 +74,8 @@ function renderMainNewsListDesctop(results) {
 	if (results.length >= 8) { 
   for (let i = 0; i < 8; i++) {
 	  markup += `
-	<li class="list-news__item">
-		<div class="news-card">
+	<li class="list-news__item" id="${results[i].uri}">
+		<div class="news-card" id="${results[i].uri}">
 			<span class="read-card-text visually-hidden"> Already read
 				<svg width="18" heigth="18" viewBox="0 0 32 32">
 					<path fill="#00dd73" style="fill: var(--color1, #00dd73)"

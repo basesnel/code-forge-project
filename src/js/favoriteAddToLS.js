@@ -23,8 +23,8 @@ export default (() => {
             if (e.target.nodeName === 'SPAN') {    
                 
                 e.target.textContent = "Added to favorites";
-                e.target.nextElementSibling.setAttribute('fill', '#4b48da');
-                e.target.nextElementSibling.setAttribute('style', "fill: var(--color1, #4b48da)");
+                e.target.nextElementSibling.firstElementChild.setAttribute('fill', '#4b48da');
+                e.target.nextElementSibling.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
 
                 addLiToArrayInLS(e.target.parentNode.parentNode.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode.parentNode);
                 
@@ -67,7 +67,7 @@ export default (() => {
             : Notiflix.Notify.warning('It is in favorites already');
         
     save(FAV_KEY, clickedLiArr);
-}
+    }
 });
 
 

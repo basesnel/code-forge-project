@@ -96,7 +96,7 @@ function renderMainNewsListDesctop(
     } else {
 		markup += `
 		<li class="list-news__item" id="${results[i].asset_id}">
-		<div class="news-card">
+		<div class="news-card" id="${results[i].asset_id}">
 			<span class="read-card-text visually-hidden"> Already read
 				<svg width="18" heigth="18" viewBox="0 0 32 32">
 					<path fill="#00dd73" style="fill: var(--color1, #00dd73)"
@@ -112,7 +112,7 @@ function renderMainNewsListDesctop(
 					height="395" />
 
 				<button type="button" class="js-to-fav add-fav-btn">
-        <span class='fav-btn-text' tabindex="0">Add to favorite</span>
+        <span class='fav-btn-text'>Add to favorite</span>
 					<svg class="news-card__icon" viewBox="0 0 32 32" width="16" height="16">
 						<path fill="none" stroke="#4440f7"
 							d="M9.331 4c-3.681 0-6.667 2.955-6.667 6.6 0 2.943 1.167 9.927 12.651 16.987 0.206 0.125 0.442 0.191 0.683 0.191s0.477-0.066 0.683-0.191c11.484-7.060 12.651-14.044 12.651-16.987 0-3.645-2.985-6.6-6.667-6.6s-6.667 4-6.667 4-2.985-4-6.667-4z">
