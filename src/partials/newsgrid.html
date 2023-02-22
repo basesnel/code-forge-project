@@ -1,34 +1,34 @@
 <section class="newsgrid">
-	<div class="news__container">
+	<div class="container news__container">
 		<ul class="list-news js-list-new">
 			<!-- место для динамического списка -->
 		</ul>
 		<div class="page-container">
 			<div class="pages">
-				<button class="pages__btn-prev">
-					<a href="#">
-						<!-- <svg></svg> -->
-						<span class="pages__numbers-btn-text">Prew</span>
-					</a>
+				<button type="button" class="pages__btn btn-prev">
+					<svg class="btn-prev__icon">
+						<use href="./images/sprite.svg#icon-pagination-previous"></use>
+					</svg>
+					<span class="pages__btn-text">Prew</span>
 				</button>
 				<div class="pages__numbers">
 					<ul class="pages__numbers-list">
-						<li class="pages__numbers-item active">
-							<a href="#" class="pages__numbers-link">1</a>
+						<li class="pages__numbers-item">
+							<button class="pages__numbers-btn current" type="button">1</button>
 						</li>
 						<li class="pages__numbers-item">
-							<a href="#" class="pages__numbers-link">2</a>
+							<button class="pages__numbers-btn" type="button">2</button>
 						</li>
 						<li class="pages__numbers-item">
-							<a href="#" class="pages__numbers-link">3</a>
+							<button class="pages__numbers-btn" type="button">3</button>
 						</li>
 					</ul>
 				</div>
-				<button class="pages__numbers-btn-next">
-					<a href="#" class="pages__numbers-btn-link">
-						<span class="pages__numbers-btn-text">Next</span>
-						<!-- <svg></svg> -->
-					</a>
+				<button type="button" class="pages__btn btn-next">
+					<span class="pages__btn-text">Next</span>
+					<svg class="btn-next__icon">
+						<use href="./images/sprite.svg#icon-pagination-next"></use>
+					</svg>
 				</button>
 			</div>
 		</div>
