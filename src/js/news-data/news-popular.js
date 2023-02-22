@@ -36,7 +36,7 @@ export default async function getResponsePopular() {
     console.log(response);
     addData(response.results);
     filterData(response.results);
-    weatherPosition = resize();
+    let weatherPosition = resize();
     renderMainNewsListDesctop(weatherPosition, response.results, weather);
   } catch (error) {
     Notiflix.Notify.failure('Error, no popular response.');
