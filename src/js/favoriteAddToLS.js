@@ -23,7 +23,6 @@ export default (() => {
         if (e.target.classList.contains('js-to-fav')) {
             
             let targetLiClasses = e.target.parentNode.parentNode.classList;
-            //console.log('a');
 
             if (targetLiClasses.contains('favorite-chosen')) {
                 
@@ -41,6 +40,7 @@ export default (() => {
                         
         } else {
             console.log('you clicked outside the button');
+            console.log(e.target)
         }
     }
 
@@ -55,10 +55,10 @@ export default (() => {
     targetLiClasses.add('clicked');
     
     let clickedLi = Array.from(e.currentTarget.children).find(li => li.classList.contains('clicked'));
-           
+        
         clickedLiArr.push({
             dataString: clickedLi.innerHTML,
-            id: clickedLi.firstElementChild.getAttribute(id),
+            id: clickedLi.firstElementChild.getAttribute('id'),
         });
            
     save(FAV_KEY, clickedLiArr);

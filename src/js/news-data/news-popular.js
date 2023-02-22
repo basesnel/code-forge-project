@@ -116,7 +116,7 @@ function renderMainNewsListDesctop(
     height="395"
   />
   <p class="news-card__category">${results[i].section}</p>
-  <button type="button" class="js-to-fav">
+  <button type="button" class="js-to-fav add-fav-btn">
   <p class="news-card__add-favorite">Add to favorite</p>
   <svg class="news-card__icon" viewBox="0 0 32 32" width="16" height="16">
       <path fill="none" stroke="#4440f7"
