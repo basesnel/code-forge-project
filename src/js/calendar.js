@@ -57,6 +57,7 @@ const prevNextIcon = document.querySelectorAll('.calendar__btn-wrapper button');
 let date = new Date(),
   currYear = date.getFullYear(),
   currMonth = date.getMonth();
+
 // storing full name of all months in array
 const months = [
   'January',
@@ -111,6 +112,7 @@ prevNextIcon.forEach(icon => {
       // if current month is less than 0 or greater than 11
       // creating a new date of current year & month and pass it as date value
       date = new Date(currYear, currMonth, new Date().getDate());
+
       currYear = date.getFullYear(); // updating current year with new date year
       currMonth = date.getMonth(); // updating current month with new date month
     } else {
@@ -155,6 +157,10 @@ function selectionDate(evt) {
     selectedDateToInput
   )}/${addLeadingZero(currMonth + 1)}/${currYear}`;
   toggleModal();
+
+  const fulDate = new Date(
+    `${selectedDateToInput} ${months[currMonth]} ${currYear} `
+  );
 
   // Виділення активної дати кольором
 
