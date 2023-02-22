@@ -9,7 +9,7 @@ const refs = {
 let results = null;
 let datesString = [];
 let selectedDate = null;
-let dateForRender = '';
+let dateForRender = [];
 
 export function getResponseForFilterByDatePopular(response) {
     results = response;
@@ -27,9 +27,9 @@ export function getDatesPopular(requestDate) {
 	const dateString = `${day}/${month}/${year}`;
 		datesString.push(dateString);
 		
-		const dayForRender = (dataNormal.getDate()).toString().padStart(2, 0);
-        const monthForRender = (dataNormal.getMonth() + 1).toString().padStart(2, 0);
-		dateForRender = `${dayForRender}/${monthForRender}/${year}`;
+		const dayForRender = (day).toString().padStart(2, 0);
+        const monthForRender = (month).toString().padStart(2, 0);
+		dateForRender.push(`${dayForRender}/${monthForRender}/${year}`);
     }
 
 }
@@ -88,7 +88,7 @@ function renderMainNewsListDesctop() {
 
 		</div>
 		<div class="news-card__details">
-			<span class="news-card__date">${dateForRender}</span>
+			<span class="news-card__date">${dateForRender[i]}</span>
 			<a class="news-card__news-link link" href="${results[i].url}" target="_blank">Read more</a>
 		</div>
 	</li>`;
@@ -133,7 +133,7 @@ function renderMainNewsListDesctop() {
 		${results[i].abstract}
   </p>
   <div class="news-card__details">
-    <a class="news-card__date-link link" href="">${results[i].updated}</a>
+    <a class="news-card__date-link link" href="">${dateForRender[i]}</a>
     <a class="news-card__news-link link" href="${
       results[i].url
     }" target="_blank">Read more</a>
