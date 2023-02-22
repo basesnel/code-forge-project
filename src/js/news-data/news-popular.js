@@ -23,8 +23,6 @@ const refs = {
 
 // let weatherPosition = 2;
 
-getResponse();
-
 // Заготовка для пагінації
 
 // function onLoadMore(e) {
@@ -32,17 +30,18 @@ getResponse();
 //     getResponse()
 // }
 
-async function getResponse() {
+export default async function getResponsePopular() {
   try {
     const response = await popularApiService.getNewsPopular();
     const weather = await weatherService.getDefaultWeather();
     console.log(response);
     addData(response.results);
     filterData(response.results);
-    weatherPosition = resize();
+    let weatherPosition = resize();
     renderMainNewsListDesctop(weatherPosition, response.results, weather);
   } catch (error) {
     Notiflix.Notify.failure('Error, no popular response.');
+    console.log(error);
   }
 }
 
@@ -113,14 +112,10 @@ function renderMainNewsListDesctop(
 				<div class='news-card__info-wrapper'>
 					<p class="news-card__category">${results[i].section}</p>
 	
-					<button type="button" class="js-to-fav">
-						<p class="news-card__add-favorite">Add to favorite</p>
-	
-						<svg class="news-card__icon" viewBox="0 0 32 32" width="16" height="16">
-							<path fill="none" stroke="#4440f7"
-							d="M9.331 4c-3.681 0-6.667 2.955-6.667 6.6 0 2.943 1.167 9.927 12.651 16.987 0.206 0.125 0.442 0.191 0.683 0.191s0.477-0.066 0.683-0.191c11.484-7.060 12.651-14.044 12.651-16.987 0-3.645-2.985-6.6-6.667-6.6s-6.667 4-6.667 4-2.985-4-6.667-4z"></path>
-						</svg>
-					</button>
+					<button type="button" class="js-to-fav add-fav-btn">Add to favorite</button>
+					<svg class="news-card__icon" viewBox="0 0 32 32" width="16" height="16">
+						<path fill="none" stroke="#4440f7"d="M9.331 4c-3.681 0-6.667 2.955-6.667 6.6 0 2.943 1.167 9.927 12.651 16.987 0.206 0.125 0.442 0.191 0.683 0.191s0.477-0.066 0.683-0.191c11.484-7.060 12.651-14.044 12.651-16.987 0-3.645-2.985-6.6-6.667-6.6s-6.667 4-6.667 4-2.985-4-6.667-4z"></path>
+					</svg>
 	
 					<h3 class="news-card__title">${results[i].title}</h3>
 	

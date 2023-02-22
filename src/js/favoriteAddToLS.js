@@ -23,24 +23,24 @@ export default (() => {
         if (e.target.classList.contains('js-to-fav')) {
             
             let targetLiClasses = e.target.parentNode.parentNode.classList;
-            //console.log('a');
 
             if (targetLiClasses.contains('favorite-chosen')) {
                 
                 Notiflix.Notify.warning('It is in favorites already');
             } else {
 
-                const heart = e.target.lastElementChild.firstElementChild;
+                const heart = e.target.nextElementSibling.firstElementChild;
                 heart.setAttribute('fill', '#4b48da');
                 heart.setAttribute('style', "fill: var(--color1, #4b48da)");
-                heart.parentNode.previousElementSibling.textContent = "Added to favorites";
-
+                //heart.parentNode.previousElementSibling.textContent = "Added to favorites";
+                e.target.textContent = "Added to favorites"
                 addLiToArrayInLS(e, targetLiClasses);   
                
             }
                         
         } else {
             console.log('you clicked outside the button');
+            console.log(e.target)
         }
     }
 
@@ -55,10 +55,10 @@ export default (() => {
     targetLiClasses.add('clicked');
     
     let clickedLi = Array.from(e.currentTarget.children).find(li => li.classList.contains('clicked'));
-           
+        
         clickedLiArr.push({
             dataString: clickedLi.innerHTML,
-            id: clickedLi.firstElementChild.getAttribute(id),
+            id: clickedLi.firstElementChild.getAttribute('id'),
         });
            
     save(FAV_KEY, clickedLiArr);

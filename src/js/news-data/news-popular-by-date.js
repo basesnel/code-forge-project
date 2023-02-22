@@ -20,9 +20,9 @@ export function getDatesPopular(requestDate) {
     for (let date of requestDate) {
 
     const dataNormal = new Date(date);
-    day = dataNormal.getDate();
-    month = dataNormal.getMonth() + 1;
-    year = dataNormal.getFullYear();
+    let day = dataNormal.getDate();
+    let month = dataNormal.getMonth() + 1;
+    let year = dataNormal.getFullYear();
         
 	const dateString = `${day}/${month}/${year}`;
 		datesString.push(dateString);
@@ -72,13 +72,13 @@ function renderMainNewsListDesctop() {
     height="395"
   />
   <p class="news-card__category">${results[i].section}</p>
-  <button type="button" class="js-to-fav">
-  <p class="news-card__add-favorite">Add to favorite</p>
+  <button type="button" class="js-to-fav add-fav-btn">
+  Add to favorite
+  </button>
   <svg class="news-card__icon" viewBox="0 0 32 32" width="16" height="16">
       <path fill="none" stroke="#4440f7"
           d="M9.331 4c-3.681 0-6.667 2.955-6.667 6.6 0 2.943 1.167 9.927 12.651 16.987 0.206 0.125 0.442 0.191 0.683 0.191s0.477-0.066 0.683-0.191c11.484-7.060 12.651-14.044 12.651-16.987 0-3.645-2.985-6.6-6.667-6.6s-6.667 4-6.667 4-2.985-4-6.667-4z"></path>
     </svg>
-  </button>
   <h3 class="news-card__title">
     ${results[i].title}
   </h3>
