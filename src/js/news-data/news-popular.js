@@ -144,7 +144,7 @@ function renderMainNewsListDesctop(
 
   Array.from(arrayItem).map(item => {
     if (readId.includes(item.firstElementChild.id)) {
-      item.firstElementChild.style.opacity = 0.5;
+      item.firstElementChild.style.opacity = 0.7;
       item.firstElementChild.firstElementChild.classList.remove('visually-hidden');
     }
   });

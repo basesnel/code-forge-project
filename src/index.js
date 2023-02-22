@@ -31,8 +31,6 @@ headerResponsive();
 
 favorite();
 
-// localStorage.removeItem('read')
-
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
@@ -47,9 +45,10 @@ list.addEventListener('click', onAddBtnClick);
 function onAddBtnClick(e) {
     e.preventDefault()
     if (e.target.classList.contains('news-card__news-link')) {
-        let targetLi = e.target.parentNode.parentNode.parentNode;
+        let targetLi = e.target.parentNode.parentNode;
+        console.log(targetLi.firstElementChild.firstElementChild);
         targetLi.firstElementChild.firstElementChild.classList.remove('visually-hidden')
-        targetLi.style.opacity = 0.5;
+        targetLi.style.opacity = 0.7;
         addLiToArrayInLS(targetLi);
     }
 }
@@ -59,7 +58,7 @@ function addLiToArrayInLS(targetLi) {
     save(READ_KEY, []);
     }
     const id = targetLi.firstElementChild.getAttribute('id');
-    let data = { dataRead: dateWithoutTime, dataString: targetLi.innerHTML, id: id}
+    let data = { dataRead: dateWithoutTime, dataString: `<li class="list-news__item">${targetLi.innerHTML}</li>`, id: id}
     const arr = load(READ_KEY)
     arr.push(data);
     save(READ_KEY, arr);

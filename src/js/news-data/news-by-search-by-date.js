@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import { load } from '../locale-storage';
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
 const DEFAULT_CAPTION = "photo";
@@ -57,7 +58,7 @@ function renderMainNewsListDesctop() {
             
 			markup += `
 			<li class="list-news__item">
-		<div class="news-card" id="${docs[i].asset_id}">
+		<div class="news-card" id="${docs[i]._id}">
 			<span class="read-card-text visually-hidden"> Already read
 				<svg width="18" heigth="18" viewBox="0 0 32 32">
 					<path fill="#00dd73" style="fill: var(--color1, #00dd73)"
@@ -105,7 +106,7 @@ function renderMainNewsListDesctop() {
             
 			markup += `
 		<li class="list-news__item">
-		<div class="news-card">
+		<div class="news-card" id="${docs[i]._id}">
 			<span class="read-card-text visually-hidden"> Already read
 				<svg width="18" heigth="18" viewBox="0 0 32 32">
 					<path fill="#00dd73" style="fill: var(--color1, #00dd73)"
@@ -147,7 +148,17 @@ function renderMainNewsListDesctop() {
     };
   };
     refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
+  		refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
+  const arrayItem = refs.mainNewsList.children;
+  const arrayRead = load('read')
+  const readId = arrayRead.map(item => item.id)
 
+  Array.from(arrayItem).map(item => {
+    if (readId.includes(item.firstElementChild.id)) {
+      item.firstElementChild.style.opacity = 0.7;
+      item.firstElementChild.firstElementChild.classList.remove('visually-hidden');
+    }
+  });
     if (markup = '') {
         Notiflix.Notify.info('Sorry, no matches for this request!')
     }
