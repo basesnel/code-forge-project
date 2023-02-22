@@ -10,11 +10,11 @@ let docs = null;
 let datesString = [];
 let selectedDate = null;
 
-export async function getResponseForFilterByDateBySearch(response) {
+export function getResponseForFilterByDateBySearch(response) {
     docs = response;
 }
 
-export async function getDatesBySearch(requestDate) {
+export function getDatesBySearch(requestDate) {
 
     for (let date of requestDate) {
 
@@ -26,11 +26,13 @@ export async function getDatesBySearch(requestDate) {
     const dateString = `${day}/${month}/${year}`
     datesString.push(dateString);
         
-    }
+  }
+  
 }
 
-export async function getCalendarDateBySearch(currentDate) {
-    if (docs) {
+export function getCalendarDateBySearch(currentDate) {
+  if (docs) {
+      console.log()
            filterByDate(currentDate); 
     }
 }
@@ -86,8 +88,8 @@ function renderMainNewsListDesctop() {
 
   else {
       for (let i = 0; i = docs.length; i++) {
-          if (datesString[i] === selectedDate) {
-              console.log('a');
+        if (datesString[i] === selectedDate) {
+            
         markup += `<li class="list-news__item">
         
   <div class="news-card">
