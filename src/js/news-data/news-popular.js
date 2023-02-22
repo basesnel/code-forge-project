@@ -65,7 +65,7 @@ function renderMainNewsListDesctop(
 ) {
   let markup = '';
 
-  const weatherMarkup = `
+  const weatherMarkup = `<li class="list-news__item">
   <div class="weather">
     <div class="weather__horisontal">
       <span class="weather__temp">${Math.floor(temp)}°</span>
@@ -81,11 +81,12 @@ function renderMainNewsListDesctop(
     <span class="weather__date">${getDataToFormat()}</span>
     <a
     href="https://sinoptik.ua/"
-    class="weather__link"
     target="_blank"
-    rel="noreferrer noopener"
+    rel="noopener noreferrer nofollow"
+    class="weather__week"
     >weather for week</a>
-  </div>`;
+  </div>
+  </li>`;
 
   for (let i = 0; i < 8; i++) {
     if (i === weatherPosition) {
