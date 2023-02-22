@@ -52,6 +52,9 @@
 }
 
 .list-news__item {
+	display: flex;
+	flex-direction: column;
+
 	@media screen and (min-width: $tablet) {
 		flex-basis: calc((100% - 30px) / 2);
 	}
@@ -62,9 +65,12 @@
 
 .news-card {
 	position: relative;
+	flex-grow: 1;
+	margin-bottom: 20px;
 }
 
 .news-card__image-wrapper {
+	position: relative;
 	margin-bottom: 20px;
 }
 .news-card__image {
@@ -101,18 +107,6 @@
 }
 //! ============================================
 
-.news-card__info-wrapper {
-	display: flex;
-	flex-direction: column;
-
-	@media screen and (min-width: $desktop) {
-		padding-right: 26px;
-	}
-}
-// .info-wrapper__box {
-// 	flex-grow: 1;
-// 	margin-bottom: 20px;
-// }
 .news-card__title {
 	font-weight: 700;
 	font-size: 24px;
@@ -137,6 +131,7 @@
 }
 .news-card__details {
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
 }
 .news-card__date {
@@ -164,67 +159,30 @@
 .link {
 }
 
-.news-card {
-	// position: relative;
-	// max-width: 288px;
-	// // @media screen and (max-width: 767px) {
-	// //   max-width: 288px;
-	// // }
-
-	// // @media screen and (min-width: 768px) and (max-width: 1279px) {
-	// //   max-width: 353px;
-	// // }
-	// @media screen and (min-width: $tablet) {
-	// 	max-width: 353px;
-	// }
-
-	// @media screen and (min-width: $desktop) {
-	// 	max-width: 395px;
-	// 	// padding: 23px;
-	// 	border: 1px solid #fa0410;
-	// }
-}
-
-.news-card__add-favorite {
-	//display: flex;
-	// align-items: center;
-	//justify-content: center;
-	//gap: 4px;
-	// font-family: "Manrope";
-	//width: 126px;
-	// height: 28px;
-	//background-color: #f51212;
-	color: #111321;
-
-	padding-top: 6px;
-	padding-bottom: 6px;
-	// margin-left: auto;
-	// margin-right: auto;
-	font-style: normal;
-	font-weight: 500;
-	font-size: 12px;
-	line-height: 1.37;
-	text-align: center;
-
+.add-fav-btn,
+.js-from-fav {
 	position: absolute;
-	top: 355px;
-	left: 140px;
+	right: 8px;
+	bottom: 12px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 6px 12px;
+
+	background-color: $light;
 	border-radius: 20px;
-	// position: absolute;
-	//top: 355px;
-	//left: 140px;
-	border-radius: 20px;
+
+	color: $text;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.4;
 
 	@media screen and (min-width: $tablet) {
-		top: 355px;
-		left: 210px;
+		right: 12px;
 	}
+}
 
-	@media screen and (min-width: $desktop) {
-		// display: flex;
-		top: 355px;
-		left: 260px;
-	}
+.fav-btn-text {
 }
 
 .news-card__icon {
