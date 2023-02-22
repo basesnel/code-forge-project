@@ -10,11 +10,11 @@ let results = null;
 let datesString = [];
 let selectedDate = null;
 
-export async function getResponseForFilterByDatePopular(response) {
+export function getResponseForFilterByDatePopular(response) {
     results = response;
 }
 
-export async function getDatesPopular(requestDate) {
+export function getDatesPopular(requestDate) {
 
     for (let date of requestDate) {
 
@@ -30,7 +30,7 @@ export async function getDatesPopular(requestDate) {
 
 }
 
-export async function getCalendarDatePopular(currentDate) {
+export function getCalendarDatePopular(currentDate) {
     if (results) {
        filterByDate(currentDate); 
     }

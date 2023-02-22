@@ -1,4 +1,5 @@
 import { getCalendarDateBySearch } from './news-data/news-by-search-by-date';
+import { getCalendarDateByCategory } from './news-data/news-search-by-category-by-date';
 import { getCalendarDatePopular } from './news-data/news-popular-by-date';
 const refs = {
   calendarInput: document.querySelector('.js-calendar-input'),
@@ -171,6 +172,7 @@ function selectionDate(evt) {
   });
   getCalendarDatePopular(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
   getCalendarDateBySearch(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
+  getCalendarDateByCategory(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
 }
 
 // =======================================
