@@ -118,7 +118,7 @@ function renderMainNewsListDesctop(results) {
 		for (let i = 0; i < results.length; i++) {
 			markup += `
 			<li class="list-news__item">
-				<div class="news-card">
+				<div class="news-card" id="${results[i].uri}">
 					<span class="read-card-text visually-hidden"> Already read
 						<svg width="18" heigth="18" viewBox="0 0 32 32">
 							<path fill="#00dd73" style="fill: var(--color1, #00dd73)"
@@ -161,8 +161,8 @@ function renderMainNewsListDesctop(results) {
   const readId = arrayRead.map(item => item.id)
 
   Array.from(arrayItem).map(item => {
-    if (readId.includes(item.firstElementChild.id)) {
-      item.firstElementChild.style.opacity = 0.5;
+	  if (readId.includes(item.firstElementChild.id)) {
+      item.firstElementChild.style.opacity = 0.7;
       item.firstElementChild.firstElementChild.classList.remove('visually-hidden');
     }
   });
