@@ -6,7 +6,6 @@ import './js/switcher-theme';
 import mobileMenu from './js/mobile-menu';
 import headerResponsive from './js/headerResponsive';
 
-
 // MAIN SCRIPTS
 import getResponsePopular from './js/news-data/news-popular';
 import getResponseCategory from './js/news-data//news-category';
@@ -20,6 +19,9 @@ import './js/weather';
 
 import './js/news-data/news-popular';
 import './js/categories';
+
+// DOM - weather rebuil position
+import './js/dom-rebuild';
 
 import favorite from './js/favoriteAddToLS';
 getResponseCategory();
@@ -45,22 +47,23 @@ const READ_KEY = 'read';
 List.addEventListener('click', onAddBtnClick);
 
 function onAddBtnClick(e) {
-
-    e.preventDefault()
-    if (e.target.classList.contains('news-card__news-link')) {
-        let targetLi = e.target.parentNode.parentNode.parentNode;
-        targetLi.firstElementChild.firstElementChild.classList.remove('visually-hidden')
-        targetLi.style.opacity = 0.5;
-        addLiToArrayInLS(targetLi);
-    }
+  e.preventDefault();
+  if (e.target.classList.contains('news-card__news-link')) {
+    let targetLi = e.target.parentNode.parentNode.parentNode;
+    targetLi.firstElementChild.firstElementChild.classList.remove(
+      'visually-hidden'
+    );
+    targetLi.style.opacity = 0.5;
+    addLiToArrayInLS(targetLi);
+  }
 }
 
 function addLiToArrayInLS(targetLi) {
   if (load(READ_KEY) === undefined) {
     save(READ_KEY, []);
-    }
-    let data = { dataRead: dateWithoutTime, dataString: targetLi.innerHTML }
-    const arr = load(READ_KEY)
-    arr.push(data);
-    save(READ_KEY, arr);
+  }
+  let data = { dataRead: dateWithoutTime, dataString: targetLi.innerHTML };
+  const arr = load(READ_KEY);
+  arr.push(data);
+  save(READ_KEY, arr);
 }
