@@ -1,62 +1,61 @@
 .favorite {
-  padding: 40px 0 60px 0;
+	padding: 40px 0 60px 0;
 
-  @media (min-width: 768px) {
-    padding: 48px 0 100px 0;
-  }
+	@media (min-width: 768px) {
+		padding: 48px 0 100px 0;
+	}
 
-  @media (min-width: 1280px) {
-    padding: 60px 0 300px 0;
-  }
+	@media (min-width: 1280px) {
+		padding: 60px 0 300px 0;
+	}
 }
 
 .favourite-item:not(:last-child) {
-  margin-bottom: 28px;
+	margin-bottom: 28px;
 
-  @media (min-width: 768px) {
-    margin: 0;
-  }
+	@media (min-width: 768px) {
+		margin: 0;
+	}
 }
 
 .favourite-list {
-  @media (min-width: 768px) {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
-  }
+	@media (min-width: 768px) {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 30px;
+	}
 
-  @media (min-width: 1280px) {
-    row-gap: 40px;
-    column-gap: 31.5px;
-  }
+	@media (min-width: 1280px) {
+		row-gap: 40px;
+		column-gap: 31.5px;
+	}
 }
 
 .add-fav-btn,
 .js-from-fav {
-  position: absolute;
-  top: 35%;
-  right: 8px;
+	// position: absolute;
+	// top: 35%;
+	// right: 8px;
 
-  display: inline-block;
-  //justify-content: center;
-  //align-items: center;
-  //gap: 4px;
-  padding: 6px 12px;
+	// display: inline-block;
+	// //justify-content: center;
+	// //align-items: center;
+	// //gap: 4px;
+	// padding: 6px 12px;
 
-  height: 28px;
-  width: 168px;
+	// height: 28px;
+	// width: 168px;
 
-  background-color: $light;
-  border-radius: 20px;
+	// background-color: $light;
+	// border-radius: 20px;
 
-  color: $text;
-  font-family: Manrope, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.4;
-  text-align: center;
-
+	// color: $text;
+	// font-family: Manrope, sans-serif;
+	// font-size: 12px;
+	// font-weight: 500;
+	// line-height: 1.4;
+	// text-align: center;
 }
 
 /*.news-card__add-favorite,
@@ -76,8 +75,8 @@
 }*/
 
 .news-card__icon {
-  display: inline-block;
-  position: absolute;
-  top: 36%;
-  right: 6%;
+	// display: inline-block;
+	// position: absolute;
+	// top: 36%;
+	// right: 6%;
 }
