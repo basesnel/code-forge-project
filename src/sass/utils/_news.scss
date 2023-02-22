@@ -13,22 +13,10 @@
 	}
 }
 
-.list-news {
-	margin-bottom: 40px;
-
-	@media screen and (min-width: $tablet) {
-		margin-bottom: 48px;
-	}
-
-	@media screen and (min-width: $desktop) {
-		margin-bottom: 60px;
-	}
+.news__container {
+	// width: 1280px;
+	// margin: 0 auto;
 }
-
-// .news__container {
-// 	width: 1280px;
-// 	margin: 0 auto;
-// }
 
 //! ================================================================
 .page-container {
