@@ -4,6 +4,7 @@ import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
 import { dateForRender } from './news-by-search-by-date';
 
+import { load } from '../locale-storage';
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
 const DEFAULT_CAPTION = "photo";
@@ -52,7 +53,8 @@ async function getResponse() {
           clearmainNewsListContainer();
           addData(response.response.docs);
           filterData(response.response.docs)
-          renderMainNewsListDesctop(response.response.docs);
+      renderMainNewsListDesctop(response.response.docs);
+      
 	} catch (error) {
       Notiflix.Notify.failure('No news by search.')
       console.log(error);
@@ -75,7 +77,7 @@ function addData(docs) {
 // рендер карток
 function renderMainNewsListDesctop(docs) {
   let markup = '';
- 
+ console.log(docs);
   if (docs.length >= 8) {
     for (let i = 0; i < 8; i++) {
 		markup += `
@@ -119,7 +121,6 @@ function renderMainNewsListDesctop(docs) {
 		</div>
 	</li>`;
     };
-
   }
 
   else {
@@ -166,9 +167,22 @@ function renderMainNewsListDesctop(docs) {
 	</li>`
     };
   };
-    refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
-    return 
+  refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
+  const arrayItem = refs.mainNewsList.children;
+  const arrayRead = load('read')
+  const readId = arrayRead.map(item => item.id)
+
+  Array.from(arrayItem).map(item => {
+    if (readId.includes(item.firstElementChild.id)) {
+      item.firstElementChild.style.opacity = 0.5;
+      item.firstElementChild.firstElementChild.classList.remove('visually-hidden');
+    }
+  });
+  return;
+  return 
 }
+
+
 
 function clearmainNewsListContainer(){
 	refs.mainNewsList.innerHTML = '';

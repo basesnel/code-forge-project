@@ -6,6 +6,7 @@ import Notiflix from 'notiflix';
 import '../weather';
 import { resize } from '../resize';
 import { dateForRender } from './news-popular-by-date';
+import {load} from '../locale-storage'
 
 const DEFAULT_PHOTO =
   'https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png';
@@ -66,7 +67,7 @@ function renderMainNewsListDesctop(
 ) {
   let markup = '';
 
-  const weatherMarkup = `
+  const weatherMarkup = `<li class="list-news__item">
   <div class="weather">
     <div class="weather__horisontal">
       <span class="weather__temp">${Math.floor(temp)}°</span>
@@ -82,11 +83,12 @@ function renderMainNewsListDesctop(
     <span class="weather__date">${getDataToFormat()}</span>
     <a
     href="https://sinoptik.ua/"
-    class="weather__link"
     target="_blank"
-    rel="noreferrer noopener"
+    rel="noopener noreferrer nofollow"
+    class="weather__week"
     >weather for week</a>
-  </div>`;
+  </div>
+  </li>`;
 
   for (let i = 0; i < 8; i++) {
     if (i === weatherPosition) {
@@ -136,6 +138,16 @@ function renderMainNewsListDesctop(
   }
 
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
+  const arrayItem = refs.mainNewsList.children;
+  const arrayRead = load('read')
+  const readId = arrayRead.map(item => item.id)
+
+  Array.from(arrayItem).map(item => {
+    if (readId.includes(item.firstElementChild.id)) {
+      item.firstElementChild.style.opacity = 0.5;
+      item.firstElementChild.firstElementChild.classList.remove('visually-hidden');
+    }
+  });
   return;
 }
 

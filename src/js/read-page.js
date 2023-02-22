@@ -3,7 +3,6 @@ import mobileMenu from '../js/mobile-menu';
 import headerResponsive from '../js/headerResponsive';
 import './news-data/news-by-search';
 import '../js/switcher-theme';
-// import onClickSearchBtn from './news-data/news-by-search'
 
 mobileMenu();
 headerResponsive();
@@ -11,18 +10,13 @@ headerResponsive();
 const refs = {
     undefinedThumb: document.querySelector('.undefined'),
     readList: document.querySelector('.read-list'),
-    // openSearchBtn: document.getElementById('search-btn'),
-    // formSearch: document.getElementById('form-field')
-    
 }
 
-// refs.formSearch.addEventListener('submit', onSubmitForm)
 refs.readList.addEventListener('click', onDataClick)
 
 creatMarcupReadPage();
 
-function creatMarcupReadPage(data) {
-    
+function creatMarcupReadPage() { 
     if (load('read') != undefined) {
         refs.undefinedThumb.classList.add('visually-hidden');
         refs.readList.insertAdjacentHTML('afterbegin', creatPageList());
@@ -35,7 +29,6 @@ function creatMarcupReadPage(data) {
 function creatPageList() {
     const arrayCardRead = load('read');
     const arrayDataRead = arrayCardRead.map(data => data.dataRead).filter((item, index, arr) => { return arr.indexOf(item) === index });
-    console.log(arrayDataRead);
 
     return arrayDataRead.map(data => `<li class="read-list__item">
             <button class="read-list__button" type="button">
@@ -67,7 +60,6 @@ function onDataClick(e) {
             })
             .join('')
             
-        
         if (cardDate.classList.contains('visually-hidden')) {
             e.target.lastElementChild.setAttribute('viewBox', '0 0 32 32')
             e.target.lastElementChild.firstElementChild.setAttribute('d', 'M4.576 5.333l-3.509 3.247 14.933 13.819 14.933-13.819-3.509-3.248-11.424 10.549-11.424-10.549z')
@@ -83,12 +75,3 @@ function undefinedNews() {
     return refs.undefinedThumb.classList.remove('visually-hidden')
 }
 
-// function onSubmitForm(e) {
-//     e.preventDefault()
-//     let value = e.target.firstElementChild.firstElementChild.value
-//     const category = refs.readList.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling;
-//     if (value != category.textContent) {
-//         category.parentNode.classList.add('visually-hidden')
-//     }
-    
-// }

@@ -2,6 +2,7 @@ import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
 import { getDatesByCategory } from './news-search-by-category-by-date';
 import { getResponseForFilterByDateByCategory } from './news-search-by-category-by-date';
+import {load} from '../locale-storage'
 import { dateForRender } from './news-search-by-category-by-date';
 
 
@@ -69,7 +70,7 @@ function addData(results) {
 // рендер карток
 function renderMainNewsListDesctop(results) {
 	let markup = '';
-
+  console.log(results);
 	if (results.length >= 8) { 
   for (let i = 0; i < 8; i++) {
 	  markup += `
@@ -154,8 +155,18 @@ function renderMainNewsListDesctop(results) {
 			</li>`;
 		}
 }
-    refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
-	return;
+  refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
+  const arrayItem = refs.mainNewsList.children;
+  const arrayRead = load('read')
+  const readId = arrayRead.map(item => item.id)
+
+  Array.from(arrayItem).map(item => {
+    if (readId.includes(item.firstElementChild.id)) {
+      item.firstElementChild.style.opacity = 0.5;
+      item.firstElementChild.firstElementChild.classList.remove('visually-hidden');
+    }
+  });
+    return 
 }
 
 function clearmainNewsListContainer() {
