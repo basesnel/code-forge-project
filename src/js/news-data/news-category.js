@@ -10,16 +10,16 @@ const refs = {
     categoriesOthers: document.querySelector('.js-category-others'),
 	othersTextInBtn: document.querySelector('.js-text-btn'),
 }
-getResponse();
 
 window.addEventListener('resize', debounce(onResize, 300));
 
-async function getResponse() {
+export default async function getResponseCategory() {
     try {
 		const response = await categoryApiService.getNewsCategoryList();
 		chooseElementsByViewportWidth(response.results);
 	} catch (error) {
-        Notiflix.Notify.failure('Error, no category response.')
+        Notiflix.Notify.failure('Error, no category response.');
+        console.log(error);
     }
 }
 
@@ -96,7 +96,7 @@ function clearCategoriesMarkup() {
 
 //-------------------------------ViewportWidth----------------------------------- 
 function onResize(e) {
-    getResponse();
+    getResponseCategory();
 } 
 
 function chooseElementsByViewportWidth(data) {

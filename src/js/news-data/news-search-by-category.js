@@ -1,8 +1,10 @@
 import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
-import { load } from '../locale-storage';
+import { getDatesByCategory } from './news-search-by-category-by-date';
+import { getResponseForFilterByDateByCategory } from './news-search-by-category-by-date';
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
 const DEFAULT_CAPTION = "photo";
+const dates = [];
 const searchByCategoryApiService = new NewsApiService();
 
 const refs = {
@@ -35,14 +37,30 @@ function onSearch(e) {
 async function getResponse() {
     try {
         const response = await searchByCategoryApiService.getNewsByCategory();
-		console.log(response);
-		clearmainNewsListContainer();
-        renderMainNewsListDesctop(response.results);
+          console.log(response);
+          addData(response.results);
+          filterData(response.results)
+		      clearmainNewsListContainer();
+          renderMainNewsListDesctop(response.results);
 	} catch (error) {
-        Notiflix.Notify.failure('There are problems with your request.Please try again later.')
+      Notiflix.Notify.failure('No news by categoty.')
+      console.log(error);
     }
 }
+// додавання об'єкту відповіді до фільтру по даті
+function filterData(results) {
+  getResponseForFilterByDateByCategory(results);
+}
 
+// додаваня дати для фільтру по даті
+function addData(results) {
+  for (let result of results) {
+      dates.push(result.updated_date);
+  }
+  getDatesByCategory(dates);
+}
+
+// рендер карток
 function renderMainNewsListDesctop(results) {
 	let markup = '';
   console.log(results);
@@ -62,13 +80,13 @@ function renderMainNewsListDesctop(results) {
     height="395"
   />
   <p class="news-card__category">${results[i].section}</p>
-  <button type="button" class="js-to-fav">
-  <p class="news-card__add-favorite">Add to favorite</p>
+  <button type="button" class="js-to-fav add-fav-btn">
+  Add to favorite
+  </button>
     <svg class="news-card__icon" viewBox="0 0 32 32" width="16" height="16">
       <path fill="none" stroke="#4440f7"
           d="M9.331 4c-3.681 0-6.667 2.955-6.667 6.6 0 2.943 1.167 9.927 12.651 16.987 0.206 0.125 0.442 0.191 0.683 0.191s0.477-0.066 0.683-0.191c11.484-7.060 12.651-14.044 12.651-16.987 0-3.645-2.985-6.6-6.667-6.6s-6.667 4-6.667 4-2.985-4-6.667-4z"></path>
     </svg>
-  </button>
   <h3 class="news-card__title">
     ${results[i].title}
   </h3>

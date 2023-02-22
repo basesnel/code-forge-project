@@ -4,7 +4,8 @@ import NewsApiService from '../api/news-main-api';
 import WeatherApiService from '../api/weater-service';
 import Notiflix from 'notiflix';
 import '../weather';
-import { load } from '../locale-storage';
+import { resize } from '../resize';
+
 const DEFAULT_PHOTO =
   'https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png';
 const DEFAULT_CAPTION = 'photo';
@@ -19,9 +20,7 @@ const refs = {
   weather: document.querySelector('.js-weather'),
 };
 
-let weatherPosition = 2;
-
-getResponse();
+// let weatherPosition = 2;
 
 // Заготовка для пагінації
 
@@ -30,16 +29,18 @@ getResponse();
 //     getResponse()
 // }
 
-async function getResponse() {
+export default async function getResponsePopular() {
   try {
     const response = await popularApiService.getNewsPopular();
     const weather = await weatherService.getDefaultWeather();
     console.log(response);
     addData(response.results);
-    filterData(response.results)
-    renderMainNewsListDesctop(response.results, weather);
+    filterData(response.results);
+    let weatherPosition = resize();
+    renderMainNewsListDesctop(weatherPosition, response.results, weather);
   } catch (error) {
     Notiflix.Notify.failure('Error, no popular response.');
+    console.log(error);
   }
 }
 
@@ -51,13 +52,14 @@ function filterData(results) {
 // додаваня дати для фільтру по даті
 function addData(results) {
   for (let result of results) {
-      dates.push(result.updated);
+    dates.push(result.updated);
   }
   getDatesPopular(dates);
 }
 
 // рендер карток
 function renderMainNewsListDesctop(
+  weatherPosition,
   results,
   { temp, icon, description, country, city }
 ) {
@@ -86,7 +88,6 @@ function renderMainNewsListDesctop(
   </div>`;
 
   for (let i = 0; i < 8; i++) {
-
     if (i === weatherPosition) {
       markup += weatherMarkup;
     } else {
@@ -112,13 +113,13 @@ function renderMainNewsListDesctop(
     height="395"
   />
   <p class="news-card__category">${results[i].section}</p>
-  <button type="button" class="js-to-fav">
-  <p class="news-card__add-favorite">Add to favorite</p>
+  <button type="button" class="js-to-fav add-fav-btn">
+  Add to favorite
+  </button>
   <svg class="news-card__icon" viewBox="0 0 32 32" width="16" height="16">
       <path fill="none" stroke="#4440f7"
           d="M9.331 4c-3.681 0-6.667 2.955-6.667 6.6 0 2.943 1.167 9.927 12.651 16.987 0.206 0.125 0.442 0.191 0.683 0.191s0.477-0.066 0.683-0.191c11.484-7.060 12.651-14.044 12.651-16.987 0-3.645-2.985-6.6-6.667-6.6s-6.667 4-6.667 4-2.985-4-6.667-4z"></path>
     </svg>
-  </button>
   <h3 class="news-card__title">
     ${results[i].title}
   </h3>
@@ -155,4 +156,3 @@ function getDataToFormat() {
   const td = new Date().toDateString().split(' ');
   return `${td[0]}</br>${td[2]} ${td[1]} ${td[3]}`;
 }
-

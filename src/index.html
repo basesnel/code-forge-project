@@ -3,38 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
+    <title>News</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./sass/index.scss" />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./images/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./images/favicon/favicon-16x16.png"
-    />
   </head>
 
   <body>
     <include src="./partials/header.html"></include>
-    <include src="./partials/categories_calendar.html"></include>
+    <main>
+      <h1 class="visually-hidden">News</h1>
+      <include src="./partials/categories_calendar.html"></include>
 
-    <include src="./partials/newsgrid.html"></include>
+      <include src="./partials/newsgrid.html"></include>
+    </main>
     <include src="./partials/footer.html"></include>
-    <button id="find-me" class="visually-hidden">Show my location</button><br />
+    <!-- <button id="find-me" class="visually-hidden">Show my location</button><br /> -->
 
-    <div class="js-weather"></div>
+    <!-- <div class="js-weather"></div> -->
 
     <!-- <include src="./partials/example.html"></include> -->
     <script type="module" src="./index.js"></script>
+    <script src="./js/pagination_m.js"></script>
   </body>
 </html>
