@@ -29,11 +29,11 @@ export default (() => {
                 Notiflix.Notify.warning('It is in favorites already');
             } else {
 
-                const heart = e.target.lastElementChild.firstElementChild;
+                const heart = e.target.nextElementSibling.firstElementChild;
                 heart.setAttribute('fill', '#4b48da');
                 heart.setAttribute('style', "fill: var(--color1, #4b48da)");
-                heart.parentNode.previousElementSibling.textContent = "Added to favorites";
-
+                //heart.parentNode.previousElementSibling.textContent = "Added to favorites";
+                e.target.textContent = "Added to favorites"
                 addLiToArrayInLS(e, targetLiClasses);   
                
             }
