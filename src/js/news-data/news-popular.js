@@ -4,6 +4,8 @@ import NewsApiService from '../api/news-main-api';
 import WeatherApiService from '../api/weater-service';
 import Notiflix from 'notiflix';
 import '../weather';
+import { resize } from '../resize';
+
 const DEFAULT_PHOTO =
   'https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png';
 const DEFAULT_CAPTION = 'photo';
@@ -18,7 +20,7 @@ const refs = {
   weather: document.querySelector('.js-weather'),
 };
 
-let weatherPosition = 2;
+// let weatherPosition = 2;
 
 getResponse();
 
@@ -35,8 +37,9 @@ async function getResponse() {
     const weather = await weatherService.getDefaultWeather();
     console.log(response);
     addData(response.results);
-    filterData(response.results)
-    renderMainNewsListDesctop(response.results, weather);
+    filterData(response.results);
+    weatherPosition = resize();
+    renderMainNewsListDesctop(weatherPosition, response.results, weather);
   } catch (error) {
     Notiflix.Notify.failure('Error, no popular response.');
   }
@@ -50,13 +53,14 @@ function filterData(results) {
 // додаваня дати для фільтру по даті
 function addData(results) {
   for (let result of results) {
-      dates.push(result.updated);
+    dates.push(result.updated);
   }
   getDatesPopular(dates);
 }
 
 // рендер карток
 function renderMainNewsListDesctop(
+  weatherPosition,
   results,
   { temp, icon, description, country, city }
 ) {
@@ -85,7 +89,6 @@ function renderMainNewsListDesctop(
   </div>`;
 
   for (let i = 0; i < 8; i++) {
-
     if (i === weatherPosition) {
       markup += weatherMarkup;
     } else {
@@ -146,4 +149,3 @@ function getDataToFormat() {
   const td = new Date().toDateString().split(' ');
   return `${td[0]}</br>${td[2]} ${td[1]} ${td[3]}`;
 }
-
