@@ -1,10 +1,36 @@
 // selecting required element
-const element = document.querySelector('.pagination ul');
-let totalPages = 16;
-let page = 8;
+const paginationEl = document.querySelector('.pagination ul');
+
+// Визначення кількості сторінок
+
+let totalItem = 50;
+let elementsInPages = 8;
+
+const numberOfPages = totalItem / elementsInPages;
+
+let totalPages = Math.ceil(numberOfPages);
+let page = 1;
+
+console.log(totalPages);
+
+// визначення вибраної сторінки
+
+paginationEl.addEventListener('click', curentPage);
+
+function curentPage() {
+  Array.from(paginationEl.children).map(elem => {
+    if (elem.classList.contains('active')) {
+      let selectedNumber = elem;
+      Array.from(selectedNumber.children).map(e => {
+        const curentNumberPage = +e.textContent;
+        console.log(curentNumberPage);
+      });
+    }
+  });
+}
 
 //calling function with passing parameters and adding inside element which is ul tag
-element.innerHTML = createPagination(totalPages, page);
+paginationEl.innerHTML = createPagination(totalPages, page);
 function createPagination(totalPages, page) {
   let liTag = '';
   let active;
@@ -73,6 +99,6 @@ function createPagination(totalPages, page) {
       page + 1
     })"><span>Next <i class="fas fa-angle-right"></i></span></li>`;
   }
-  element.innerHTML = liTag; //add li tag inside ul tag
+  paginationEl.innerHTML = liTag; //add li tag inside ul tag
   return liTag; //reurn the li tag
 }
