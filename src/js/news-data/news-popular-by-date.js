@@ -9,6 +9,7 @@ const refs = {
 let results = null;
 let datesString = [];
 let selectedDate = null;
+let dateForRender = '';
 
 export function getResponseForFilterByDatePopular(response) {
     results = response;
@@ -23,9 +24,12 @@ export function getDatesPopular(requestDate) {
     month = dataNormal.getMonth() + 1;
     year = dataNormal.getFullYear();
         
-    const dateString = `${day}/${month}/${year}`
-    datesString.push(dateString);
-        
+	const dateString = `${day}/${month}/${year}`;
+		datesString.push(dateString);
+		
+		const dayForRender = (dataNormal.getDate()).toString().padStart(2, 0);
+        const monthForRender = (dataNormal.getMonth() + 1).toString().padStart(2, 0);
+		dateForRender = `${dayForRender}/${monthForRender}/${year}`;
     }
 
 }
@@ -153,3 +157,5 @@ function clearmainNewsListContainer(){
 	refs.mainNewsList.innerHTML = '';
 	return
 }
+
+export { dateForRender };
