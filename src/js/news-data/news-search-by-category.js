@@ -2,6 +2,7 @@ import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
 import { getDatesByCategory } from './news-search-by-category-by-date';
 import { getResponseForFilterByDateByCategory } from './news-search-by-category-by-date';
+import {load} from '../locale-storage'
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
 const DEFAULT_CAPTION = "photo";
 const dates = [];

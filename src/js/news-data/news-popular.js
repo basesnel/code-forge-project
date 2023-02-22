@@ -5,6 +5,7 @@ import WeatherApiService from '../api/weater-service';
 import Notiflix from 'notiflix';
 import '../weather';
 import { resize } from '../resize';
+import {load} from '../locale-storage'
 
 const DEFAULT_PHOTO =
   'https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png';

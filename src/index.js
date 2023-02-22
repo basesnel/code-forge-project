@@ -40,10 +40,9 @@ const dateWithoutTime = `${addLeadingZero(now.getDate())}/${addLeadingZero(now.g
 const list = document.querySelector('.js-list-new') 
 const READ_KEY = 'read';
 
-List.addEventListener('click', onAddBtnClick);
+list.addEventListener('click', onAddBtnClick);
   
 function onAddBtnClick(e) {
-
     e.preventDefault()
     if (e.target.classList.contains('news-card__news-link')) {
         let targetLi = e.target.parentNode.parentNode.parentNode;
