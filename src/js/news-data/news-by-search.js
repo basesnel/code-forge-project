@@ -4,6 +4,7 @@ import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
 import { dateForRenderBySearch } from './news-by-search-by-date';
 
+console.log(dateForRenderBySearch);
 
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
