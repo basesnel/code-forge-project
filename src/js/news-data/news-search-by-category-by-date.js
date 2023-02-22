@@ -20,9 +20,9 @@ export function getDatesByCategory(requestDate) {
     for (let date of requestDate) {
 
     const dataNormal = new Date(date);
-    day = dataNormal.getDate();
-    month = dataNormal.getMonth() + 1;
-    year = dataNormal.getFullYear();
+    let day = dataNormal.getDate();
+    let month = dataNormal.getMonth() + 1;
+    let year = dataNormal.getFullYear();
         
     const dateString = `${day}/${month}/${year}`
     datesString.push(dateString);

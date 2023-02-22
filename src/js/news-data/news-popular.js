@@ -22,8 +22,6 @@ const refs = {
 
 // let weatherPosition = 2;
 
-getResponse();
-
 // Заготовка для пагінації
 
 // function onLoadMore(e) {
@@ -31,17 +29,18 @@ getResponse();
 //     getResponse()
 // }
 
-async function getResponse() {
+export default async function getResponsePopular() {
   try {
     const response = await popularApiService.getNewsPopular();
     const weather = await weatherService.getDefaultWeather();
     console.log(response);
     addData(response.results);
     filterData(response.results);
-   let weatherPosition = resize();
+    let weatherPosition = resize();
     renderMainNewsListDesctop(weatherPosition, response.results, weather);
   } catch (error) {
     Notiflix.Notify.failure('Error, no popular response.');
+    console.log(error);
   }
 }
 
