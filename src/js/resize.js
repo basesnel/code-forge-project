@@ -1,12 +1,3 @@
-import debounce from 'lodash.debounce';
-
-window.addEventListener(
-  'resize',
-  debounce(e => {
-    console.log(resize());
-  }, 1000)
-);
-
 function resize() {
   let weatherPosition = 0;
   if (window.innerWidth <= 768) {

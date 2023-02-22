@@ -6,7 +6,6 @@ import './js/switcher-theme';
 import mobileMenu from './js/mobile-menu';
 import headerResponsive from './js/headerResponsive';
 
-
 // MAIN SCRIPTS
 import getResponsePopular from './js/news-data/news-popular';
 import getResponseCategory from './js/news-data//news-category';
@@ -20,6 +19,9 @@ import './js/weather';
 
 import './js/news-data/news-popular';
 import './js/categories';
+
+// DOM - weather rebuil position
+import './js/dom-rebuild';
 
 import favorite from './js/favoriteAddToLS';
 getResponseCategory();
