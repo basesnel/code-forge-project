@@ -17,12 +17,12 @@ import './js/weather'
 import './js/news-data/news-popular';
 import './js/categories';
 
-//import favorite from './js/favoriteAddToLS';
+import favorite from './js/favoriteAddToLS';
 
 mobileMenu();
 headerResponsive();
 
-//favorite();
+favorite();
 
 // localStorage.removeItem('read')
 
