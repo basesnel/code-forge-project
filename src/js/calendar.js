@@ -1,4 +1,5 @@
-import { getCalendarDate } from './news-data/news-by-search-by-date';
+import { getCalendarDateBySearch } from './news-data/news-by-search-by-date';
+import { getCalendarDatePopular } from './news-data/news-popular-by-date';
 const refs = {
   calendarInput: document.querySelector('.js-calendar-input'),
   modal: document.querySelector('[data-calendar-modal]'),
@@ -168,7 +169,8 @@ function selectionDate(evt) {
       selectedItem.classList.add('selected-date');
     }
   });
-  getCalendarDate(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
+  getCalendarDatePopular(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
+  getCalendarDateBySearch(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
 }
 
 // =======================================
