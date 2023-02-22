@@ -52,7 +52,8 @@ async function getResponse() {
           filterData(response.response.docs)
           renderMainNewsListDesctop(response.response.docs);
 	} catch (error) {
-        Notiflix.Notify.failure('There are problems with your request.Please try again later.')
+      Notiflix.Notify.failure('No news by search.')
+      console.log(error);
     }
 }
 

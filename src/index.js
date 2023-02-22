@@ -5,10 +5,11 @@ import './js/news-data/news-by-search';
 import './js/switcher-theme';
 import mobileMenu from './js/mobile-menu';
 import headerResponsive from './js/headerResponsive';
-import NewsApiService from './js/api/news-main-api';
 
 
 // MAIN SCRIPTS
+import getResponsePopular from './js/news-data/news-popular';
+import getResponseCategory from './js/news-data//news-category';
 import './js/calendar';
 import './js/news-data/news-by-search-by-date';
 import './js/news-data/news-category';
@@ -21,7 +22,8 @@ import './js/news-data/news-popular';
 import './js/categories';
 
 import favorite from './js/favoriteAddToLS';
-
+getResponseCategory();
+getResponsePopular();
 mobileMenu();
 headerResponsive();
 

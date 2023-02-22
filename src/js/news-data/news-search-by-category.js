@@ -43,7 +43,8 @@ async function getResponse() {
 		      clearmainNewsListContainer();
           renderMainNewsListDesctop(response.results);
 	} catch (error) {
-        Notiflix.Notify.failure('There are problems with your request.Please try again later.')
+      Notiflix.Notify.failure('No news by categoty.')
+      console.log(error);
     }
 }
 // додавання об'єкту відповіді до фільтру по даті
