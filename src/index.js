@@ -6,13 +6,17 @@ import './js/switcher-theme';
 import mobileMenu from './js/mobile-menu';
 import headerResponsive from './js/headerResponsive';
 import NewsApiService from './js/api/news-main-api';
+
+
+// MAIN SCRIPTS
 import './js/calendar';
+import './js/news-data/news-by-search-by-date';
 import './js/news-data/news-category';
 import './js/news-data/news-search-by-category';
 import './js/weather';
+
 // import './js/pagination_m';
 
-// MAIN SCRIPTS
 import './js/news-data/news-popular';
 import './js/categories';
 
@@ -39,20 +43,22 @@ const READ_KEY = 'read';
 List.addEventListener('click', onAddBtnClick);
 
 function onAddBtnClick(e) {
-  e.preventDefault();
-  if (e.target.classList.contains('news-card__news-link')) {
-    let targetLi = e.target.parentNode.parentNode.parentNode;
-    console.log(targetLi);
-    addLiToArrayInLS(targetLi);
-  }
+
+    e.preventDefault()
+    if (e.target.classList.contains('news-card__news-link')) {
+        let targetLi = e.target.parentNode.parentNode.parentNode;
+        targetLi.firstElementChild.firstElementChild.classList.remove('visually-hidden')
+        targetLi.style.opacity = 0.5;
+        addLiToArrayInLS(targetLi);
+    }
 }
 
 function addLiToArrayInLS(targetLi) {
   if (load(READ_KEY) === undefined) {
     save(READ_KEY, []);
-  }
-  let data = { dataRead: '22/02/2023', dataString: targetLi.innerHTML };
-  const arr = load(READ_KEY);
-  arr.push(data);
-  save(READ_KEY, arr);
+    }
+    let data = { dataRead: dateWithoutTime, dataString: targetLi.innerHTML }
+    const arr = load(READ_KEY)
+    arr.push(data);
+    save(READ_KEY, arr);
 }

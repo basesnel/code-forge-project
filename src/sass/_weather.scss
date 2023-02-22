@@ -5,36 +5,77 @@ $whitecolor: #fff;
 $txt-roboto: 'Roboto';
 
 .weather {
-  padding: 45px 53px 60px;
+  padding: 30px 25px 30px;
   background-color: $accent;
   color: $whitecolor;
 
   font-family: 'Roboto';
 
-  width: 395px;
-  height: 675px;
+  width: 288px;
+  height: 469px;
+
   border-radius: 4px;
+
+  @media screen and (min-width: $tablet) {
+    padding: 45px 53px 60px;
+    width: 353px;
+    height: 675px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding: 45px 53px 60px;
+    width: 395px;
+    height: 675px;
+  }
 
   &__horisontal {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 90px;
+    margin-bottom: 40px;
+
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 90px;
+    }
   }
 
   &__temp {
     padding-right: 8px;
     border-right: 1px solid $whitecolor;
-    font-size: 64px;
+    font-size: 48px;
     line-height: 1.17;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 56px;
+      line-height: 1.17;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 64px;
+      line-height: 1.17;
+    }
   }
 
   &__desc,
   &__date {
     display: block;
     width: 199px;
-    font-size: 36px;
+    font-size: 18px;
     line-height: 1.16;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 24px;
+      line-height: 1.17;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 32px;
+      line-height: 1.17;
+    }
   }
 
   &__date {
@@ -43,22 +84,54 @@ $txt-roboto: 'Roboto';
   }
 
   &__imgwrap {
-    width: 200px;
-    margin: 0 auto 30px;
+    width: 150px;
+    margin: 0 auto 20px;
+
+    @media screen and (min-width: $tablet) {
+      width: 170px;
+      margin: 0 auto 25px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      width: 200px;
+      margin: 0 auto 30px;
+    }
   }
 
   &__city,
   &__week {
     display: block;
-    width: 177px;
-    padding: 10px 12px 9px 12px;
+    text-align: center;
+    padding: 10px 12px 9px;
     background: rgba(254, 254, 255, 0.3);
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.15;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 18px;
+      line-height: 1.17;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 20px;
+      line-height: 1.17;
+    }
   }
 
   &__week {
+    width: 177px;
     margin: 0 auto;
+  }
+
+  &__city {
+    width: 50%;
+    @media screen and (min-width: $tablet) {
+      width: 60%;
+    }
+
+    @media screen and (min-width: $tablet) {
+      width: 80%;
+    }
   }
 }

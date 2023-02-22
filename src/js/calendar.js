@@ -1,3 +1,6 @@
+import { getCalendarDateBySearch } from './news-data/news-by-search-by-date';
+import { getCalendarDateByCategory } from './news-data/news-search-by-category-by-date';
+import { getCalendarDatePopular } from './news-data/news-popular-by-date';
 const refs = {
   calendarInput: document.querySelector('.js-calendar-input'),
   modal: document.querySelector('[data-calendar-modal]'),
@@ -36,6 +39,7 @@ function toggleModal() {
   refs.iconCalendarOpen.classList.toggle('display-none');
   refs.iconCalendarClose.classList.toggle('display-active');
   refs.clickToBackdrop.classList.toggle('display-none');
+
 }
 
 // Вибір дати по кліку
@@ -158,10 +162,6 @@ function selectionDate(evt) {
   )}/${addLeadingZero(currMonth + 1)}/${currYear}`;
   toggleModal();
 
-  const fulDate = new Date(
-    `${selectedDateToInput} ${months[currMonth]} ${currYear} `
-  );
-
   // Виділення активної дати кольором
 
   selectedItem.classList.add('selected-date');
@@ -172,6 +172,9 @@ function selectionDate(evt) {
       selectedItem.classList.add('selected-date');
     }
   });
+  getCalendarDatePopular(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
+  getCalendarDateBySearch(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
+  getCalendarDateByCategory(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
 }
 
 // =======================================

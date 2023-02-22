@@ -10,10 +10,10 @@ const weatherService = new WeatherApiService();
 let weatherMarkup = '';
 
 // Button event for get and render weather:
-document.querySelector('#find-me').addEventListener('click', geoFindMe);
+// document.querySelector('#find-me').addEventListener('click', geoFindMe);
 
 // Weather container:
-const weatherBlock = document.querySelector('.js-weather');
+// const weatherBlock = document.querySelector('.js-weather');
 
 // It's function for get geolocation user's device
 // and weather for current or default city:
