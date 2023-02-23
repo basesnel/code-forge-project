@@ -15,11 +15,11 @@ import './js/news-data/news-category';
 import './js/news-data/news-search-by-category';
 import './js/weather';
 
-// import './js/pagination_m';
+
 
 import './js/news-data/news-popular';
 import './js/categories';
-
+import './js/pagination_m';
 // DOM - weather rebuil position
 import './js/dom-rebuild';
 

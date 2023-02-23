@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 import axios from 'axios';
 
 const BASE_URL = 'https://api.nytimes.com/svc/';
-const KEY = 'lnZjefSwoIfoW3e6oGrlDKzWOhIXoZMK';
+const KEY = 'api-key=lnZjefSwoIfoW3e6oGrlDKzWOhIXoZMK';
 
 export default class NewsApiService {
     constructor(newsPerPage) { 
@@ -14,7 +14,7 @@ export default class NewsApiService {
     
     async createRequest(urlPath) {
         try {
-            const response = await axios.get(`${BASE_URL}${urlPath}api-key=${KEY}`);
+            const response = await axios.get(`${BASE_URL}${urlPath}`);
             this.incrementPage()
             return response.data;
         } catch (error) {
@@ -24,19 +24,19 @@ export default class NewsApiService {
     }
 
     async getNewsByCategory() {
-        return this.createRequest(`news/v3/content/inyt/${this.searchCategory}.json?`)
+        return this.createRequest(`news/v3/content/inyt/${this.searchCategory}.json?${KEY}&limit=26`)
     }
 
     async getNewsBySearch() {
-        return this.createRequest(`search/v2/articlesearch.json?q=${this.searchQuery}&`)
+        return this.createRequest(`search/v2/articlesearch.json?q=${this.searchQuery}&${KEY}&page=${this.page}`)
     }
 
     async getNewsCategoryList() {
-        return this.createRequest(`news/v3/content/section-list.json?`)
+        return this.createRequest(`news/v3/content/section-list.json?${KEY}`)
     }
 
     async getNewsPopular() {
-        return this.createRequest(`mostpopular/v2/viewed/1.json?`)
+        return this.createRequest(`mostpopular/v2/viewed/1.json?${KEY}`)
     }
 
     

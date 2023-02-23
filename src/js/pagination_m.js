@@ -1,17 +1,20 @@
-// selecting required element
-const paginationEl = document.querySelector('.pagination ul');
+import { addArrayLengthOfResults } from './news-data/news-popular';
+import onWindowResize from './news-data/function-of-resize-render';
+import { async } from 'regenerator-runtime';
+// кількість карток новин на сторінці
+const newsPerPage = onWindowResize();
 
 // Визначення кількості сторінок
+export function getTotalNews(data) {
+let totalItem = data;
 
-let totalItem = 50;
-let elementsInPages = 8;
+let elementsInPages = newsPerPage;
 
+const paginationEl = document.querySelector('.pagination ul');
 const numberOfPages = totalItem / elementsInPages;
 
 let totalPages = Math.ceil(numberOfPages);
 let page = 1;
-
-console.log(totalPages);
 
 // визначення вибраної сторінки
 
@@ -101,4 +104,6 @@ function createPagination(totalPages, page) {
   }
   paginationEl.innerHTML = liTag; //add li tag inside ul tag
   return liTag; //reurn the li tag
-}
+  }
+ 
+ }
