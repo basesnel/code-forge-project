@@ -7,7 +7,7 @@ import Notiflix from 'notiflix';
 import '../weather';
 import { resize } from '../resize';
 import { dateForRender } from './news-popular-by-date';
-import {load} from '../locale-storage'
+import { load } from '../locale-storage';
 import onWindowResize from './function-of-resize-render';
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
@@ -146,10 +146,10 @@ function renderMainNewsList(
 
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
   const arrayItem = refs.mainNewsList.children;
-  const arrayRead = load('read')
-  const arrayFav = load('favorite')
-  const readId = arrayRead.map(item => item.id)
-  const favId = arrayFav.map(item => item.id)
+	const arrayRead = load('read');
+	const arrayFav = load('favorite');
+	const readId = arrayRead.map(item => item.id);
+	const favId = arrayFav.map(item => item.id);
   console.log(favId);
 
   Array.from(arrayItem).map(item => {
@@ -160,7 +160,7 @@ function renderMainNewsList(
     }
     if (favId.includes(item.firstElementChild.id)) {
       const Btn = item.firstElementChild.firstElementChild.nextElementSibling.lastElementChild
-      Btn.firstElementChild.textContent = "Added to favorites";
+      Btn.firstElementChild.textContent = "Remove from favorites";
       Btn.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
       Btn.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
     }

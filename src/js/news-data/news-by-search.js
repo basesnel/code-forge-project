@@ -5,6 +5,8 @@ import Notiflix from 'notiflix';
 import { dateForRender } from './news-by-search-by-date';
 import { load } from '../locale-storage';
 import onWindowResize from './function-of-resize-render';
+import { getTotalNews } from '../pagination_m';
+
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 // Фото на випадок якщо немає фото у відповіді з серверу
@@ -184,7 +186,7 @@ function renderMainNewsList(docs) {
     }
     if (favId.includes(item.firstElementChild.id)) {
       const Btn = item.firstElementChild.firstElementChild.nextElementSibling.lastElementChild
-      Btn.firstElementChild.textContent = "Added to favorites";
+      Btn.firstElementChild.textContent = "Remove from favorites";
       Btn.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
       Btn.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
     }

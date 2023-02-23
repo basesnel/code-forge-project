@@ -11,6 +11,7 @@ export default (() => {
     //refs and variables
     const { favoriteList } = refs;
     const FAV_KEY = 'favorite';
+    const clickedLiArr = load(FAV_KEY); 
 
     // event listener
     favoriteList.addEventListener('click', onAddBtnClick);
@@ -18,32 +19,28 @@ export default (() => {
     //click handler
     function onAddBtnClick(e) {
        
-        if (e.target.classList.contains('js-to-fav') || e.target.nodeName === 'SPAN' || e.target.nodeName === 'svg') {
+        if (e.target.classList.contains('js-to-fav')) {
  
-            if (e.target.nodeName === 'SPAN') {    
+            e.target.firstElementChild.textContent = "Remove from favorites";
+            e.target.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
+            e.target.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
+            
+            e.target.classList.remove('js-to-fav');
+            e.target.classList.add('js-from-fav');
                 
-                e.target.textContent = "Added to favorites";
-                e.target.nextElementSibling.firstElementChild.setAttribute('fill', '#4b48da');
-                e.target.nextElementSibling.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
+            addLiToArrayInLS(e.target.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode);
 
-                addLiToArrayInLS(e.target.parentNode.parentNode.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode.parentNode);
-                
-            } else if (e.target.nodeName === 'BUTTON') {
+        } else if (e.target.classList.contains('js-from-fav')) {
 
-                e.target.firstElementChild.textContent = "Added to favorites";
-                e.target.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
-                e.target.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
-                
-                addLiToArrayInLS(e.target.parentNode.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode);
+            e.target.firstElementChild.textContent = "Add to favorites";
+            e.target.lastElementChild.firstElementChild.setAttribute('fill', 'none');
+            e.target.lastElementChild.firstElementChild.setAttribute('style', "stroke: var(--color1, #4440f7)");
 
-            } else if (e.target.nodeName === 'svg') {
-                e.target.previousElementSibling.textContent = "Added to favorites";
-                e.target.firstElementChild.setAttribute('fill', '#4b48da');
-                e.target.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
-                
-                addLiToArrayInLS(e.target.parentNode.parentNode.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode.parentNode);
-            }
-               
+            removeLiFromLS(e.target.parentNode.parentNode.id);
+
+            e.target.classList.remove('js-from-fav');
+            e.target.classList.add('js-to-fav');
+
         } else {
             console.log('you clicked outside the button');
             console.log(e.target)
@@ -57,16 +54,31 @@ export default (() => {
             save(FAV_KEY, []);
         }
 
-        const clickedLiArr = load(FAV_KEY); 
 
-        !clickedLiArr.find(obj => obj.id === targetLiID) 
+        !clickedLiArr.find(obj => obj.id === targetLiID)
             ? clickedLiArr.push({
                 dataString: targetLi.innerHTML,
                 id: targetLi.firstElementChild.getAttribute('id'),
             })
-            : Notiflix.Notify.warning('It is in favorites already');
+            : console.log(2);
         
     save(FAV_KEY, clickedLiArr);
+    }
+
+    function removeLiFromLS(targetLiID) {
+
+        if (load(FAV_KEY) === undefined) {
+            save(FAV_KEY, []);
+        }
+
+        clickedLiArr.splice(findLiToRemoveByID(targetLiID), 1);
+
+        save(FAV_KEY, clickedLiArr);
+
+    }
+
+    function findLiToRemoveByID(targetLiID) {
+        return clickedLiArr.findIndex(obj => obj.id === targetLiID);
     }
 });
 

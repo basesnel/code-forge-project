@@ -15,21 +15,15 @@ export default (() => {
 
     function onRemoveBtnClick(e) {
 
-        if (e.target.classList.contains('js-from-fav') || e.target.nodeName === 'SPAN' || e.target.nodeName === 'svg') {
+        if (e.target.classList.contains('js-from-fav')) {
 
             let dataArr = load(FAV_KEY);
 
-            if (e.target.nodeName === 'SPAN') {
-                dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.parentNode.id), 1);
-            } else if (e.target.nodeName === 'BUTTON') {
-                dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.id), 1);
-            } else if (e.target.nodeName === 'svg') {
-                dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.parentNode.id), 1);
-            }
-
+            dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.id), 1);
+        
             save(FAV_KEY, dataArr);
             
-            insertMarkupToUL(dataArr);
+            insertMarkupToUL(modifyData(dataArr));
 
         } else {
             console.log('you clicked outside the button');
@@ -42,26 +36,24 @@ export default (() => {
       return load(FAV_KEY).findIndex(obj => obj.id === cardID);
     }
 
-   function modifyData(dataArr) {
+  function modifyData(dataArr) {
        if (dataArr.length > 0) {
-            
-        return dataArr.map(obj =>
-                obj.dataString.replace("js-to-fav", "js-from-fav")
-                    .replace("Add to favorite", "Remove from favorite")
-                    .replace("add-fav-btn", "remove-fav-btn"));       
-            
+           
+           return dataArr.map(obj => obj.dataString);            
        } 
 
-       favList.innerHTML = " "; 
-    }
+       favList.innerHTML = ""; 
+    } 
 
-     // returns markup
-    function makeFavoriteMarkup(dataArr) {
-        return modifyData(dataArr).join("");  
-    }
 
-    function insertMarkupToUL(dataArr) {
-        favList.innerHTML = `<li class="favorite-item">${makeFavoriteMarkup(dataArr)}</li>`;
+    function insertMarkupToUL(markupArr) {
+        
+        if (markupArr !== undefined) {
+        favList.innerHTML = markupArr.reduce((list, markup) => {
+               return list + `<li class="favorite-item">${markup}</li>`
+            }, "");
+        }
+        
     }
     
 });
