@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
-import { load } from '../locale-storage'
+import { load } from '../locale-storage';
+import { getTotalNews } from '../pagination_m';
 import onWindowResize from './function-of-resize-render';
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
@@ -14,9 +15,10 @@ let results = null;
 let datesString = [];
 let selectedDate = null;
 let dateForRender = [];
+let amountOfFilterCards = 0;
 
 export function getResponseForFilterByDatePopular(response) {
-    results = response;
+	results = response;
 }
 
 export function getDatesPopular(requestDate) {
@@ -51,12 +53,13 @@ function filterByDate(currentDate) {
 }
 
 function renderMainNewsList() {
-  let markup = '';
+	let markup = '';
   if (results.length > newsPerPage) {
-      for (let i = 0; i < newsPerPage; i++) {
+	  for (let i = 0; i < newsPerPage; i++) {
+		  
          
         if (datesString[i] === selectedDate) {
-  
+			amountOfFilterCards += 1;
      markup += `<li class="list-news__item">
 		<div class="news-card" id="${results[i].asset_id}">
 			<span class="read-card-text visually-hidden"> Already read
@@ -102,52 +105,55 @@ function renderMainNewsList() {
   }
 
   else {
-      for (let i = 0; i = results.length; i++) {
+	  for (let i = 0; i = results.length; i++) {
+		  
           if (datesString[i] === selectedDate) {
-              
-    markup += `<li class="list-news__item">
+              amountOfFilterCards += 1;
+				markup += `<li class="list-news__item">
 
-  <div class="news-card" id="${results[i].asset_id}">
-  <img
-    class="news-card__image"
-    src="${
-      results[i].media.length == 0
-        ? DEFAULT_PHOTO
-        : results[i].media[0]['media-metadata'][2].url
-    }"
-    alt="${
-      results[i].media.length == 0
-        ? DEFAULT_CAPTION
-        : results[i].media[0].caption
-    }"
-    width="288"
-    height="395"
-  />
-  <p class="news-card__category">${results[i].section}</p>
-  <button type="button" class="js-to-fav">
-  <p class="news-card__add-favorite">Add to favorite</p>
-  <svg class="news-card__icon" width="16" height="16">
-      <use href=${'./sprite.f14d31f7.svg#icon-heart-transparent'}></use>
-    </svg>
-  </button>
-  <h3 class="news-card__title">
-    ${results[i].title}
-  </h3>
-  <p class="news-card__text">
-		${results[i].abstract}
-  </p>
-  <div class="news-card__details">
-    <a class="news-card__date-link link" href="">${dateForRender[i]}</a>
-    <a class="news-card__news-link link" href="${
-      results[i].url
-    }" target="_blank">Read more</a>
-  </div>
-</div>
+			<div class="news-card" id="${results[i].asset_id}">
+			<img
+				class="news-card__image"
+				src="${
+				results[i].media.length == 0
+					? DEFAULT_PHOTO
+					: results[i].media[0]['media-metadata'][2].url
+				}"
+				alt="${
+				results[i].media.length == 0
+					? DEFAULT_CAPTION
+					: results[i].media[0].caption
+				}"
+				width="288"
+				height="395"
+			/>
+			<p class="news-card__category">${results[i].section}</p>
+			<button type="button" class="js-to-fav">
+			<p class="news-card__add-favorite">Add to favorite</p>
+			<svg class="news-card__icon" width="16" height="16">
+				<use href=${'./sprite.f14d31f7.svg#icon-heart-transparent'}></use>
+				</svg>
+			</button>
+			<h3 class="news-card__title">
+				${results[i].title}
+			</h3>
+			<p class="news-card__text">
+					${results[i].abstract}
+			</p>
+			<div class="news-card__details">
+				<a class="news-card__date-link link" href="">${dateForRender[i]}</a>
+				<a class="news-card__news-link link" href="${
+				results[i].url
+				}" target="_blank">Read more</a>
+			</div>
+			</div>
 
-</li>`;
+			</li>`;
           }
     };
-  };
+	};
+	getTotalNews(amountOfFilterCards);
+
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
   const arrayItem = refs.mainNewsList.children;
   const arrayRead = load('read')

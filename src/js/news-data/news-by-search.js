@@ -5,6 +5,8 @@ import Notiflix from 'notiflix';
 import { dateForRender } from './news-by-search-by-date';
 import { load } from '../locale-storage';
 import onWindowResize from './function-of-resize-render';
+import { getTotalNews } from '../pagination_m';
+
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 // Фото на випадок якщо немає фото у відповіді з серверу
@@ -55,7 +57,8 @@ async function getResponse() {
 		      console.log(response);
           clearmainNewsListContainer();
           addData(response.response.docs);
-          filterData(response.response.docs)
+		filterData(response.response.docs);
+		getTotalNews(response.response.docs.length);
       renderMainNewsList(response.response.docs);
       
 	} catch (error) {
