@@ -12,12 +12,15 @@ export default (() => {
     const { favoriteList } = refs;
     const FAV_KEY = 'favorite';
     const clickedLiArr = load(FAV_KEY); 
+   
 
     // event listener
     favoriteList.addEventListener('click', onAddBtnClick);
     
     //click handler
     function onAddBtnClick(e) {
+
+        
        
         if (e.target.classList.contains('js-to-fav')) {
  
@@ -41,10 +44,7 @@ export default (() => {
             e.target.classList.remove('js-from-fav');
             e.target.classList.add('js-to-fav');
 
-        } else {
-            console.log('you clicked outside the button');
-            console.log(e.target)
-        }
+        } 
     }
 
 
@@ -55,13 +55,15 @@ export default (() => {
         }
 
 
-        !clickedLiArr.find(obj => obj.id === targetLiID)
-            ? clickedLiArr.push({
+        if (!clickedLiArr.find(obj => obj.id === targetLiID)) {
+            
+            clickedLiArr.push({
                 dataString: targetLi.innerHTML,
                 id: targetLi.firstElementChild.getAttribute('id'),
-            })
-            : console.log(2);
-        
+            });
+
+        }
+                   
     save(FAV_KEY, clickedLiArr);
     }
 

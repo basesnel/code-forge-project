@@ -15,14 +15,12 @@ import './js/news-data/news-category';
 import './js/news-data/news-search-by-category';
 import './js/weather';
 
-
+// import './js/pagination-m';
 
 import './js/news-data/news-popular';
 import './js/categories';
-// !---
-import './js/pagination_m';
-// !---
 
+// import './js/pagination_m';
 // DOM - weather rebuil position
 import './js/dom-rebuild';
 
@@ -37,14 +35,16 @@ favorite();
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
-const now = new Date()
-const dateWithoutTime = `${addLeadingZero(now.getDate())}/${addLeadingZero(now.getMonth()+1)}/${addLeadingZero(now.getFullYear())}`
+const now = new Date();
+const dateWithoutTime = `${addLeadingZero(now.getDate())}/${addLeadingZero(
+  now.getMonth() + 1
+)}/${addLeadingZero(now.getFullYear())}`;
 
-const list = document.querySelector('.js-list-new') 
+const list = document.querySelector('.js-list-new');
 const READ_KEY = 'read';
 
 list.addEventListener('click', onAddBtnClick);
-  
+
 function onAddBtnClick(e) {
     e.preventDefault()
     if (e.target.classList.contains('news-card__news-link')) {
@@ -79,4 +79,4 @@ if (load(READ_KEY) === undefined) {
 }
 
 
-
+import './js/pagination-v2';

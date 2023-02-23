@@ -1,94 +1,72 @@
 .pagination {
-}
-.pagination__list {
 	display: flex;
+	align-items: center;
 	justify-content: center;
-	align-items: center;
-	gap: 10px;
+}
 
-	@media screen and (min-width: $tablet) {
-		gap: 8px;
-	}
-}
-.pagination__item {
-}
-.pagination__btn {
+.pagination ul {
+	width: 500px;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
-	padding: 0 10px;
-	height: 28px;
-	gap: 2px;
+	justify-content: center;
+	padding: 8px;
+}
 
-	color: $text;
+.pagination ul li {
+	list-style: none;
+	padding-top: 4px;
+	padding-bottom: 5px;
+	text-align: center;
+	font-size: 16px;
+	line-height: 1.375;
+	font-weight: 500;
+	cursor: pointer;
+	user-select: none;
+	transition: all 0.3s ease;
+}
+
+.pagination ul li.numb {
+	list-style: none;
+	height: 31px;
+	width: 33px;
+	margin: 0 4px;
 	background-color: $dark-theme-text;
+	color: $text;
+
 	border: 1px solid $accent;
 	border-radius: 2px;
-
-	font-weight: 500;
-	font-size: 14px;
-	line-height: calc(19 / 14);
-
-	&:hover,
-	&:focus {
-		color: $dark-theme-text;
-		background-color: #4440f7;
-	}
-
-	@media screen and (min-width: $tablet) {
-		height: 31px;
-
-		font-size: 16px;
-		line-height: calc(22 / 16);
-	}
-}
-.pagination__icon {
-	display: flex;
-	// align-items: center;
-	// justify-content: center;
-}
-.pagination__text {
 }
 
-.pagination__item-numb {
+.pagination ul li.numb.first {
+	margin: 0px 3px 0 -5px;
 }
-.pagination__btn-numb {
-	width: 28px;
-	height: 28px;
 
-	color: $text;
+.pagination ul li.numb.last {
+	margin: 0px -5px 0 3px;
+}
+
+.pagination ul li.dots {
+	font-size: 22px;
+	cursor: default;
+}
+
+.pagination ul li.btn {
+	margin-left: 14px;
+	margin-right: 14px;
+	padding: 4px 20px 5px 20px;
+	height: 31px;
+	width: 82px;
 	background-color: $dark-theme-text;
-	border: 1px solid $accent;
+	color: $text;
+	border: 1px solid #4440f6;
 	border-radius: 2px;
-
-	font-weight: 500;
-	font-size: 14px;
-	line-height: calc(19 / 14);
-
-	&:hover,
-	&:focus {
-		color: $dark-theme-text;
-		background-color: #4440f7;
-	}
-
-	@media screen and (min-width: $tablet) {
-		width: 33px;
-		height: 31px;
-
-		font-size: 16px;
-		line-height: calc(22 / 16);
-	}
 }
 
-.current {
-	color: $dark-theme-text;
-	background-color: #4440f7;
-}
-
-.pagination__item-dots {
-}
-.pagination__dots {
-}
-.prev {
-}
-.next {
+.pagination li.active,
+.pagination ul li.numb:hover,
+.pagination ul li:first-child:hover,
+.pagination ul li:last-child:hover {
+	color: #fff;
+	background-color: #4440f6;
 }

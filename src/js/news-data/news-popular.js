@@ -1,6 +1,5 @@
 import { getDatesPopular } from './news-popular-by-date';
 import { getResponseForFilterByDatePopular } from './news-popular-by-date';
-import { getTotalNews } from '../pagination_m';
 import NewsApiService from '../api/news-main-api';
 import WeatherApiService from '../api/weater-service';
 import Notiflix from 'notiflix';
@@ -9,6 +8,11 @@ import { resize } from '../resize';
 import { dateForRender } from './news-popular-by-date';
 import { load } from '../locale-storage';
 import onWindowResize from './function-of-resize-render';
+
+
+// import { getTotalNews } from '../pagination_m';
+
+
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 // Фото на випадок якщо немає фото у відповіді з серверу
@@ -44,7 +48,7 @@ export default async function getResponsePopular() {
     console.log(response);
     addData(response.results);
     filterData(response.results);
-    getTotalNews(response.results.length);
+    // getTotalNews(response.results.length);
     let weatherPosition = resize();
     renderMainNewsList(weatherPosition, response.results, weather);
   } catch (error) {
@@ -101,7 +105,7 @@ function renderMainNewsList(
     if (i === weatherPosition) {
       markup += weatherMarkup;
     } else {
-		markup += `
+      markup += `
 		<li class="list-news__item">
 		<div class="news-card" id="${results[i].asset_id}">
 			<span class="read-card-text visually-hidden"> Already read
@@ -114,8 +118,16 @@ function renderMainNewsList(
 
 			<div class='news-card__image-wrapper'>
 				<img class="news-card__image"
-					src="${results[i].media.length == 0 ? DEFAULT_PHOTO : results[i].media[0]['media-metadata'][2].url}"
-					alt="${results[i].media.length == 0 ? DEFAULT_CAPTION : results[i].media[0].caption}"
+					src="${
+            results[i].media.length == 0
+              ? DEFAULT_PHOTO
+              : results[i].media[0]['media-metadata'][2].url
+          }"
+					alt="${
+            results[i].media.length == 0
+              ? DEFAULT_CAPTION
+              : results[i].media[0].caption
+          }"
 					height="395" />
 
 				<button type="button" class="js-to-fav add-fav-btn">
@@ -138,7 +150,9 @@ function renderMainNewsList(
 		</div>
 		<div class="news-card__details">
 			<span class="news-card__date">${dateForRender[i]}</span>
-			<a class="news-card__news-link link" href="${results[i].url}" target="_blank">Read more</a>
+			<a class="news-card__news-link link" href="${
+        results[i].url
+      }" target="_blank">Read more</a>
 		</div>
 	</li>`;
     }
@@ -160,6 +174,8 @@ function renderMainNewsList(
     }
     if (favId.includes(item.firstElementChild.id)) {
       const Btn = item.firstElementChild.firstElementChild.nextElementSibling.lastElementChild
+      Btn.classList.remove('js-to-fav');
+        Btn.classList.add('js-from-fav');
       Btn.firstElementChild.textContent = "Remove from favorites";
       Btn.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
       Btn.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
