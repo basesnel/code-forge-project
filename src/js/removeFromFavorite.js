@@ -19,14 +19,8 @@ export default (() => {
 
             let dataArr = load(FAV_KEY);
 
-            //if (e.target.nodeName === 'SPAN') {
-               // dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.parentNode.id), 1);
-             if (e.target.nodeName === 'BUTTON') {
-                dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.id), 1);
-            } //else if (e.target.nodeName === 'svg') {
-                dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.parentNode.id), 1);
-           // }
-
+            dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.id), 1);
+        
             save(FAV_KEY, dataArr);
             
             insertMarkupToUL(dataArr);
@@ -45,11 +39,7 @@ export default (() => {
    function modifyData(dataArr) {
        if (dataArr.length > 0) {
             
-        return dataArr.map(obj =>
-                obj.dataString.replace("js-to-fav", "js-from-fav")
-                    .replace("Add to favorite", "Remove from favorite")
-                    .replace("add-fav-btn", "remove-fav-btn"));       
-            
+           return dataArr.map(obj => obj.dataString);            
        } 
 
        favList.innerHTML = " "; 
