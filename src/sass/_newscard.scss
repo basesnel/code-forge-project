@@ -33,7 +33,8 @@
 //   padding: 16px 16px 16px 16px;
 // }
 
-.list-news {
+.list-news,
+.favorite-list {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 28px;
@@ -51,7 +52,8 @@
 	}
 }
 
-.list-news__item {
+.list-news__item,
+.favorite-item {
 	display: flex;
 	flex-direction: column;
 
