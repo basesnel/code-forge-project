@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
-import { load } from '../locale-storage'
+import { load } from '../locale-storage';
+import { getTotalNews } from '../pagination_m';
 import onWindowResize from './function-of-resize-render';
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
@@ -16,7 +17,7 @@ let selectedDate = null;
 let dateForRender = [];
 
 export function getResponseForFilterByDatePopular(response) {
-    results = response;
+	results = response;
 }
 
 export function getDatesPopular(requestDate) {
@@ -51,9 +52,11 @@ function filterByDate(currentDate) {
 }
 
 function renderMainNewsList() {
-  let markup = '';
+	let markup = '';
+	
   if (results.length > newsPerPage) {
-      for (let i = 0; i < newsPerPage; i++) {
+	  for (let i = 0; i < newsPerPage; i++) {
+		  
          
         if (datesString[i] === selectedDate) {
   
@@ -102,7 +105,8 @@ function renderMainNewsList() {
   }
 
   else {
-      for (let i = 0; i = results.length; i++) {
+	  for (let i = 0; i = results.length; i++) {
+		  
           if (datesString[i] === selectedDate) {
               
     markup += `<li class="list-news__item">

@@ -51,7 +51,7 @@ function filterByDate(currentDate) {
 }
 
 function renderMainNewsList() {
-  let markup = '';
+	let markup = '';
   if (docs.length > newsPerPage) {
       for (let i = 0; i < newsPerPage; i++) {
          

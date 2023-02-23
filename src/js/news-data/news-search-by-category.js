@@ -2,9 +2,11 @@ import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
 import { getDatesByCategory } from './news-search-by-category-by-date';
 import { getResponseForFilterByDateByCategory } from './news-search-by-category-by-date';
-import {load} from '../locale-storage'
+import { load } from '../locale-storage';
 import { dateForRender } from './news-search-by-category-by-date';
 import onWindowResize from './function-of-resize-render';
+import { getTotalNews } from '../pagination_m';
+
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 // Фото на випадок якщо немає фото у відповіді з серверу
@@ -49,6 +51,7 @@ async function getResponse() {
           console.log(response);
           addData(response.results);
 		filterData(response.results);
+		getTotalNews(response.results.length);
 			clearmainNewsListContainer();
           renderMainNewsList(response.results);
 	} catch (error) {
