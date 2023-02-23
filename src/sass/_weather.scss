@@ -5,56 +5,56 @@ $whitecolor: #fff;
 $txt-roboto: 'Roboto';
 
 .weather {
-  padding: 30px 25px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 288px;
+  height: 469px;
+  border-radius: 4px;
+  padding: 32px 36px;
+  font-family: 'Roboto';
   background-color: $accent;
   color: $whitecolor;
 
-  font-family: 'Roboto';
-
-  width: 288px;
-  height: 469px;
-
-  border-radius: 4px;
-
   @media screen and (min-width: $tablet) {
-    padding: 45px 53px 60px;
+    padding: 40px 32px 60px;
     width: 353px;
-    height: 675px;
+    height: 100%;
   }
 
   @media screen and (min-width: $desktop) {
-    padding: 45px 53px 60px;
+    padding: 40px 53px 60px;
     width: 395px;
-    height: 675px;
   }
 
   &__horisontal {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 40px;
+    // margin-bottom: 10px;
 
-    @media screen and (min-width: $tablet) {
-      margin-bottom: 60px;
-    }
+    // @media screen and (min-width: $tablet) {
+    //   margin-bottom: 60px;
+    // }
 
-    @media screen and (min-width: $desktop) {
-      margin-bottom: 90px;
-    }
+    // @media screen and (min-width: $desktop) {
+    //   margin-bottom: 90px;
+    // }
+  }
+
+  &__vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 
   &__temp {
     padding-right: 8px;
     border-right: 1px solid $whitecolor;
-    font-size: 48px;
-    line-height: 1.17;
+    font-size: 55px;
+    line-height: 1.16;
 
     @media screen and (min-width: $tablet) {
-      font-size: 56px;
-      line-height: 1.17;
-    }
-
-    @media screen and (min-width: $desktop) {
       font-size: 64px;
       line-height: 1.17;
     }
@@ -63,75 +63,87 @@ $txt-roboto: 'Roboto';
   &__desc,
   &__date {
     display: block;
-    width: 199px;
-    font-size: 18px;
-    line-height: 1.16;
+    font-size: 24px;
+    text-transform: capitalize;
+    line-height: 1.17;
 
     @media screen and (min-width: $tablet) {
-      font-size: 24px;
-      line-height: 1.17;
-    }
-
-    @media screen and (min-width: $desktop) {
-      font-size: 32px;
+      font-size: 36px;
       line-height: 1.17;
     }
   }
 
   &__date {
     text-align: center;
-    margin: 0 auto 28px;
+    // margin: 0 auto 28px;
+
+    // @media screen and (min-width: $tablet) {
+    //   margin-bottom: 48px;
+    // }
   }
 
   &__imgwrap {
-    width: 150px;
-    margin: 0 auto 20px;
+    width: 200px;
+    // margin: 0 auto;
 
     @media screen and (min-width: $tablet) {
-      width: 170px;
-      margin: 0 auto 25px;
+      width: 240px;
+      // margin: 0 auto 30px;
     }
 
     @media screen and (min-width: $desktop) {
-      width: 200px;
-      margin: 0 auto 30px;
+      width: 280px;
+      // margin: 0 auto 30px;
     }
   }
 
   &__city,
   &__week {
     display: block;
-    text-align: center;
-    padding: 10px 12px 9px;
+    padding: 9px 8px;
     background: rgba(254, 254, 255, 0.3);
     border-radius: 10px;
-    font-size: 16px;
-    line-height: 1.15;
+    font-size: 14px;
+    line-height: 1.14;
 
     @media screen and (min-width: $tablet) {
-      font-size: 18px;
-      line-height: 1.17;
-    }
-
-    @media screen and (min-width: $desktop) {
+      padding: 10px 12px 9px;
       font-size: 20px;
-      line-height: 1.17;
+      line-height: 1.15;
     }
   }
 
   &__week {
-    width: 177px;
+    text-align: center;
+    width: 130px;
     margin: 0 auto;
+
+    @media screen and (min-width: $tablet) {
+      width: 177px;
+    }
+  }
+
+  &__geo {
+    position: absolute;
+    top: 7px;
+    left: 9px;
+    width: 18px;
+    height: 18px;
+
+    @media screen and (min-width: $tablet) {
+      top: 6px;
+      width: 27px;
+      height: 27px;
+    }
   }
 
   &__city {
-    width: 50%;
-    @media screen and (min-width: $tablet) {
-      width: 60%;
-    }
+    position: relative;
+    display: inline;
+    padding-left: 30px;
 
     @media screen and (min-width: $tablet) {
-      width: 80%;
+      padding-left: 42px;
     }
   }
 }
