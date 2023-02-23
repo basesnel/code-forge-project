@@ -1,5 +1,6 @@
 import { getDatesPopular } from './news-popular-by-date';
 import { getResponseForFilterByDatePopular } from './news-popular-by-date';
+import { getTotalNews } from '../pagination_m';
 import NewsApiService from '../api/news-main-api';
 import WeatherApiService from '../api/weater-service';
 import Notiflix from 'notiflix';
@@ -7,11 +8,16 @@ import '../weather';
 import { resize } from '../resize';
 import { dateForRender } from './news-popular-by-date';
 import {load} from '../locale-storage'
-
+import onWindowResize from './function-of-resize-render';
+// кількість карток новин на сторінці
+const newsPerPage = onWindowResize();
+// Фото на випадок якщо немає фото у відповіді з серверу
 const DEFAULT_PHOTO =
   'https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png';
 const DEFAULT_CAPTION = 'photo';
 const dates = [];
+
+
 const popularApiService = new NewsApiService();
 
 // Object of Class WeatherApiService:
@@ -38,8 +44,9 @@ export default async function getResponsePopular() {
     console.log(response);
     addData(response.results);
     filterData(response.results);
+    getTotalNews(response.results.length);
     let weatherPosition = resize();
-    renderMainNewsListDesctop(weatherPosition, response.results, weather);
+    renderMainNewsList(weatherPosition, response.results, weather);
   } catch (error) {
     Notiflix.Notify.failure('Error, no popular response.');
     console.log(error);
@@ -60,7 +67,7 @@ function addData(results) {
 }
 
 // рендер карток
-function renderMainNewsListDesctop(
+function renderMainNewsList(
   weatherPosition,
   results,
   { temp, icon, description, country, city }
@@ -90,7 +97,7 @@ function renderMainNewsListDesctop(
   </div>
   </li>`;
 
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < newsPerPage; i++) {
     if (i === weatherPosition) {
       markup += weatherMarkup;
     } else {

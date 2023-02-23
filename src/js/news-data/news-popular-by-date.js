@@ -1,5 +1,8 @@
 import Notiflix from 'notiflix';
-import {load} from '../locale-storage'
+import { load } from '../locale-storage'
+import onWindowResize from './function-of-resize-render';
+// кількість карток новин на сторінці
+const newsPerPage = onWindowResize();
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
 const DEFAULT_CAPTION = "photo";
@@ -44,13 +47,13 @@ export function getCalendarDatePopular(currentDate) {
 function filterByDate(currentDate) {
     selectedDate = currentDate;
     clearmainNewsListContainer();
-    renderMainNewsListDesctop();
+    renderMainNewsList();
 }
 
-function renderMainNewsListDesctop() {
+function renderMainNewsList() {
   let markup = '';
-  if (results.length > 8) {
-      for (let i = 0; i < 8; i++) {
+  if (results.length > newsPerPage) {
+      for (let i = 0; i < newsPerPage; i++) {
          
         if (datesString[i] === selectedDate) {
   

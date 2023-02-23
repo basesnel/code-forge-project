@@ -3,8 +3,11 @@ import { getResponseForFilterByDateBySearch } from './news-by-search-by-date';
 import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
 import { dateForRender } from './news-by-search-by-date';
-
 import { load } from '../locale-storage';
+import onWindowResize from './function-of-resize-render';
+// кількість карток новин на сторінці
+const newsPerPage = onWindowResize();
+// Фото на випадок якщо немає фото у відповіді з серверу
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
 const DEFAULT_CAPTION = "photo";
@@ -53,7 +56,7 @@ async function getResponse() {
           clearmainNewsListContainer();
           addData(response.response.docs);
           filterData(response.response.docs)
-      renderMainNewsListDesctop(response.response.docs);
+      renderMainNewsList(response.response.docs);
       
 	} catch (error) {
       Notiflix.Notify.failure('No news by search.')
@@ -75,11 +78,11 @@ function addData(docs) {
 }
 
 // рендер карток
-function renderMainNewsListDesctop(docs) {
+function renderMainNewsList(docs) {
   let markup = '';
  console.log(docs);
-  if (docs.length >= 8) {
-    for (let i = 0; i < 8; i++) {
+  if (docs.length >= newsPerPage) {
+    for (let i = 0; i < newsPerPage; i++) {
 		markup += `
 		<li class="list-news__item">
 		<div class="news-card" id="${docs[i]._id}">
