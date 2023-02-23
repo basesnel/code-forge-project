@@ -1,6 +1,6 @@
 body {
-	transition: background-color ease 250ms, color ease 250ms, stroke ease 250ms, fill ease 250ms,
-		border-color ease 250ms;
+	transition: background-color 250ms ease, color 250ms ease, stroke 250ms ease, fill 250ms ease,
+		border-color 250ms ease;
 }
 
 body.dark {

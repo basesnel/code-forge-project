@@ -263,7 +263,7 @@ body.locked {
 	cursor: pointer;
 	overflow: hidden;
 
-	transition: background-color ease 250ms, border ease 250ms;
+	transition: background-color 250ms ease, border 250ms ease;
 
 	&::before {
 		content: "";
