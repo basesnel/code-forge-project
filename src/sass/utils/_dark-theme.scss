@@ -1,3 +1,8 @@
+body {
+	transition: background-color ease 250ms, color ease 250ms, stroke ease 250ms, fill ease 250ms,
+		border-color ease 250ms;
+}
+
 body.dark {
 	background-color: $dark-theme-bg;
 	color: $dark-theme-text;

@@ -263,6 +263,8 @@ body.locked {
 	cursor: pointer;
 	overflow: hidden;
 
+	transition: background-color ease 250ms, border ease 250ms;
+
 	&::before {
 		content: "";
 		position: absolute;
@@ -270,6 +272,8 @@ body.locked {
 		left: 1px;
 		width: 16px;
 		height: 16px;
+
+		transition: transform ease 250ms;
 
 		background-color: $switcher-accent;
 		border-radius: 50%;
