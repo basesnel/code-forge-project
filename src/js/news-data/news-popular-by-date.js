@@ -1,6 +1,8 @@
 import Notiflix from 'notiflix';
 import { load } from '../locale-storage';
-import { getTotalNews } from '../pagination_m';
+
+// import { getTotalNews } from '../pagination_m';
+
 import onWindowResize from './function-of-resize-render';
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
@@ -157,7 +159,7 @@ function renderMainNewsList() {
           }
     };
 	};
-	getTotalNews(amountOfFilterCards);
+	// getTotalNews(amountOfFilterCards);
 
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
   const arrayItem = refs.mainNewsList.children;
