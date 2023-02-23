@@ -9,7 +9,7 @@ export default class WeatherApiService {
     this.units = 'metric';
     this.appid = 'a211ca9158436d36e926661734874345';
     this.lang = 'en';
-    this.urlGeo = 'http://api.openweathermap.org/geo/1.0/direct';
+    this.urlGeo = 'https://api.openweathermap.org/geo/1.0/direct';
     this.limit = '5';
   }
 
