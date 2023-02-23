@@ -1,16 +1,36 @@
 <section class="newsgrid">
-  <h2 class="visually-hidden">News list</h2>
-  <div class="container news__container">
-    <ul class="list-news js-list-new">
-      <!-- место для динамического списка -->
-    </ul>
+	<h2 class="visually-hidden">News list</h2>
+	<div class="container news__container">
+		<ul class="list-news js-list-new">
+			<!-- место для динамического списка -->
+		</ul>
 
-          <!-- Кастомна пагінація від Макса -->
-          <div class="pagination">
-            <ul></ul>
-          </div>
-    <!-- <div class="page-container"> -->
-      <!-- <div class="pages">
+		<div class="page-container">
+			<button class="first-page" disabled>
+				<i class="fas fa-angle-double-left"></i>
+			</button>
+			<button class="prev-page" disabled>
+				<i class="fas fa-angle-left"></i>
+				Prev
+			</button>
+			<div id="pagination"></div>
+			<button class="next-page">
+				Next
+				<i class="fas fa-angle-right"></i>
+			</button>
+			<button class="last-page">
+				<i class="fas fa-angle-double-right"></i>
+			</button>
+		</div>
+	</div>
+
+	<!-- Кастомна пагінація від Макса -->
+	<!-- <div class="pagination">
+		<ul></ul>
+	</div> -->
+
+	<!-- <div class="page-container"> -->
+	<!-- <div class="pages">
         <button type="button" class="pages__btn btn-prev">
           <svg class="btn-prev__icon">
             <use href="./images/sprite.svg#icon-pagination-previous"></use>
@@ -39,7 +59,6 @@
           </svg>
         </button>
       </div> -->
-    <!-- </div> -->
-  </div>
+	<!-- </div> -->
+	</div>
 </section>
-
