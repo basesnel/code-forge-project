@@ -7,9 +7,11 @@ export default (() => {
 
     const refs = {
         favList: document.querySelector('.favorite-list'),
+        favEmpty: document.querySelector('.undefined'),
     }
 
-    const { favList } = refs;
+    const { favList, favEmpty } = refs;
+    
 
     favList.addEventListener('click', onRemoveBtnClick);
 
@@ -40,7 +42,9 @@ export default (() => {
        if (dataArr.length > 0) {
            
            return dataArr.map(obj => obj.dataString);            
-       } 
+       } else if (dataArr === undefined) {
+           favEmpty.classList.remove('visually-hidden');
+       }
 
        favList.innerHTML = ""; 
     } 
@@ -49,9 +53,18 @@ export default (() => {
     function insertMarkupToUL(markupArr) {
         
         if (markupArr !== undefined) {
+
+        favEmpty.classList.remove('visually-hidden');
+
         favList.innerHTML = markupArr.reduce((list, markup) => {
                return list + `<li class="favorite-item">${markup}</li>`
             }, "");
+        } 
+
+        if (favList.innerHTML === "") {
+            favEmpty.classList.remove('visually-hidden');
+        } else {
+            favEmpty.classList.add('visually-hidden');
         }
         
     }
