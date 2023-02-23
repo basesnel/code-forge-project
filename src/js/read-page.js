@@ -69,6 +69,50 @@ function onDataClick(e) {
 
             }
     }  
+    
+    if (e.target.classList.contains('read-list__data')) {
+        const cardDate = e.target.parentNode.nextElementSibling;
+        const arrayCardRead = load('read');
+        cardDate.classList.toggle('visually-hidden');
+        cardDate.innerHTML = arrayCardRead
+            .filter(item => {
+                if (item.dataRead === e.target.textContent) return item
+            })
+            .map(data => data.dataString)
+            .filter((item, index, arr) => { return arr.indexOf(item) === index
+            })
+            .join('')
+            
+        if (cardDate.classList.contains('visually-hidden')) {
+            e.target.nextElementSibling.setAttribute('viewBox', '0 0 32 32')
+            e.target.nextElementSibling.firstElementChild.setAttribute('d', 'M4.576 5.333l-3.509 3.247 14.933 13.819 14.933-13.819-3.509-3.248-11.424 10.549-11.424-10.549z')
+        } else {
+            e.target.nextElementSibling.setAttribute('viewBox', '0 0 30 32')
+            e.target.nextElementSibling.firstElementChild.setAttribute('d', 'M3.509 22.4l-3.509-3.247 14.933-13.819 14.933 13.819-3.509 3.247-11.424-10.549-11.424 10.549z')
+            }
+    }  
+
+    if (e.target.classList.contains('read-list__icon')) {
+        const cardDate = e.target.parentNode.nextElementSibling;
+        const arrayCardRead = load('read');
+        cardDate.classList.toggle('visually-hidden');
+        cardDate.innerHTML = arrayCardRead
+            .filter(item => {
+                if (item.dataRead === e.target.previousElementSibling.textContent) return item
+            })
+            .map(data => data.dataString)
+            .filter((item, index, arr) => { return arr.indexOf(item) === index
+            })
+            .join('')
+            
+        if (cardDate.classList.contains('visually-hidden')) {
+            e.target.setAttribute('viewBox', '0 0 32 32')
+            e.target.firstElementChild.setAttribute('d', 'M4.576 5.333l-3.509 3.247 14.933 13.819 14.933-13.819-3.509-3.248-11.424 10.549-11.424-10.549z')
+        } else {
+            e.target.setAttribute('viewBox', '0 0 30 32')
+            e.target.firstElementChild.setAttribute('d', 'M3.509 22.4l-3.509-3.247 14.933-13.819 14.933 13.819-3.509 3.247-11.424-10.549-11.424 10.549z')
+            }
+    }
 }
 
 function undefinedNews() {

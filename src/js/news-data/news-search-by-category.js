@@ -74,7 +74,7 @@ function renderMainNewsListDesctop(results) {
 	if (results.length >= 8) { 
   for (let i = 0; i < 8; i++) {
 	  markup += `
-	<li class="list-news__item" id="${results[i].uri}">
+	<li class="list-news__item">
 		<div class="news-card" id="${results[i].uri}">
 			<span class="read-card-text visually-hidden"> Already read
 				<svg width="18" heigth="18" viewBox="0 0 32 32">
@@ -158,12 +158,21 @@ function renderMainNewsListDesctop(results) {
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
   const arrayItem = refs.mainNewsList.children;
   const arrayRead = load('read')
+  const arrayFav = load('favorite')
   const readId = arrayRead.map(item => item.id)
+  const favId = arrayFav.map(item => item.id)
 
   Array.from(arrayItem).map(item => {
-	  if (readId.includes(item.firstElementChild.id)) {
-      item.firstElementChild.style.opacity = 0.7;
-      item.firstElementChild.firstElementChild.classList.remove('visually-hidden');
+    if (readId.includes(item.firstElementChild.id)) {
+      const card = item.firstElementChild;
+      card.style.opacity = 0.7;
+      card.firstElementChild.classList.remove('visually-hidden');
+    }
+    if (favId.includes(item.firstElementChild.id)) {
+      const Btn = item.firstElementChild.firstElementChild.nextElementSibling.lastElementChild
+      Btn.firstElementChild.textContent = "Added to favorites";
+      Btn.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
+      Btn.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
     }
   });
     return 
