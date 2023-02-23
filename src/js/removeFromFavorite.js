@@ -15,17 +15,17 @@ export default (() => {
 
     function onRemoveBtnClick(e) {
 
-        if (e.target.classList.contains('js-from-fav') || e.target.nodeName === 'SPAN' || e.target.nodeName === 'svg') {
+        if (e.target.classList.contains('js-from-fav')) {
 
             let dataArr = load(FAV_KEY);
 
-            if (e.target.nodeName === 'SPAN') {
-                dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.parentNode.id), 1);
-            } else if (e.target.nodeName === 'BUTTON') {
+            //if (e.target.nodeName === 'SPAN') {
+               // dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.parentNode.id), 1);
+             if (e.target.nodeName === 'BUTTON') {
                 dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.id), 1);
-            } else if (e.target.nodeName === 'svg') {
+            } //else if (e.target.nodeName === 'svg') {
                 dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.parentNode.id), 1);
-            }
+           // }
 
             save(FAV_KEY, dataArr);
             
