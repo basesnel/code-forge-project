@@ -55,12 +55,12 @@ export default (() => {
         }
 
 
-        !clickedLiArr.find(obj => obj.id === targetLiID) 
+        !clickedLiArr.find(obj => obj.id === targetLiID)
             ? clickedLiArr.push({
                 dataString: targetLi.innerHTML,
                 id: targetLi.firstElementChild.getAttribute('id'),
             })
-            : Notiflix.Notify.warning('It is in favorites already');
+            : console.log(2);
         
     save(FAV_KEY, clickedLiArr);
     }
