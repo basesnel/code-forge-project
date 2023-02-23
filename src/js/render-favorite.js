@@ -10,22 +10,24 @@ export default (() => {
     const { favList } = refs;
     const dataArr = load(FAV_KEY);
    
-    insertMarkupToUL();
+    insertMarkupToUL(modifyData(dataArr));
 
     //returns array of strings
-    function modifyData() {
+    function modifyData(dataArr) {
         if (dataArr !== undefined) {
             return dataArr.map(obj =>
                 obj.dataString);    
       }    
     }
 
-    // returns markup
-    function makeFavoriteMarkup() {
-        return modifyData().join("");  
-    }
 
-    function insertMarkupToUL() {
-        favList.insertAdjacentHTML('beforeend', `<li class="favorite-item">${makeFavoriteMarkup()}</li>`);
+    function insertMarkupToUL(markupArr) {
+        
+        if (markupArr !== undefined) {
+        favList.innerHTML = markupArr.reduce((list, markup) => {
+               return list + `<li class="favorite-item">${markup}</li>`
+            }, "");
+        }
+
     }
 });
