@@ -105,7 +105,7 @@ function renderMainNewsList() {
   }
 
   else {
-      for (let i = 0; i = docs.length; i++) {
+      for (let i = 0; i < docs.length; i++) {
         if (datesString[i] === selectedDate) {
 			amountOfFilterCards += 1;
 			markup += `

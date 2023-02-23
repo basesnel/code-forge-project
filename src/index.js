@@ -68,7 +68,16 @@ function addLiToArrayInLS(targetLi) {
     save(READ_KEY, arr);
 }
 
+const FAV_KEY = 'favorite';
 
+
+if (load(FAV_KEY) === undefined) {
+  save(FAV_KEY, []);
+} 
+
+if (load(READ_KEY) === undefined) {
+  save(READ_KEY, []);
+}
 
 
 
