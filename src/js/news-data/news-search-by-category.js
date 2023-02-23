@@ -174,7 +174,9 @@ function renderMainNewsList(results) {
       card.firstElementChild.classList.remove('visually-hidden');
     }
     if (favId.includes(item.firstElementChild.id)) {
-      const Btn = item.firstElementChild.firstElementChild.nextElementSibling.lastElementChild
+		const Btn = item.firstElementChild.firstElementChild.nextElementSibling.lastElementChild
+		Btn.classList.remove('js-to-fav');
+        Btn.classList.add('js-from-fav');
       Btn.firstElementChild.textContent = "Remove from favorites";
       Btn.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
       Btn.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");

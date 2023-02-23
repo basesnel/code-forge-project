@@ -1,8 +1,9 @@
-import { load } from "../js/locale-storage";
+import { load, save } from "../js/locale-storage";
 import mobileMenu from '../js/mobile-menu';
 import headerResponsive from '../js/headerResponsive';
 import './news-data/news-by-search';
 import '../js/switcher-theme';
+
 
 mobileMenu();
 headerResponsive();
@@ -59,15 +60,15 @@ function onDataClick(e) {
             .filter((item, index, arr) => { return arr.indexOf(item) === index
             })
             .join('')
-            
+        
+        
         if (cardDate.classList.contains('visually-hidden')) {
             e.target.lastElementChild.setAttribute('viewBox', '0 0 32 32')
             e.target.lastElementChild.firstElementChild.setAttribute('d', 'M4.576 5.333l-3.509 3.247 14.933 13.819 14.933-13.819-3.509-3.248-11.424 10.549-11.424-10.549z')
         } else {
             e.target.lastElementChild.setAttribute('viewBox', '0 0 30 32')
             e.target.lastElementChild.firstElementChild.setAttribute('d', 'M3.509 22.4l-3.509-3.247 14.933-13.819 14.933 13.819-3.509 3.247-11.424-10.549-11.424 10.549z')
-
-            }
+        }
     }  
     
     if (e.target.classList.contains('read-list__data')) {
@@ -113,9 +114,86 @@ function onDataClick(e) {
             e.target.firstElementChild.setAttribute('d', 'M3.509 22.4l-3.509-3.247 14.933-13.819 14.933 13.819-3.509 3.247-11.424-10.549-11.424 10.549z')
             }
     }
+    
+    if (e.target.classList.contains('js-to-fav')) {
+ 
+            e.target.firstElementChild.textContent = "Remove from favorites";
+            e.target.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
+            e.target.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
+            
+            e.target.classList.remove('js-to-fav');
+            e.target.classList.add('js-from-fav');
+                
+            addLiToArrayInLS(e.target.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode);
+
+        } else if (e.target.classList.contains('js-from-fav')) {
+
+            e.target.firstElementChild.textContent = "Add to favorites";
+            e.target.lastElementChild.firstElementChild.setAttribute('fill', 'none');
+            e.target.lastElementChild.firstElementChild.setAttribute('style', "stroke: var(--color1, #4440f7)");
+
+            removeLiFromLS(e.target.parentNode.parentNode.id);
+
+            e.target.classList.remove('js-from-fav');
+            e.target.classList.add('js-to-fav');
+
+    } 
+
+    const arrayItem = refs.readList.firstElementChild.lastElementChild.children;
+	const arrayFav = load('favorite');
+	const favId = arrayFav.map(item => item.id);
+
+  Array.from(arrayItem).map(item => {
+    if (favId.includes(item.firstElementChild.id)) {
+        const Btn = item.firstElementChild.firstElementChild.nextElementSibling.lastElementChild
+        Btn.classList.remove('js-to-fav');
+        Btn.classList.add('js-from-fav');
+      Btn.firstElementChild.textContent = "Remove from favorites";
+      Btn.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
+      Btn.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
+    }
+  });
 }
+    
+    const FAV_KEY = 'favorite';
+    const clickedLiArr = load(FAV_KEY); 
+    
+     function addLiToArrayInLS(targetLiID, targetLi) {
+        
+        if (load(FAV_KEY) === undefined) {
+            save(FAV_KEY, []);
+        }
+
+
+        if (!clickedLiArr.find(obj => obj.id === targetLiID)) {
+             clickedLiArr.push({
+                 dataString: targetLi.innerHTML,
+                 id: targetLi.firstElementChild.getAttribute('id')
+             })
+        } 
+            
+        
+    save(FAV_KEY, clickedLiArr);
+    }
+
+    function removeLiFromLS(targetLiID) {
+
+        if (load(FAV_KEY) === undefined) {
+            save(FAV_KEY, []);
+        }
+
+        clickedLiArr.splice(findLiToRemoveByID(targetLiID), 1);
+
+        save(FAV_KEY, clickedLiArr);
+
+}
+    
+function findLiToRemoveByID(targetLiID) {
+        return clickedLiArr.findIndex(obj => obj.id === targetLiID);
+    }
 
 function undefinedNews() {
     return refs.undefinedThumb.classList.remove('visually-hidden')
 }
+
 
