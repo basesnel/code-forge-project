@@ -23,7 +23,7 @@ export default (() => {
         
             save(FAV_KEY, dataArr);
             
-            insertMarkupToUL(dataArr);
+            insertMarkupToUL(modifyData(dataArr));
 
         } else {
             console.log('you clicked outside the button');
@@ -36,22 +36,24 @@ export default (() => {
       return load(FAV_KEY).findIndex(obj => obj.id === cardID);
     }
 
-   function modifyData(dataArr) {
+  function modifyData(dataArr) {
        if (dataArr.length > 0) {
-            
+           
            return dataArr.map(obj => obj.dataString);            
        } 
 
-       favList.innerHTML = " "; 
-    }
+       favList.innerHTML = ""; 
+    } 
 
-     // returns markup
-    function makeFavoriteMarkup(dataArr) {
-        return modifyData(dataArr).join("");  
-    }
 
-    function insertMarkupToUL(dataArr) {
-        favList.innerHTML = `<li class="favorite-item">${makeFavoriteMarkup(dataArr)}</li>`;
+    function insertMarkupToUL(markupArr) {
+        
+        if (markupArr !== undefined) {
+        favList.innerHTML = markupArr.reduce((list, markup) => {
+               return list + `<li class="favorite-item">${markup}</li>`
+            }, "");
+        }
+        
     }
     
 });
