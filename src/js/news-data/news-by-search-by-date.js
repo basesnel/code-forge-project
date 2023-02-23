@@ -2,7 +2,8 @@ import Notiflix from 'notiflix';
 import { load } from '../locale-storage';
 import onWindowResize from './function-of-resize-render';
 
-import { getTotalNews } from '../pagination_m';
+// import { getTotalNews } from '../pagination_m';
+
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
@@ -151,7 +152,7 @@ function renderMainNewsList() {
           }
     };
 	};
-	getTotalNews(amountOfFilterCards);
+	// getTotalNews(amountOfFilterCards);
     refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
   const arrayItem = refs.mainNewsList.children;
   const arrayRead = load('read')

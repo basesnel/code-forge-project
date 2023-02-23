@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>News</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./sass/index.scss" />
-  </head>
 
-  <body>
-    <include src="./partials/header.html"></include>
-    <main>
-      <h1 class="visually-hidden">News</h1>
-      <include src="./partials/categories_calendar.html"></include>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>News</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
+		rel="stylesheet" />
+	<link rel="stylesheet" href="./sass/index.scss" />
+</head>
 
-      <include src="./partials/newsgrid.html"></include>
-    </main>
-    <include src="./partials/footer.html"></include>
-    <!-- <button id="find-me" class="visually-hidden">Show my location</button><br /> -->
+<body>
+	<include src="./partials/header.html"></include>
+	<main>
+		<h1 class="visually-hidden">News</h1>
+		<include src="./partials/categories_calendar.html"></include>
 
-    <!-- <div class="js-weather"></div> -->
+		<include src="./partials/newsgrid.html"></include>
+	</main>
+	<include src="./partials/footer.html"></include>
+	<!-- <button id="find-me" class="visually-hidden">Show my location</button><br /> -->
 
-    <!-- <include src="./partials/example.html"></include> -->
-    <script type="module" src="./index.js"></script>
-  </body>
+	<!-- <div class="js-weather"></div> -->
+
+	<!-- <include src="./partials/example.html"></include> -->
+	<script type="module" src="./index.js"></script>
+	<script src="./js/pagination-m.js"></script>
+</body>
+
 </html>

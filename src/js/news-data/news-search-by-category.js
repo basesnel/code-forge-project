@@ -5,7 +5,8 @@ import { getResponseForFilterByDateByCategory } from './news-search-by-category-
 import { load } from '../locale-storage';
 import { dateForRender } from './news-search-by-category-by-date';
 import onWindowResize from './function-of-resize-render';
-import { getTotalNews } from '../pagination_m';
+
+// import { getTotalNews } from '../pagination_m';
 
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
@@ -51,7 +52,7 @@ async function getResponse() {
           console.log(response);
           addData(response.results);
 		filterData(response.results);
-		getTotalNews(response.results.length);
+		// getTotalNews(response.results.length);
 			clearmainNewsListContainer();
           renderMainNewsList(response.results);
 	} catch (error) {
