@@ -21,7 +21,7 @@ import './js/news-data/news-popular';
 import './js/categories';
 
 // !---
-import './js/pagination_m';
+// import './js/pagination_m';
 // !---
 
 // DOM - weather rebuil position

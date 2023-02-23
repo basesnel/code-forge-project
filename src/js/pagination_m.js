@@ -5,27 +5,27 @@ import { async } from 'regenerator-runtime';
 const newsPerPage = onWindowResize();
 
 // Визначення кількості сторінок
-export function getTotalNews(data) {
-	// let totalItem = data;
-	// let elementsInPages = newsPerPage;
+// export function getTotalNews(data) {
+// 	// let totalItem = data;
+// 	// let elementsInPages = newsPerPage;
 
-	const ulTag = document.querySelector('.pagination__list');
+// 	const ulTag = document.querySelector('.pagination__list');
 
-	function element(totalPages, pages) {
-		let liTag = '';
-		if (page > 1) {
-			liTag = `
-			<li class="pagination__item">
-				<button class="pagination__btn prev">
-					<svg class="pagination__icon" width="24" height="24">
-						<use href="./images/sprite.svg#icon-pagination-previous"></use>
-					</svg>
-					<span class="pagination__text">Prev</span>
-				</button>
-			</li>`;
-		}
+// 	function element(totalPages, pages) {
+// 		let liTag = '';
+// 		if (page > 1) {
+// 			liTag = `
+// 			<li class="pagination__item">
+// 				<button class="pagination__btn prev">
+// 					<svg class="pagination__icon" width="24" height="24">
+// 						<use href="./images/sprite.svg#icon-pagination-previous"></use>
+// 					</svg>
+// 					<span class="pagination__text">Prev</span>
+// 				</button>
+// 			</li>`;
+// 		}
 
-		ulTag.innerHTML = liTag;
-	}
-	element(20, 5);
-}
+// 		// ulTag.innerHTML = liTag;
+// 	}
+// 	element(20, 5);
+// }
