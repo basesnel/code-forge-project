@@ -273,6 +273,8 @@ body.locked {
 		width: 16px;
 		height: 16px;
 
+		transition: transform ease 250ms;
+
 		background-color: $switcher-accent;
 		border-radius: 50%;
 	}
