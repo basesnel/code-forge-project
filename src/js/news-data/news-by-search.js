@@ -81,7 +81,7 @@ function renderMainNewsListDesctop(docs) {
   if (docs.length >= 8) {
     for (let i = 0; i < 8; i++) {
 		markup += `
-		<li class="list-news__item">
+		<li class="list-news__item" id="${docs[i]._id}">
 		<div class="news-card" id="${docs[i]._id}">
 			<span class="read-card-text visually-hidden"> Already read
 				<svg width="18" heigth="18" viewBox="0 0 32 32">

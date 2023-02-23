@@ -58,7 +58,7 @@ function renderMainNewsListDesctop() {
         if (datesString[i] === selectedDate) {
             
 			markup += `
-			<li class="list-news__item">
+			<li class="list-news__item" id="${results[i].uri}">
 				<div class="news-card" id="${results[i].uri}">
 					<span class="read-card-text visually-hidden"> Already read
 						<svg width="18" heigth="18" viewBox="0 0 32 32">

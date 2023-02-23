@@ -11,33 +11,39 @@ export default (() => {
     //refs and variables
     const { favoriteList } = refs;
     const FAV_KEY = 'favorite';
-   // let clickedLiArr = [];
 
     // event listener
     favoriteList.addEventListener('click', onAddBtnClick);
-    //const dataStringArray = load(FAV_KEY).flatMap(obj => obj.dataString);
     
     //click handler
     function onAddBtnClick(e) {
        
-        if (e.target.classList.contains('js-to-fav')) {
-            
-            let targetLiClasses = e.target.parentNode.parentNode.classList;
-
-            if (targetLiClasses.contains('favorite-chosen')) {
+        if (e.target.classList.contains('js-to-fav') || e.target.nodeName === 'SPAN' || e.target.nodeName === 'svg') {
+ 
+            if (e.target.nodeName === 'SPAN') {    
                 
-                Notiflix.Notify.warning('It is in favorites already');
-            } else {
+                e.target.textContent = "Added to favorites";
+                e.target.nextElementSibling.firstElementChild.setAttribute('fill', '#4b48da');
+                e.target.nextElementSibling.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
 
-                const heart = e.target.nextElementSibling.firstElementChild;
-                heart.setAttribute('fill', '#4b48da');
-                heart.setAttribute('style', "fill: var(--color1, #4b48da)");
-                //heart.parentNode.previousElementSibling.textContent = "Added to favorites";
-                e.target.textContent = "Added to favorites"
-                addLiToArrayInLS(e, targetLiClasses);   
-               
+                addLiToArrayInLS(e.target.parentNode.parentNode.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode.parentNode);
+                
+            } else if (e.target.nodeName === 'BUTTON') {
+
+                e.target.firstElementChild.textContent = "Added to favorites";
+                e.target.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
+                e.target.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
+                
+                addLiToArrayInLS(e.target.parentNode.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode);
+
+            } else if (e.target.nodeName === 'svg') {
+                e.target.previousElementSibling.textContent = "Added to favorites";
+                e.target.firstElementChild.setAttribute('fill', '#4b48da');
+                e.target.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
+                
+                addLiToArrayInLS(e.target.parentNode.parentNode.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode.parentNode);
             }
-                        
+               
         } else {
             console.log('you clicked outside the button');
             console.log(e.target)
@@ -45,29 +51,23 @@ export default (() => {
     }
 
 
-    function addLiToArrayInLS(e, targetLiClasses) {
-
+    function addLiToArrayInLS(targetLiID, targetLi) {
+        
         if (load(FAV_KEY) === undefined) {
             save(FAV_KEY, []);
         }
 
-    const clickedLiArr = load(FAV_KEY); 
-    targetLiClasses.add('clicked');
-    
-    let clickedLi = Array.from(e.currentTarget.children).find(li => li.classList.contains('clicked'));
+        const clickedLiArr = load(FAV_KEY); 
+
+        !clickedLiArr.find(obj => obj.id === targetLiID) 
+            ? clickedLiArr.push({
+                dataString: targetLi.innerHTML,
+                id: targetLi.getAttribute('id'),
+            })
+            : Notiflix.Notify.warning('It is in favorites already');
         
-        clickedLiArr.push({
-            dataString: clickedLi.innerHTML,
-            id: clickedLi.firstElementChild.getAttribute('id'),
-        });
-           
     save(FAV_KEY, clickedLiArr);
-
-    targetLiClasses.remove('clicked');
-    targetLiClasses.add('favorite-chosen');
-
-   // return clickedLiArr;
-}
+    }
 });
 
 
