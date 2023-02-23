@@ -6,7 +6,7 @@ import Notiflix from 'notiflix';
 import '../weather';
 import { resize } from '../resize';
 import { dateForRender } from './news-popular-by-date';
-import {load} from '../locale-storage'
+import { load } from '../locale-storage';
 
 const DEFAULT_PHOTO =
   'https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png';
@@ -94,7 +94,7 @@ function renderMainNewsListDesctop(
     if (i === weatherPosition) {
       markup += weatherMarkup;
     } else {
-		markup += `
+      markup += `
 		<li class="list-news__item">
 		<div class="news-card" id="${results[i].asset_id}">
 			<span class="read-card-text visually-hidden"> Already read
@@ -107,8 +107,16 @@ function renderMainNewsListDesctop(
 
 			<div class='news-card__image-wrapper'>
 				<img class="news-card__image"
-					src="${results[i].media.length == 0 ? DEFAULT_PHOTO : results[i].media[0]['media-metadata'][2].url}"
-					alt="${results[i].media.length == 0 ? DEFAULT_CAPTION : results[i].media[0].caption}"
+					src="${
+            results[i].media.length == 0
+              ? DEFAULT_PHOTO
+              : results[i].media[0]['media-metadata'][2].url
+          }"
+					alt="${
+            results[i].media.length == 0
+              ? DEFAULT_CAPTION
+              : results[i].media[0].caption
+          }"
 					height="395" />
 
 				<button type="button" class="js-to-fav add-fav-btn">
@@ -131,7 +139,9 @@ function renderMainNewsListDesctop(
 		</div>
 		<div class="news-card__details">
 			<span class="news-card__date">${dateForRender[i]}</span>
-			<a class="news-card__news-link link" href="${results[i].url}" target="_blank">Read more</a>
+			<a class="news-card__news-link link" href="${
+        results[i].url
+      }" target="_blank">Read more</a>
 		</div>
 	</li>`;
     }
@@ -139,13 +149,15 @@ function renderMainNewsListDesctop(
 
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
   const arrayItem = refs.mainNewsList.children;
-  const arrayRead = load('read')
-  const readId = arrayRead.map(item => item.id)
+  const arrayRead = load('read');
+  const readId = arrayRead.map(item => item.id);
 
   Array.from(arrayItem).map(item => {
     if (readId.includes(item.firstElementChild.id)) {
       item.firstElementChild.style.opacity = 0.5;
-      item.firstElementChild.firstElementChild.classList.remove('visually-hidden');
+      item.firstElementChild.firstElementChild.classList.remove(
+        'visually-hidden'
+      );
     }
   });
   return;

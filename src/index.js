@@ -15,7 +15,7 @@ import './js/news-data/news-category';
 import './js/news-data/news-search-by-category';
 import './js/weather';
 
-// import './js/pagination_m';
+// import './js/pagination-m';
 
 import './js/news-data/news-popular';
 import './js/categories';
@@ -36,36 +36,39 @@ favorite();
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
-const now = new Date()
-const dateWithoutTime = `${addLeadingZero(now.getDate())}/${addLeadingZero(now.getMonth()+1)}/${addLeadingZero(now.getFullYear())}`
+const now = new Date();
+const dateWithoutTime = `${addLeadingZero(now.getDate())}/${addLeadingZero(
+  now.getMonth() + 1
+)}/${addLeadingZero(now.getFullYear())}`;
 
-const list = document.querySelector('.js-list-new') 
+const list = document.querySelector('.js-list-new');
 const READ_KEY = 'read';
 
 list.addEventListener('click', onAddBtnClick);
-  
+
 function onAddBtnClick(e) {
-    e.preventDefault()
-    if (e.target.classList.contains('news-card__news-link')) {
-        let targetLi = e.target.parentNode.parentNode.parentNode;
-        targetLi.firstElementChild.firstElementChild.classList.remove('visually-hidden')
-        targetLi.style.opacity = 0.5;
-        addLiToArrayInLS(targetLi);
-    }
+  e.preventDefault();
+  if (e.target.classList.contains('news-card__news-link')) {
+    let targetLi = e.target.parentNode.parentNode.parentNode;
+    targetLi.firstElementChild.firstElementChild.classList.remove(
+      'visually-hidden'
+    );
+    targetLi.style.opacity = 0.5;
+    addLiToArrayInLS(targetLi);
+  }
 }
 
 function addLiToArrayInLS(targetLi) {
   if (load(READ_KEY) === undefined) {
     save(READ_KEY, []);
-    }
-    const id = targetLi.firstElementChild.getAttribute('id');
-    let data = { dataRead: dateWithoutTime, dataString: targetLi.innerHTML, id: id}
-    const arr = load(READ_KEY)
-    arr.push(data);
-    save(READ_KEY, arr);
+  }
+  const id = targetLi.firstElementChild.getAttribute('id');
+  let data = {
+    dataRead: dateWithoutTime,
+    dataString: targetLi.innerHTML,
+    id: id,
+  };
+  const arr = load(READ_KEY);
+  arr.push(data);
+  save(READ_KEY, arr);
 }
-
-
-
-
-
