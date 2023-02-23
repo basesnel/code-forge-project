@@ -76,7 +76,9 @@ function weatherDetails({ temp, icon, description, country, city }) {
     <span class="weather__date">${getDataToFormat()}</span>
     <span class="weather__week">weather for week</span>`;
 
-  weatherBlock.innerHTML = weatherMarkup;
+  if (weatherBlock) {
+    weatherBlock.innerHTML = weatherMarkup;
+  }
 }
 
 function getDataToFormat() {
