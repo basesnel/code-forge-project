@@ -16,9 +16,7 @@ export default (() => {
     function modifyData() {
         if (dataArr !== undefined) {
             return dataArr.map(obj =>
-                obj.dataString.replace("js-to-fav", "js-from-fav")
-                    .replace("news-card__add-favorite", "news-card__remove-favorite")
-                    .replace("Added to favorites", "Remove from favorites"));       
+                obj.dataString);    
       }    
     }
 
