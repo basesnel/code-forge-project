@@ -62,7 +62,7 @@ export default (() => {
         !clickedLiArr.find(obj => obj.id === targetLiID) 
             ? clickedLiArr.push({
                 dataString: targetLi.innerHTML,
-                id: targetLi.getAttribute('id'),
+                id: targetLi.firstElementChild.getAttribute('id'),
             })
             : Notiflix.Notify.warning('It is in favorites already');
         
