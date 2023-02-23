@@ -1,6 +1,8 @@
 import Notiflix from 'notiflix';
 import { load } from '../locale-storage'
 import onWindowResize from './function-of-resize-render';
+
+import { getTotalNews } from '../pagination_m';
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
@@ -13,6 +15,7 @@ let results = null;
 let datesString = [];
 let selectedDate = null;
 let dateForRender = [];
+let amountOfFilterCards = 0;
 
 export function getResponseForFilterByDateByCategory(response) {
     results = response;;
@@ -55,7 +58,7 @@ function renderMainNewsList() {
       for (let i = 0; i < newsPerPage; i++) {
          
         if (datesString[i] === selectedDate) {
-            
+			amountOfFilterCards += 1;
 			markup += `
 			<li class="list-news__item">
 				<div class="news-card" id="${results[i].uri}">
@@ -99,7 +102,8 @@ function renderMainNewsList() {
 
   else {
       for (let i = 0; i < results.length; i++) {
-          if (datesString[i] === selectedDate) {
+		  if (datesString[i] === selectedDate) {
+			  amountOfFilterCards += 1;
 			  markup += `
 				<li class="list-news__item">
 				<div class="news-card" id="${results[i].uri}">
@@ -139,7 +143,9 @@ function renderMainNewsList() {
 			</li>`;
           }
     };
-  };
+	};
+	getTotalNews(amountOfFilterCards);
+
     refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
   const arrayItem = refs.mainNewsList.children;
   const arrayRead = load('read')
