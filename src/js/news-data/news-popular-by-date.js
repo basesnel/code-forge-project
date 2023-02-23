@@ -41,8 +41,13 @@ export function getDatesPopular(requestDate) {
 }
 
 export function getCalendarDatePopular(currentDate) {
-    if (results) {
-       filterByDate(currentDate); 
+	if (results) {
+		try {
+			filterByDate(currentDate); 
+		} catch (error) {
+			console.log(error);
+		}
+       
     }
 }
 
@@ -105,7 +110,7 @@ function renderMainNewsList() {
   }
 
   else {
-	  for (let i = 0; i = results.length; i++) {
+	  for (let i = 0; i < results.length; i++) {
 		  
           if (datesString[i] === selectedDate) {
               amountOfFilterCards += 1;
