@@ -52,11 +52,11 @@ function onSearch(e) {
 async function getResponse() {
     try {
         const response = await searchApiService.getNewsBySearch();
-		      console.log(response);
-          clearmainNewsListContainer();
-          addData(response.response.docs);
-          filterData(response.response.docs)
-      renderMainNewsList(response.response.docs);
+			console.log(response);
+        	clearmainNewsListContainer();
+        	addData(response.response.docs);
+        	filterData(response.response.docs)
+        	renderMainNewsList(response.response.docs);
       
 	} catch (error) {
       Notiflix.Notify.failure('No news by search.')
@@ -80,7 +80,6 @@ function addData(docs) {
 // рендер карток
 function renderMainNewsList(docs) {
   let markup = '';
- console.log(docs);
   if (docs.length >= newsPerPage) {
     for (let i = 0; i < newsPerPage; i++) {
 		markup += `
