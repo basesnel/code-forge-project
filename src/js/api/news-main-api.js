@@ -8,8 +8,9 @@ export default class NewsApiService {
     constructor(newsPerPage) { 
         this.searchQuery = '';
         this.searchCategory = '';
-        this.page = 1;
+        this.page = 0;
         this.newsPerPage = newsPerPage;
+        this.searchDate = '';
     }
     
     async createRequest(urlPath) {
@@ -28,7 +29,7 @@ export default class NewsApiService {
     }
 
     async getNewsBySearch() {
-        return this.createRequest(`search/v2/articlesearch.json?q=${this.searchQuery}&${KEY}&page=${this.page}`)
+        return this.createRequest(`search/v2/articlesearch.json?q=${this.searchQuery}&${KEY}&page=${this.page}${this.searchDate}`)
     }
 
     async getNewsCategoryList() {
@@ -46,7 +47,7 @@ export default class NewsApiService {
     }
 
     resetPage() {
-        this.page = 1;
+        this.page = 0;
     }
 
 get query(){
@@ -55,7 +56,14 @@ get query(){
 set query(newQuery){
 this.searchQuery=newQuery;
     }
-    
+
+get date(){
+    return this.date;
+}
+set date(newDate){
+this.searchDate=newDate;
+    }    
+
 get category(){
     return this.category;
 }

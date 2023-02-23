@@ -1,20 +1,21 @@
-import { getDatesBySearch } from './news-by-search-by-date';
-import { getResponseForFilterByDateBySearch } from './news-by-search-by-date';
 import NewsApiService from '../api/news-main-api'
 import Notiflix from 'notiflix';
-import { dateForRender } from './news-by-search-by-date';
+import { getDatesBySearch } from './news-by-search-by-date';
+import { getResponseForFilterByDateBySearch } from './news-by-search-by-date';
 import { load } from '../locale-storage';
 import onWindowResize from './function-of-resize-render';
 import { getTotalNews } from '../pagination_m';
-
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 // Фото на випадок якщо немає фото у відповіді з серверу
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
 const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
 const DEFAULT_CAPTION = "photo";
+
+
 const searchApiService = new NewsApiService();
-const dates = [];
+let dates = [];
+let dateForRender = [];
 const refs = {
 	openSearchBtn: document.getElementById('search-btn'),
 	searchForm: document.getElementById('form-field'),
@@ -29,6 +30,17 @@ function onClickSearchBtn(e) {
 	refs.searchForm.classList.add('open');
 }
 
+export function getCalendarDateForSearch(currentDate) {
+	let dateForSearch = '';
+try {
+	let date = currentDate;
+	dateForSearch=`&begin_date=${date}&end_date=${date}`
+	searchApiService.date = dateForSearch;
+} catch (error) {
+	console.log(error);
+}
+}
+
 function onSearch(e) {
 	e.preventDefault();
   const inputValue = e.target.elements[0].value.trim().toLowerCase();
@@ -40,7 +52,7 @@ function onSearch(e) {
 	}
 
 	searchApiService.query = encoded;
-  searchApiService.resetPage();
+  	searchApiService.resetPage();
 	getResponse()
 }
 
@@ -54,12 +66,14 @@ function onSearch(e) {
 async function getResponse() {
     try {
         const response = await searchApiService.getNewsBySearch();
-		      console.log(response);
-          clearmainNewsListContainer();
-          addData(response.response.docs);
+		console.log(response);
+		clearmainNewsListContainer();
+		dateForRender = [];
+		getDatesForRender(response.response.docs);
+		addData(response.response.docs);
 		filterData(response.response.docs);
 		getTotalNews(response.response.docs.length);
-      renderMainNewsList(response.response.docs);
+        renderMainNewsList(response.response.docs);
       
 	} catch (error) {
       Notiflix.Notify.failure('No news by search.')
@@ -80,12 +94,26 @@ function addData(docs) {
   getDatesBySearch(dates);
 }
 
+// дати для рендерингу
+function getDatesForRender(docs) {
+
+	for (let doc of docs) {
+		let date = doc.pub_date;
+        let dataNormal = new Date(date);
+		let dayForRender = (dataNormal.getDate()).toString().padStart(2, 0);
+		let monthForRender = (dataNormal.getMonth() + 1).toString().padStart(2, 0);
+		let yearForRender = dataNormal.getFullYear();
+		dateForRender.push(`${dayForRender}/${monthForRender}/${yearForRender}`);
+  }
+  
+}
+
 // рендер карток
 function renderMainNewsList(docs) {
-  let markup = '';
- console.log(docs);
-  if (docs.length >= newsPerPage) {
-    for (let i = 0; i < newsPerPage; i++) {
+	let markup = '';
+  if (docs.length > newsPerPage) {
+	  for (let i = 0; i < newsPerPage; i++) {
+		
 		markup += `
 		<li class="list-news__item">
 		<div class="news-card" id="${docs[i]._id}">
@@ -100,7 +128,7 @@ function renderMainNewsList(docs) {
 			<div class='news-card__image-wrapper'>
 				<img class="news-card__image"
 					src="${docs[i].multimedia.length == 0 ? DEFAULT_PHOTO : DEFAULT_BASE_URL + docs[i].multimedia[0].url}"
-					alt="${docs[i].multimedia.length == 0 ? DEFAULT_CAPTION : docs[i].keywords[0].value}"
+					alt="${docs[i].keywords.length == 0 ? DEFAULT_CAPTION : docs[i].keywords[0].value}"
 					height="395" />
 
 				<button type="button" class="js-to-fav add-fav-btn">
@@ -114,7 +142,7 @@ function renderMainNewsList(docs) {
 			</div>
 
 
-			<p class="news-card__category">${docs[i].section_name}</p>
+			<p class="news-card__category">${docs[i].section_name || 'Section'}</p>
 
 			<h3 class="news-card__title">${docs[i].headline.main}</h3>
 
@@ -130,7 +158,7 @@ function renderMainNewsList(docs) {
   }
 
   else {
-    for (let doc of docs) {
+	  for (let i = 0; i < docs.length; i++) {
 		markup += `
 		<li class="list-news__item">
 		<div class="news-card" id="${docs[i]._id}">
@@ -144,8 +172,8 @@ function renderMainNewsList(docs) {
 
 			<div class='news-card__image-wrapper'>
 				<img class="news-card__image"
-					src="${doc.multimedia.length == 0 ? DEFAULT_PHOTO : DEFAULT_BASE_URL + doc.multimedia[0].url}"
-					alt="${doc.multimedia.length == 0 ? DEFAULT_CAPTION : doc.keywords[0].value}"
+					src="${docs[i].multimedia.length == 0 ? DEFAULT_PHOTO : DEFAULT_BASE_URL + docs[i].multimedia[0].url}"
+					alt="${docs[i].keywords.length == 0 ? DEFAULT_CAPTION : docs[i].keywords[0].value}"
 					height="395" />
 
 				<button type="button" class="js-to-fav add-fav-btn">
@@ -159,18 +187,18 @@ function renderMainNewsList(docs) {
 			</div>
 
 
-			<p class="news-card__category">${doc.section_name}</p>
+			<p class="news-card__category">${docs[i].section_name || 'Section'}</p>
 
-			<h3 class="news-card__title">${doc.headline}</h3>
+			<h3 class="news-card__title">${docs[i].headline.main}</h3>
 
-			<p class="news-card__text">${doc.abstract}</p>
+			<p class="news-card__text">${docs[i].abstract}</p>
 
 		</div>
 		<div class="news-card__details">
 			<span class="news-card__date">${dateForRender[i]}</span>
-			<a class="news-card__news-link link" href="${doc.web_url}" target="_blank">Read more</a>
+			<a class="news-card__news-link link" href="${docs[i].web_url}" target="_blank">Read more</a>
 		</div>
-	</li>`
+	</li>`;
     };
   };
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
