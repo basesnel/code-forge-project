@@ -159,7 +159,7 @@ if (pg) {
   }
   function handleButtonRight() {
     if (valuePage.curPage === valuePage.totalPages) {
-      console.log(valuePage.curPage);
+      // console.log(valuePage.curPage);
       btnNextPg.disabled = true;
       btnLastPg.disabled = true;
     } else {
@@ -185,7 +185,7 @@ if (pg) {
 
       valuePage.curPage = pageNumber;
       pagination(valuePage);
-      console.log(valuePage);
+      // console.log(valuePage);
       handleButtonLeft();
       handleButtonRight();
 

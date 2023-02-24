@@ -59,8 +59,8 @@ export default async function getResponseNewsByCategory(curPage) {
 			clearmainNewsListContainer();
           renderMainNewsList(response.results, curPage);
 	} catch (error) {
-		Notiflix.Notify.failure('No news by categoty.');
-      console.log(error);
+		Notiflix.Notify.warning('There is no news by this category.');
+      	console.log(error);
     }
 }
 // додавання об'єкту відповіді до фільтру по даті
