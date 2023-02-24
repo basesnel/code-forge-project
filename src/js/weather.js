@@ -74,7 +74,12 @@ function weatherDetails({ temp, icon, description, country, city }) {
     </div>
     <div class="weather__imgwrap"><img src="https://openweathermap.org/img/wn/${icon}@4x.png"></div>
     <span class="weather__date">${getDataToFormat()}</span>
-    <span class="weather__week">weather for week</span>`;
+    <a
+    href="https://sinoptik.ua/"
+    target="_blank"
+    rel="noopener noreferrer nofollow"
+    class="weather__week"
+    >weather for week</a>`;
 
   if (weatherBlock) {
     weatherBlock.innerHTML = weatherMarkup;
