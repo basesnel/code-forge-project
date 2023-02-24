@@ -107,7 +107,7 @@ function getDatesForRender(docs) {
 function renderMainNewsList(docs, curPage) {
 	let markup = '';
 //   if (docs.length > curPage * newsPerPage) {
-	  for (i = 0; i < newsPerPage; i++) {
+	  for (let i = 0; i < newsPerPage; i++) {
 		markup += `
 		<li class="list-news__item">
 		<div class="news-card" id="${docs[i]._id || curPage*10+i}">
