@@ -10,7 +10,7 @@ export const save = (key, data) => {
 export const load = (key) => {
 	try {
 		const data = localStorage.getItem(key);
-		if (data === null) {
+		if (data === null || []) {
 			return undefined;
 		} else {
 			return JSON.parse(data);
