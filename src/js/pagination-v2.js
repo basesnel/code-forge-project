@@ -123,7 +123,7 @@ function pagination() {
 
 function renderPage(index, active = '') {
   return ` <li class="pg-item ${active}" data-page="${index}">
-        <a class="pg-link ${active}" href="#">${index}</a>
+        <a class="pg-link" href="#">${index}</a>
     </li>`;
 }
 
