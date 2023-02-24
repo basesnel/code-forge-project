@@ -40,7 +40,7 @@ export default async function getResponsePopular(curPage) {
     let weatherPosition = resize();
     renderMainNewsList(weatherPosition, response.results, weather, curPage);
   } catch (error) {
-    Notiflix.Notify.failure('Error, no popular response.');
+    Notiflix.Notify.warning('No response popular news from server. Please, try again later.');
     console.log(error);
   }
 }

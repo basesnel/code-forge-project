@@ -71,7 +71,7 @@ export default async function getResponseNewsBySearch(curPage) {
         renderMainNewsList(response.response.docs, curPage);
       
 	} catch (error) {
-      Notiflix.Notify.failure('No news by search.')
+		Notiflix.Notify.warning('No response news by search from server. Please, try again later.');
       console.log(error);
     }
 }
@@ -110,7 +110,7 @@ function renderMainNewsList(docs, curPage) {
 	  for (let i = 0; i < newsPerPage; i++) {
 		markup += `
 		<li class="list-news__item">
-		<div class="news-card" id="${docs[i]._id || curPage*10+i}">
+		<div class="news-card" id="${docs[i]._id || (curPage*10+i)}">
 			<span class="read-card-text visually-hidden"> Already read
 				<svg width="18" heigth="18" viewBox="0 0 32 32">
 					<path fill="#00dd73" style="fill: var(--color1, #00dd73)"

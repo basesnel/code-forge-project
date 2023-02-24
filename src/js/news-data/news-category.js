@@ -18,7 +18,7 @@ export default async function getResponseCategory() {
 		const response = await categoryApiService.getNewsCategoryList();
 		chooseElementsByViewportWidth(response.results);
 	} catch (error) {
-        Notiflix.Notify.failure('Error, no category response.');
+        Notiflix.Notify.warning('No response category list from server. Please, try again later.');
         console.log(error);
     }
 }
