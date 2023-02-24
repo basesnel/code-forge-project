@@ -28,8 +28,8 @@ export default class NewsApiService {
         return this.createRequest(`news/v3/content/inyt/${this.searchCategory}.json?${KEY}&limit=26`)
     }
 
-    async getNewsBySearch() {
-        return this.createRequest(`search/v2/articlesearch.json?q=${this.searchQuery}&${KEY}&page=${this.page}${this.searchDate}`)
+    async getNewsBySearch(curPage) {
+        return this.createRequest(`search/v2/articlesearch.json?q=${this.searchQuery}&${KEY}&page=${curPage}${this.searchDate}`)
     }
 
     async getNewsCategoryList() {
