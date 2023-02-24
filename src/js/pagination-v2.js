@@ -192,8 +192,8 @@ if (pg) {
 		if (newsByCategory) {
         getResponseNewsByCategory(valuePage.curPage);
       }
-		else if (newsBySearch) {
-        getResponseNewsBySearch(valuePage.curPage);
+    else if (newsBySearch) {
+      getResponseNewsBySearch(valuePage.curPage);
       }
       else {
         getResponsePopular(valuePage.curPage);
