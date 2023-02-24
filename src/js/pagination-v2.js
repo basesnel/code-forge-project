@@ -5,35 +5,57 @@ import onWindowResize from './news-data/function-of-resize-render';
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 
+const pgContainer = document.querySelector('.page-container');
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
 const btnFirstPg = document.querySelector('button.first-page');
 const btnLastPg = document.querySelector('button.last-page');
 
+const refsOfResponse = {
+	searchForm: document.querySelector('#search-field__input'),
+	categoriesEl: document.querySelector('.categories-calendar'),
+}
+
+if (refsOfResponse.searchForm) {
+	refsOfResponse.searchForm.addEventListener('change', onResponseSubmit);
+} 
+
+if (refsOfResponse.categoriesEl) {
+	refsOfResponse.categoriesEl.addEventListener('click', onResponseClick);
+}
+
 const valuePage = {
   curPage: 1,
   numLinksTwoSide: 1,
 };
 
+function onResponseClick(e) {
+	if (e.target.classList.contains('other__item-button') || e.target.classList.contains('category__btn')) {
+		valuePage.curPage = 1;
+	}
+}
+
+function onResponseSubmit(e) {
+	valuePage.curPage = 1;
+}
+
 let newsByCategory = null;
 let newsBySearch = null;
 
 export function getTotalNewsBySearch(arrayLength) {
-  newsBySearch = arrayLength;
-  valuePage.totalPages = 10;
-  // const numberOfPages = arrayLength / newsPerPage;
-  // valuePage.totalPages = Math.ceil(numberOfPages);
-  // console.log(valuePage.totalPages);
+	newsBySearch = arrayLength;
+  const numberOfPages = arrayLength / newsPerPage;
+  valuePage.totalPages = Math.ceil(numberOfPages);
+  console.log(valuePage.totalPages);
   pagination();
 }
 
 export function getTotalNewsByCategory(arrayLength) {
-  newsByCategory = arrayLength;
-
+	newsByCategory = arrayLength;
   const numberOfPages = arrayLength / newsPerPage;
   valuePage.totalPages = Math.ceil(numberOfPages);
-  pagination();
+	pagination();
 }
 
 export function getTotalNewsPopular(arrayLength) {
@@ -42,33 +64,6 @@ export function getTotalNewsPopular(arrayLength) {
   pagination();
 }
 
-if (pg) {
-
-  pg.addEventListener('click', e => {
-    const ele = e.target;
-
-    if (ele.dataset.page) {
-      const pageNumber = parseInt(e.target.dataset.page, 10);
-
-      valuePage.curPage = pageNumber;
-      pagination(valuePage);
-      // console.log(valuePage);
-      handleButtonLeft();
-      handleButtonRight();
-
-      if (newsByCategory) {
-        getResponseNewsByCategory(valuePage.curPage);
-      }
-      else if (newsBySearch) {
-        getResponseNewsBySearch(valuePage.curPage);
-      }
-      else {
-        getResponsePopular(valuePage.curPage);
-      }
-    }
-  });
-
-}
 
   // DYNAMIC PAGINATION
   function pagination() {
@@ -139,7 +134,7 @@ if (pg) {
 }
   function handleButton(element) {
     if (element.classList.contains('first-page')) {
-      valuePage.curPage = 1;
+		valuePage.curPage = 1;
     } else if (element.classList.contains('last-page')) {
       valuePage.curPage = 10;
     } else if (element.classList.contains('prev-page')) {
@@ -174,3 +169,41 @@ if (pg) {
       btnLastPg.disabled = false;
     }
   }
+
+
+
+  if (pg) {
+
+	pgContainer.addEventListener('click', e => {
+		let ele = e.target;
+		
+
+		if (ele.classList.contains('next-page') || ele.classList.contains('prev-page')) {	
+			ele = Array.from(pg.children).find(el => el.classList.contains('active'));
+		}
+
+		if (ele.dataset.page) {
+      const pageNumber = parseInt(ele.dataset.page, 10);
+
+      valuePage.curPage = pageNumber;
+      pagination(valuePage);
+      console.log(valuePage);
+      handleButtonLeft();
+      handleButtonRight();
+
+		if (newsByCategory) {
+        getResponseNewsByCategory(valuePage.curPage);
+      }
+		else if (newsBySearch) {
+        getResponseNewsBySearch(valuePage.curPage);
+      }
+      else {
+        getResponsePopular(valuePage.curPage);
+      }
+		}
+		
+	
+
+  });
+
+}
