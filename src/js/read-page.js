@@ -18,10 +18,10 @@ refs.readList.addEventListener('click', onDataClick)
 creatMarcupReadPage();
 
 function creatMarcupReadPage() { 
-    if (load('read') != undefined) {
+    if (load('read').length != 0) {
         refs.undefinedThumb.classList.add('visually-hidden');
         refs.readList.insertAdjacentHTML('afterbegin', creatPageList());
-    } else {
+    } else  {
         undefinedNews();
     }
 }
