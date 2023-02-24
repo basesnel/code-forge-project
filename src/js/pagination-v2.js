@@ -11,17 +11,39 @@ const btnPrevPg = document.querySelector('button.prev-page');
 const btnFirstPg = document.querySelector('button.first-page');
 const btnLastPg = document.querySelector('button.last-page');
 
+const refsOfResponse = {
+	searchForm: document.querySelector('#search-field__input'),
+	categoriesEl: document.querySelector('.categories-calendar'),
+}
+
+if (refsOfResponse.searchForm) {
+	refsOfResponse.searchForm.addEventListener('change', onResponseSubmit);
+} 
+
+if (refsOfResponse.categoriesEl) {
+	refsOfResponse.categoriesEl.addEventListener('click', onResponseClick);
+}
+
 const valuePage = {
   curPage: 1,
   numLinksTwoSide: 1,
 };
 
+function onResponseClick(e) {
+	if (e.target.classList.contains('other__item-button') || e.target.classList.contains('category__btn')) {
+		valuePage.curPage = 1;
+	}
+}
+
+function onResponseSubmit(e) {
+	valuePage.curPage = 1;
+}
+
 let newsByCategory = null;
 let newsBySearch = null;
 
 export function getTotalNewsBySearch(arrayLength) {
-  newsBySearch = arrayLength;
- 
+	newsBySearch = arrayLength;
   const numberOfPages = arrayLength / newsPerPage;
   valuePage.totalPages = Math.ceil(numberOfPages);
   console.log(valuePage.totalPages);
@@ -29,11 +51,10 @@ export function getTotalNewsBySearch(arrayLength) {
 }
 
 export function getTotalNewsByCategory(arrayLength) {
-  newsByCategory = arrayLength;
-
+	newsByCategory = arrayLength;
   const numberOfPages = arrayLength / newsPerPage;
   valuePage.totalPages = Math.ceil(numberOfPages);
-  pagination();
+	pagination();
 }
 
 export function getTotalNewsPopular(arrayLength) {
@@ -55,10 +76,10 @@ if (pg) {
       handleButtonLeft();
       handleButtonRight();
 
-      if (newsByCategory) {
+		if (newsByCategory) {
         getResponseNewsByCategory(valuePage.curPage);
       }
-      else if (newsBySearch) {
+		else if (newsBySearch) {
         getResponseNewsBySearch(valuePage.curPage);
       }
       else {
