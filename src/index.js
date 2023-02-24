@@ -46,7 +46,7 @@ const READ_KEY = 'read';
 list.addEventListener('click', onAddBtnClick);
 
 function onAddBtnClick(e) {
-    e.preventDefault()
+    // e.preventDefault()
     if (e.target.classList.contains('news-card__news-link')) {
         let targetLi = e.target.parentNode.parentNode;
         console.log(targetLi.firstElementChild.firstElementChild);
