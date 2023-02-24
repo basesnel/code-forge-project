@@ -19,7 +19,7 @@ let dateForRender = [];
 let amountOfFilterCards = 0;
 
 export function getResponseForFilterByDateByCategory(response) {
-    results = response;;
+    results = response;
 }
 
 export function getDatesByCategory(requestDate) {
