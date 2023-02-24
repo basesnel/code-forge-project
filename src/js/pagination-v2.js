@@ -21,10 +21,10 @@ let newsBySearch = null;
 
 export function getTotalNewsBySearch(arrayLength) {
   newsBySearch = arrayLength;
- 
-  const numberOfPages = arrayLength / newsPerPage;
-  valuePage.totalPages = Math.ceil(numberOfPages);
-  console.log(valuePage.totalPages);
+  valuePage.totalPages = 10;
+  // const numberOfPages = arrayLength / newsPerPage;
+  // valuePage.totalPages = Math.ceil(numberOfPages);
+  // console.log(valuePage.totalPages);
   pagination();
 }
 
@@ -41,6 +41,7 @@ export function getTotalNewsPopular(arrayLength) {
   valuePage.totalPages = Math.ceil(numberOfPages);
   pagination();
 }
+
 if (pg) {
 
   pg.addEventListener('click', e => {
@@ -51,7 +52,7 @@ if (pg) {
 
       valuePage.curPage = pageNumber;
       pagination(valuePage);
-      console.log(valuePage);
+      // console.log(valuePage);
       handleButtonLeft();
       handleButtonRight();
 

@@ -200,7 +200,7 @@ function renderMainNewsList(
     const arrayFav = load('favorite');
     const readId = arrayRead.map(item => item.id);
     const favId = arrayFav.map(item => item.id);
-    console.log(favId);
+    // console.log(favId);
 
     Array.from(arrayItem).map(item => {
       if (readId.includes(item.firstElementChild.id)) {
