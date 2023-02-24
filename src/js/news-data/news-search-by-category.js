@@ -21,11 +21,14 @@ const refs = {
 	mainNewsList: document.querySelector('.js-list-new'),
 }
 
-refs.categorySearchBtn.addEventListener('click', onSearch);
+if (refs.categorySearchBtn) {
+	refs.categorySearchBtn.addEventListener('click', onSearch);
+}
+
 
 function onSearch(e) {
 	e.preventDefault();
-	if (e.target.nodeName !== 'BUTTON') {
+	if (e.target.nodeName !== 'BUTTON' || e.target.textContent == 'Categories'){
 		return;
 	}
 	const categoryValue = e.target.textContent.trim().toLowerCase();
