@@ -21,7 +21,7 @@ let newsBySearch = null;
 
 export function getTotalNewsBySearch(arrayLength) {
   newsBySearch = arrayLength;
- 
+	valuePage.curPage = 1;
   const numberOfPages = arrayLength / newsPerPage;
   valuePage.totalPages = Math.ceil(numberOfPages);
   console.log(valuePage.totalPages);
@@ -30,7 +30,7 @@ export function getTotalNewsBySearch(arrayLength) {
 
 export function getTotalNewsByCategory(arrayLength) {
   newsByCategory = arrayLength;
-
+	valuePage.curPage = 1;
   const numberOfPages = arrayLength / newsPerPage;
   valuePage.totalPages = Math.ceil(numberOfPages);
   pagination();
@@ -54,7 +54,8 @@ pg.addEventListener('click', e => {
     handleButtonLeft();
     handleButtonRight();
 
-    if (newsByCategory) {
+	  if (newsByCategory) {
+		 
       getResponseNewsByCategory(valuePage.curPage);
     }
     else if (newsBySearch) {
