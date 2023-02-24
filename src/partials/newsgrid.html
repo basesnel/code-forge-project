@@ -6,15 +6,25 @@
 		</ul>
 	</div>
 	<div class="page-container">
-
-		<button class="prev-page" disabled>
+		<button class="first-page visually-hidden" disabled>
+			<i class="fas fa-angle-double-left"></i>
+		</button>
+		<button class="page-btn prev-page" disabled>
+			<svg class="page-btn__icon" viewBox="0 0 32 32" width="24" height="24">
+				<path d="M14.437 16l6.6 6.6-1.885 1.885-8.485-8.485 8.485-8.485 1.885 1.885-6.6 6.6z"></path>
+			</svg>
 			Prev
 		</button>
-		<div id="pagination"></div>
-		<button class="next-page">
+		<div class="pagination" id="pagination"></div>
+		<button class="page-btn next-page">
 			Next
+			<svg class="page-btn__icon" viewBox="0 0 32 32" width="24" height="24">
+				<path d="M16.001 16l-3.556-3.555 1.777-1.779 5.334 5.333-5.334 5.333-1.777-1.779 3.556-3.555z"></path>
+			</svg>
 		</button>
-
+		<button class="last-page visually-hidden">
+			<i class="fas fa-angle-double-right"></i>
+		</button>
 	</div>
 
 	<!-- Кастомна пагінація від Макса -->
