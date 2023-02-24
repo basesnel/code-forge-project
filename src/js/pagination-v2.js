@@ -45,9 +45,7 @@ let newsBySearch = null;
 
 export function getTotalNewsBySearch(arrayLength) {
 	newsBySearch = arrayLength;
-  const numberOfPages = arrayLength / newsPerPage;
-  valuePage.totalPages = Math.ceil(numberOfPages);
-  console.log(valuePage.totalPages);
+  valuePage.totalPages = 10;
   pagination();
 }
 
