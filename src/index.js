@@ -25,8 +25,9 @@ import './js/categories';
 import './js/dom-rebuild';
 
 import favorite from './js/favoriteAddToLS';
+// let curPage = 1;
 getResponseCategory();
-getResponsePopular();
+getResponsePopular(1);
 mobileMenu();
 headerResponsive();
 

@@ -5,7 +5,7 @@ import { getResponseForFilterByDateBySearch } from './news-by-search-by-date';
 import { load } from '../locale-storage';
 import onWindowResize from './function-of-resize-render';
 
-// import { getTotalNews } from '../pagination_m';
+import { getTotalNewsBySearch } from '../pagination-v2';
 
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
@@ -55,17 +55,10 @@ function onSearch(e) {
 
 	searchApiService.query = encoded;
   	searchApiService.resetPage();
-	getResponse()
+	getResponseNewsBySearch(1)
 }
 
-// Заготовка для пагінації
-
-// function onLoadMore(e) {
-//     e.preventDefault();
-//     getResponse()
-// }
-
-async function getResponse() {
+export default async function getResponseNewsBySearch(curPage) {
     try {
         const response = await searchApiService.getNewsBySearch();
 		console.log(response);
@@ -74,8 +67,8 @@ async function getResponse() {
 		getDatesForRender(response.response.docs);
 		addData(response.response.docs);
 		filterData(response.response.docs);
-		// getTotalNews(response.response.docs.length);
-        renderMainNewsList(response.response.docs);
+		getTotalNewsBySearch(response.response.docs.length);
+        renderMainNewsList(response.response.docs, curPage);
       
 	} catch (error) {
       Notiflix.Notify.failure('No news by search.')
@@ -111,10 +104,10 @@ function getDatesForRender(docs) {
 }
 
 // рендер карток
-function renderMainNewsList(docs) {
+function renderMainNewsList(docs, curPage) {
 	let markup = '';
-  if (docs.length > newsPerPage) {
-	  for (let i = 0; i < newsPerPage; i++) {
+  if (docs.length > curPage * newsPerPage) {
+	  for (let i = (curPage * newsPerPage - newsPerPage); i < (curPage * newsPerPage); i++) {
 		
 		markup += `
 		<li class="list-news__item">
@@ -160,7 +153,8 @@ function renderMainNewsList(docs) {
   }
 
   else {
-	  for (let i = 0; i < docs.length; i++) {
+	  for (let i = (curPage * newsPerPage - newsPerPage); i < docs.length; i++) {
+		  console.log(i);
 		markup += `
 		<li class="list-news__item">
 		<div class="news-card" id="${docs[i]._id}">

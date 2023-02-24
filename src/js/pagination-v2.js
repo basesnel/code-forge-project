@@ -1,3 +1,10 @@
+import getResponsePopular from './news-data/news-popular';
+import getResponseNewsByCategory from './news-data/news-search-by-category';
+import getResponseNewsBySearch from './news-data/news-by-search';
+import onWindowResize from './news-data/function-of-resize-render';
+// кількість карток новин на сторінці
+const newsPerPage = onWindowResize();
+
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
@@ -7,10 +14,33 @@ const btnLastPg = document.querySelector('button.last-page');
 const valuePage = {
   curPage: 1,
   numLinksTwoSide: 1,
-  totalPages: 10,
 };
 
-pagination();
+let newsByCategory = null;
+let newsBySearch = null;
+
+export function getTotalNewsBySearch(arrayLength) {
+  newsBySearch = arrayLength;
+ 
+  const numberOfPages = arrayLength / newsPerPage;
+  valuePage.totalPages = Math.ceil(numberOfPages);
+  console.log(valuePage.totalPages);
+  pagination();
+}
+
+export function getTotalNewsByCategory(arrayLength) {
+  newsByCategory = arrayLength;
+
+  const numberOfPages = arrayLength / newsPerPage;
+  valuePage.totalPages = Math.ceil(numberOfPages);
+  pagination();
+}
+
+export function getTotalNewsPopular(arrayLength) {
+  const numberOfPages = arrayLength / newsPerPage;
+  valuePage.totalPages = Math.ceil(numberOfPages);
+  pagination();
+}
 
 pg.addEventListener('click', e => {
   const ele = e.target;
@@ -23,6 +53,16 @@ pg.addEventListener('click', e => {
     console.log(valuePage);
     handleButtonLeft();
     handleButtonRight();
+
+    if (newsByCategory) {
+      getResponseNewsByCategory(valuePage.curPage);
+    }
+    else if (newsBySearch) {
+      getResponseNewsBySearch(valuePage.curPage);
+    }
+    else {
+      getResponsePopular(valuePage.curPage);
+    }
   }
 });
 

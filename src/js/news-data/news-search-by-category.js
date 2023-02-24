@@ -6,7 +6,7 @@ import { load } from '../locale-storage';
 import { dateForRender } from './news-search-by-category-by-date';
 import onWindowResize from './function-of-resize-render';
 
-// import { getTotalNews } from '../pagination_m';
+import { getTotalNewsByCategory } from '../pagination-v2';
 
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
@@ -34,7 +34,7 @@ function onSearch(e) {
 	if (encoded !== 'others') {
 		searchByCategoryApiService.category = encoded;
     	searchByCategoryApiService.resetPage();
-		getResponse();
+		getResponseNewsByCategory(1);
 	}
 
 }
@@ -46,15 +46,15 @@ function onSearch(e) {
 //     getResponse()
 // }
 
-async function getResponse() {
+export default async function getResponseNewsByCategory(curPage) {
     try {
         const response = await searchByCategoryApiService.getNewsByCategory();
           console.log(response);
           addData(response.results);
 		filterData(response.results);
-		// getTotalNews(response.results.length);
+		getTotalNewsByCategory(response.results.length);
 			clearmainNewsListContainer();
-          renderMainNewsList(response.results);
+          renderMainNewsList(response.results, curPage);
 	} catch (error) {
 		Notiflix.Notify.failure('No news by categoty.');
       console.log(error);
@@ -74,11 +74,10 @@ function addData(results) {
 }
 
 // рендер карток
-function renderMainNewsList(results) {
+function renderMainNewsList(results, curPage) {
 	let markup = '';
-  console.log(results);
-	if (results.length >= newsPerPage) { 
-  for (let i = 0; i < newsPerPage; i++) {
+	if (results.length >= curPage * newsPerPage) { 
+  for (let i = (curPage * newsPerPage - newsPerPage); i < (curPage * newsPerPage); i++) {
 	  markup += `
 	<li class="list-news__item">
 		<div class="news-card" id="${results[i].uri}">
@@ -121,7 +120,7 @@ function renderMainNewsList(results) {
 	</li>`;
     };
 } else {
-		for (let i = 0; i < results.length; i++) {
+		for (let i = (curPage * newsPerPage - newsPerPage); i < results.length; i++) {
 			markup += `
 			<li class="list-news__item">
 				<div class="news-card" id="${results[i].uri}">

@@ -8,7 +8,7 @@ export default class NewsApiService {
     constructor(newsPerPage) { 
         this.searchQuery = '';
         this.searchCategory = '';
-        this.page = 0;
+        this.page = 1;
         this.newsPerPage = newsPerPage;
         this.searchDate = '';
     }
