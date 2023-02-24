@@ -5,6 +5,7 @@ import onWindowResize from './news-data/function-of-resize-render';
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 
+const pgContainer = document.querySelector('.page-container');
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
