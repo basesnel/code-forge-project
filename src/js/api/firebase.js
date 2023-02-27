@@ -17,7 +17,6 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 
-
 const refs = {
 	// inputEmailSignUp: document.querySelector('#input-sign-up-email'),
 	// inputPasswordSignUp: document.querySelector('#input-sign-up-password'),
@@ -95,11 +94,14 @@ function onSignInSubmit(e) {
 
 function onSignOutClick(e) {
 	const auth = getAuth();
+
 	signOut(auth).then(() => {
   		// Sign-out successful.
 		Notify.success('Sign Out Success!');
 	}).catch((error) => {
   		// An error happened.
+
+		
 		Notify.failure(errorMessage);
 	});
 }
