@@ -1,5 +1,39 @@
 <footer class="footer">
 	<div class="container footer__container">
 		<p class="footer__copy">&#169; Code Forge</p>
+
+		<div class="footer__auth">
+			<div class="sign-up-wrapper">
+				<button class="auth__open btn__sign-up" type="button">Sign up</button>
+				<form class="footer__form form-sign-up">
+					<label class="form__label">
+						Email
+						<input class="form__mail-input" id="input-sign-up-email" type="email" name="email">
+					</label>
+					<label class="form__label">
+						Password
+						<input class="form__password-input" id="input-sign-up-password" type="password" name="password">
+					</label>
+					<button class="form-sign-up__btn" type="submit">Sign up</button>
+				</form>
+			</div>
+
+			<div class="sign-in-wrapper">
+				<button class="auth__open btn__sign-in" type="button">Sign in</button>
+				<form class="footer__form form-sign-in">
+					<label class="form__label">
+						Email
+						<input class="form__mail-input" id="input-sign-in-email" type="email" name="email">
+					</label>
+					<label class="form__label">
+						Password
+						<input class="form__password-input" id="input-sign-in-password" type="password" name="password">
+					</label>
+					<button class="form-sign-up__btn" type="submit">Sign in</button>
+				</form>
+			</div>
+
+			<button class="auth__btn-sign-out" type="button">Sign Out</button>
+		</div>
 	</div>
 </footer>

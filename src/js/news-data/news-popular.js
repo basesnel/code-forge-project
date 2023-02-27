@@ -31,8 +31,10 @@ const refs = {
 export default async function getResponsePopular(curPage) {
   try {
     const response = await popularApiService.getNewsPopular();
-    const weather = await weatherService.getDefaultWeather();
-    console.log(response);
+	  const weather = await weatherService.getDefaultWeather();
+	  
+    // console.log(response);
+	  
     addData(response.results);
     filterData(response.results);
     getTotalNewsPopular(response.results.length);
