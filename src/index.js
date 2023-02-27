@@ -81,3 +81,4 @@ if (load(READ_KEY) === undefined) {
 
 
 import './js/pagination-v2';
+import './js/api/firebase';
