@@ -5,6 +5,7 @@ import mobileMenu from './js/mobile-menu';
 import headerResponsive from './js/headerResponsive';
 import render from './js/render-favorite';
 import removeFromFavorite from './js/removeFromFavorite';
+import './js/localStorageClass';
 
 
 

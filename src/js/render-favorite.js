@@ -1,36 +1,13 @@
-import { load } from './locale-storage';
+import FavoriteLS from './localStorageClass';
 
 export default (() => {
-    const FAV_KEY = 'favorite';
-    
-    const refs = {
-        favList: document.querySelector('.favorite-list'),
-        favEmpty: document.querySelector('.undefined'),
-    }
+    const FavLS = new FavoriteLS();
 
-    const { favList, favEmpty } = refs;
-    const dataArr = load(FAV_KEY);
-    
-   /* putEmptyImg();
-
-    function putEmptyImg() {
-
-         if (dataArr.length !== 0 || dataArr === undefined) {
-        favEmpty.classList.add('visually-hidden');
-        } else {
-        favEmpty.classList.remove('visually-hidden');
-        }
-    }*/
-
-    if (favList.innerHTML === "") {
-        favEmpty.classList.remove('visually-hidden');
-    }
-   
-   
-    insertMarkupToUL(modifyData(dataArr));
+    FavLS.isFavListEmpty();
+    FavLS.insertMarkupToUL();
 
     //returns array of strings
-    function modifyData(dataArr) {
+    /*function modifyData(dataArr) {
         if (dataArr !== undefined) {
             return dataArr.map(obj =>
                 obj.dataString);    
@@ -38,6 +15,7 @@ export default (() => {
     }
 
 
+    // inserts markup into the ul-element
     function insertMarkupToUL(markupArr) {
         
         if (markupArr !== undefined || markupArr.length !== 0) {
@@ -47,10 +25,16 @@ export default (() => {
             }, "");
         } 
 
+        isFavListEmpty();
+    } */
+
+
+    // checks if the default image is needed
+    /*function isFavListEmpty() {
         if (favList.innerHTML === "") {
             favEmpty.classList.remove('visually-hidden');
         } else {
             favEmpty.classList.add('visually-hidden');
         }
-    }
+    }*/
 });

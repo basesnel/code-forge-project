@@ -2,6 +2,8 @@ export default class favoriteLS {
     constructor() {
         this.FAV_KEY = 'favorite';
         this.clickedLiArr = [];
+        this.favList = document.querySelector('.favorite-list');
+        this.favEmpty = document.querySelector('.undefined');
     }
 
     saveEmptyArr() {
@@ -63,8 +65,47 @@ export default class favoriteLS {
     }
 
     findLiToRemoveByID(targetLiID) {
-        return this.getClickedLiArr().findIndex(obj => obj.id === targetLiID);
+        return this.load(this.FAV_KEY).findIndex(obj => obj.id === targetLiID);
     }
 
-    
+
+    // render methods
+    isFavListEmpty() {
+        
+            if (this.favList.innerHTML === "") {
+            this.favEmpty.classList.remove('visually-hidden');
+            } else {
+            this.favEmpty.classList.add('visually-hidden');
+            }
+        
+    }
+
+    modifyData(dataArr) {
+        if (dataArr !== undefined) {
+            return dataArr.map(obj =>
+                obj.dataString);    
+      } 
+    }
+
+    insertMarkupToUL() {
+
+        let markupArr = this.modifyData(this.load(this.FAV_KEY));
+
+        if (markupArr !== undefined || markupArr.length !== 0) {
+
+        this.favList.innerHTML = markupArr.reduce((list, markup) => {
+               return list + `<li class="favorite-item">${markup}</li>`
+            }, "");
+        } 
+
+    }
+
+
+    // remove from fav methods
+    removeFromFavOnFavPage(id) {
+        let dataArr = this.load(this.FAV_KEY);
+
+        dataArr.splice(this.findLiToRemoveByID(id), 1);
+        this.save(this.FAV_KEY, dataArr);
+    }
 }

@@ -1,5 +1,3 @@
-import { save, load } from './locale-storage';
-import Notiflix from 'notiflix';
 import FavoriteLS from './localStorageClass';
 
 
