@@ -221,6 +221,7 @@ function renderMainNewsList(
     }
   }
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
+  rebuild(resize());
   const arrayItem = refs.mainNewsList.children;
   const arrayRead = load('read');
   const arrayFav = load('favorite');
@@ -249,7 +250,7 @@ function renderMainNewsList(
     }
   });
 
-  rebuild(resize());
+  // rebuild(resize());
 
   return;
 }
