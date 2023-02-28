@@ -1,12 +1,17 @@
-import { load, save } from "../js/locale-storage";
-import mobileMenu from '../js/mobile-menu';
-import headerResponsive from '../js/headerResponsive';
+import { load, save } from "./locale-storage";
+import mobileMenu from './mobile-menu';
+import headerResponsive from './headerResponsive';
 import './news-data/news-by-search';
-import '../js/switcher-theme';
-
+import './switcher-theme';
 
 mobileMenu();
 headerResponsive();
+
+const FAV_KEY = 'favorite';
+const clickedLiArr = load(FAV_KEY); 
+if (load(FAV_KEY) === undefined) {
+    save(FAV_KEY, []);
+}
 
 const refs = {
     undefinedThumb: document.querySelector('.undefined'),
@@ -15,17 +20,12 @@ const refs = {
 
 refs.readList.addEventListener('click', onDataClick)
 
-creatMarcupReadPage();
-
-function creatMarcupReadPage() { 
-    if (load('read').length != 0) {
-        refs.undefinedThumb.classList.add('visually-hidden');
-        refs.readList.insertAdjacentHTML('afterbegin', creatPageList());
-    } else  {
-        undefinedNews();
-    }
+if (load('read') != undefined) {
+    refs.undefinedThumb.classList.add('visually-hidden');
+    refs.readList.insertAdjacentHTML('afterbegin', creatPageList());
+} else  {
+    refs.undefinedThumb.classList.remove('visually-hidden');
 }
-
 
 function creatPageList() {
     const arrayCardRead = load('read');
@@ -45,7 +45,6 @@ function creatPageList() {
         </li>
     `).join('')
 }
-
 
 function onDataClick(e) {
     if (e.target.classList.contains('read-list__button')) {
@@ -154,46 +153,28 @@ function onDataClick(e) {
     }
   });
 }
-    
-    const FAV_KEY = 'favorite';
-    const clickedLiArr = load(FAV_KEY); 
-    
-     function addLiToArrayInLS(targetLiID, targetLi) {
-        
-        if (load(FAV_KEY) === undefined) {
-            save(FAV_KEY, []);
-        }
 
-
-        if (!clickedLiArr.find(obj => obj.id === targetLiID)) {
-             clickedLiArr.push({
-                 dataString: targetLi.innerHTML,
-                 id: targetLi.firstElementChild.getAttribute('id')
-             })
-        } 
-            
-        
+function addLiToArrayInLS(targetLiID, targetLi) {
+    if (!clickedLiArr.find(obj => obj.id === targetLiID)) {
+        clickedLiArr.push({dataString: targetLi.innerHTML, id: targetLi.firstElementChild.getAttribute('id')})
+    } 
+           
     save(FAV_KEY, clickedLiArr);
+}
+
+function removeLiFromLS(targetLiID) {
+    if (load(FAV_KEY) === undefined) {
+        save(FAV_KEY, []);
     }
 
-    function removeLiFromLS(targetLiID) {
+    clickedLiArr.splice(findLiToRemoveByID(targetLiID), 1);
 
-        if (load(FAV_KEY) === undefined) {
-            save(FAV_KEY, []);
-        }
-
-        clickedLiArr.splice(findLiToRemoveByID(targetLiID), 1);
-
-        save(FAV_KEY, clickedLiArr);
-
+    save(FAV_KEY, clickedLiArr);
 }
     
 function findLiToRemoveByID(targetLiID) {
         return clickedLiArr.findIndex(obj => obj.id === targetLiID);
-    }
-
-function undefinedNews() {
-    return refs.undefinedThumb.classList.remove('visually-hidden')
 }
+
 
 
