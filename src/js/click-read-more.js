@@ -4,6 +4,10 @@ import { nowDataCreat } from './now-data';
 const list = document.querySelector('.js-list-new');
 const READ_KEY = 'read';
 
+if (load(READ_KEY) === undefined) {
+    save(READ_KEY, []);
+}
+
 list.addEventListener('click', onAddBtnClick);
 
 function onAddBtnClick(e) {
@@ -16,9 +20,6 @@ function onAddBtnClick(e) {
 }
 
 function addLiToArrayInLS(targetLi) {
-  if (load(READ_KEY) === undefined) {
-    save(READ_KEY, []);
-    }
     const id = targetLi.firstElementChild.getAttribute('id');
     const data = { dataRead: nowDataCreat(), dataString: `<li class="list-news__item">${targetLi.innerHTML}</li>`, id: id}
     const arr = load(READ_KEY)

@@ -9,9 +9,6 @@ headerResponsive();
 
 const FAV_KEY = 'favorite';
 const clickedLiArr = load(FAV_KEY); 
-if (load(FAV_KEY) === undefined) {
-    save(FAV_KEY, []);
-}
 
 const refs = {
     undefinedThumb: document.querySelector('.undefined'),
@@ -20,7 +17,7 @@ const refs = {
 
 refs.readList.addEventListener('click', onDataClick)
 
-if (load('read') != undefined) {
+if (load('read').length != 0) {
     refs.undefinedThumb.classList.add('visually-hidden');
     refs.readList.insertAdjacentHTML('afterbegin', creatPageList());
 } else  {
