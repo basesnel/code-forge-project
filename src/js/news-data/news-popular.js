@@ -10,6 +10,11 @@ import { dateForRender } from './news-popular-by-date';
 import { load } from '../locale-storage';
 import { getTotalNewsPopular } from '../pagination-v2';
 import onWindowResize from './function-of-resize-render';
+import FavoriteLS from '../localStorageClass';
+// при перезавантаженні сторінки з пустим сховищем 
+//в сховище записується пустий масив favorite щоб не було поередження
+const FavLS = new FavoriteLS();
+FavLS.saveEmptyArr();
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 // Фото на випадок якщо немає фото у відповіді з серверу

@@ -8,7 +8,7 @@ export default class favoriteLS {
 
     saveEmptyArr() {
         if (this.load(this.FAV_KEY) === undefined) {
-            this.save(FAV_KEY, []);
+            this.save(this.FAV_KEY, []);
         }
     }
 
@@ -44,12 +44,11 @@ export default class favoriteLS {
     }
 
     addToFav(targetLiID, targetLi) {
-        
-        this.saveEmptyArr();
+         this.saveEmptyArr();
 
-        if (this.getClickedLiArr().find(obj => obj.id === targetLiID) === undefined) {
+        if (!this.getClickedLiArr().find(obj => obj.id === targetLiID)) {
 
-            this.setClickedLiArr({dataString: targetLi.innerHTML, id: targetLi.firstElementChild.getAttribute('id'), })
+            this.setClickedLiArr({dataString: targetLi.innerHTML, id: targetLi.firstElementChild.getAttribute('id'), });
 
         }
            
@@ -88,7 +87,7 @@ export default class favoriteLS {
     }
 
     insertMarkupToUL() {
-
+        this.saveEmptyArr();
         let markupArr = this.modifyData(this.load(this.FAV_KEY));
 
         if (markupArr !== undefined || markupArr.length !== 0) {
