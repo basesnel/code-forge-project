@@ -1,7 +1,7 @@
 export default class favoriteLS {
     constructor() {
         this.FAV_KEY = 'favorite';
-        this.clickedLiArr = [];
+        this.clickedLiArr = this.load(this.FAV_KEY);
         this.favList = document.querySelector('.favorite-list');
         this.favEmpty = document.querySelector('.undefined');
     }
@@ -13,7 +13,7 @@ export default class favoriteLS {
     }
 
     getClickedLiArr() {
-        return this.clickedLiArr;
+       return this.clickedLiArr;
     }
 
     setClickedLiArr(object) {
@@ -44,7 +44,7 @@ export default class favoriteLS {
     }
 
     addToFav(targetLiID, targetLi) {
-         this.saveEmptyArr();
+        this.saveEmptyArr();
 
         if (!this.getClickedLiArr().find(obj => obj.id === targetLiID)) {
 
@@ -64,7 +64,7 @@ export default class favoriteLS {
     }
 
     findLiToRemoveByID(targetLiID) {
-        return this.load(this.FAV_KEY).findIndex(obj => obj.id === targetLiID);
+        return this.getClickedLiArr().findIndex(obj => obj.id === targetLiID);
     }
 
 
@@ -88,7 +88,7 @@ export default class favoriteLS {
 
     insertMarkupToUL() {
         this.saveEmptyArr();
-        let markupArr = this.modifyData(this.load(this.FAV_KEY));
+        let markupArr = this.modifyData(this.getClickedLiArr());
 
         if (markupArr !== undefined || markupArr.length !== 0) {
 
@@ -102,9 +102,8 @@ export default class favoriteLS {
 
     // remove from fav methods
     removeFromFavOnFavPage(id) {
-        let dataArr = this.load(this.FAV_KEY);
 
-        dataArr.splice(this.findLiToRemoveByID(id), 1);
-        this.save(this.FAV_KEY, dataArr);
+        this.getClickedLiArr().splice(this.findLiToRemoveByID(id), 1);
+        this.save(this.FAV_KEY, this.getClickedLiArr());
     }
 }
