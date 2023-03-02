@@ -8,6 +8,7 @@ import onWindowResize from './function-of-resize-render';
 
 import { getTotalNewsByCategory } from '../pagination-v2';
 
+
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 // Фото на випадок якщо немає фото у відповіді з серверу
