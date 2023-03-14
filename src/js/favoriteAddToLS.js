@@ -1,5 +1,4 @@
-import { save, load } from './locale-storage';
-import Notiflix from 'notiflix';
+import FavoriteLS from './localStorageClass';
 
 
 export default (() => {
@@ -10,45 +9,47 @@ export default (() => {
 
     //refs and variables
     const { favoriteList } = refs;
-    const FAV_KEY = 'favorite';
-    const clickedLiArr = load(FAV_KEY); 
+    const FavLS = new FavoriteLS();
    
-
-    // event listener
     favoriteList.addEventListener('click', onAddBtnClick);
     
     //click handler
     function onAddBtnClick(e) {
 
-        
-       
         if (e.target.classList.contains('js-to-fav')) {
- 
-            e.target.firstElementChild.textContent = "Remove from favorites";
-            e.target.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
-            e.target.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
-            
-            e.target.classList.remove('js-to-fav');
-            e.target.classList.add('js-from-fav');
-                
-            addLiToArrayInLS(e.target.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode);
+  
+            btnAddToFavChanges(e);  
+            FavLS.addToFav(e.target.parentNode.parentNode.id, e.target.parentNode.parentNode.parentNode);
 
         } else if (e.target.classList.contains('js-from-fav')) {
 
-            e.target.firstElementChild.textContent = "Add to favorites";
-            e.target.lastElementChild.firstElementChild.setAttribute('fill', 'none');
-            e.target.lastElementChild.firstElementChild.setAttribute('style', "stroke: var(--color1, #4440f7)");
-
-            removeLiFromLS(e.target.parentNode.parentNode.id);
-
-            e.target.classList.remove('js-from-fav');
-            e.target.classList.add('js-to-fav');
+            btnRemoveFromFavChanges(e);
+            FavLS.removeFromFav(e.target.parentNode.parentNode.id);
 
         } 
     }
 
 
-    function addLiToArrayInLS(targetLiID, targetLi) {
+    function btnAddToFavChanges(e) {
+        e.target.firstElementChild.textContent = "Remove from favorites";
+        e.target.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
+        e.target.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
+            
+        e.target.classList.remove('js-to-fav');
+        e.target.classList.add('js-from-fav');
+    }
+
+    function btnRemoveFromFavChanges(e) {
+        e.target.firstElementChild.textContent = "Add to favorites";
+        e.target.lastElementChild.firstElementChild.setAttribute('fill', 'none');
+        e.target.lastElementChild.firstElementChild.setAttribute('style', "stroke: var(--color1, #4440f7)");
+
+        e.target.classList.remove('js-from-fav');
+        e.target.classList.add('js-to-fav');
+    }
+
+
+   /* function addLiToArrayInLS(targetLiID, targetLi) {
         
         if (load(FAV_KEY) === undefined) {
             save(FAV_KEY, []);
@@ -81,7 +82,7 @@ export default (() => {
 
     function findLiToRemoveByID(targetLiID) {
         return clickedLiArr.findIndex(obj => obj.id === targetLiID);
-    }
+    } */
 });
 
 
