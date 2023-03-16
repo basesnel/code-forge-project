@@ -1,46 +1,44 @@
-import NewsApiService from '../api/news-main-api'
+import NewsApiService from '../api/news-main-api';
 import Notiflix from 'notiflix';
 import { getDatesByCategory } from './news-search-by-category-by-date';
 import { getResponseForFilterByDateByCategory } from './news-search-by-category-by-date';
-import { load } from '../locale-storage';
+import { load } from '../local-storage/locale-storage';
 import { dateForRender } from './news-search-by-category-by-date';
 import onWindowResize from './function-of-resize-render';
 
-import { getTotalNewsByCategory } from '../pagination-v2';
-
+import { getTotalNewsByCategory } from '../pagination/pagination-v2';
 
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 // Фото на випадок якщо немає фото у відповіді з серверу
-const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
-const DEFAULT_CAPTION = "photo";
+const DEFAULT_PHOTO =
+  'https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png';
+const DEFAULT_CAPTION = 'photo';
 const dates = [];
 const searchByCategoryApiService = new NewsApiService();
 
 const refs = {
-	categorySearchBtn: document.querySelector('.category'),
-	mainNewsList: document.querySelector('.js-list-new'),
-}
+  categorySearchBtn: document.querySelector('.category'),
+  mainNewsList: document.querySelector('.js-list-new'),
+};
 
 if (refs.categorySearchBtn) {
-	refs.categorySearchBtn.addEventListener('click', onSearch);
+  refs.categorySearchBtn.addEventListener('click', onSearch);
 }
 
-
 function onSearch(e) {
-	e.preventDefault();
-	if (e.target.nodeName !== 'BUTTON' || e.target.textContent == 'Categories'){
-		return;
-	}
-	const categoryValue = e.target.textContent.trim().toLowerCase();
-	const encoded = encodeURIComponent(categoryValue);
+  e.preventDefault();
+  if (e.target.nodeName !== 'BUTTON' || e.target.textContent == 'Categories') {
+    return;
+  }
+  const categoryValue = e.target.textContent.trim().toLowerCase();
+  const encoded = encodeURIComponent(categoryValue);
 
-	if (encoded !== 'others') {
-		searchByCategoryApiService.category = encoded;
-    	searchByCategoryApiService.resetPage();
-		getResponseNewsByCategory(1);
-	}
-
+  if (encoded !== 'others') {
+    searchByCategoryApiService.category = encoded;
+    searchByCategoryApiService.resetPage();
+    getResponseNewsByCategory(1);
+  }
 }
 
 // Заготовка для пагінації
@@ -51,18 +49,18 @@ function onSearch(e) {
 // }
 
 export default async function getResponseNewsByCategory(curPage) {
-    try {
-        const response = await searchByCategoryApiService.getNewsByCategory();
-          console.log(response);
-          addData(response.results);
-		filterData(response.results);
-		getTotalNewsByCategory(response.results.length);
-			clearmainNewsListContainer();
-          renderMainNewsList(response.results, curPage);
-	} catch (error) {
-		Notiflix.Notify.warning('There is no news by this category.');
-      	console.log(error);
-    }
+  try {
+    const response = await searchByCategoryApiService.getNewsByCategory();
+    console.log(response);
+    addData(response.results);
+    filterData(response.results);
+    getTotalNewsByCategory(response.results.length);
+    clearmainNewsListContainer();
+    renderMainNewsList(response.results, curPage);
+  } catch (error) {
+    Notiflix.Notify.warning('There is no news by this category.');
+    console.log(error);
+  }
 }
 // додавання об'єкту відповіді до фільтру по даті
 function filterData(results) {
@@ -72,17 +70,21 @@ function filterData(results) {
 // додаваня дати для фільтру по даті
 function addData(results) {
   for (let result of results) {
-      dates.push(result.updated_date);
+    dates.push(result.updated_date);
   }
   getDatesByCategory(dates);
 }
 
 // рендер карток
 function renderMainNewsList(results, curPage) {
-	let markup = '';
-	if (results.length >= curPage * newsPerPage) { 
-  for (let i = (curPage * newsPerPage - newsPerPage); i < (curPage * newsPerPage); i++) {
-	  markup += `
+  let markup = '';
+  if (results.length >= curPage * newsPerPage) {
+    for (
+      let i = curPage * newsPerPage - newsPerPage;
+      i < curPage * newsPerPage;
+      i++
+    ) {
+      markup += `
 	<li class="list-news__item">
 		<div class="news-card" id="${results[i].uri}">
 			<span class="read-card-text visually-hidden"> Already read
@@ -95,8 +97,16 @@ function renderMainNewsList(results, curPage) {
 
 			<div class='news-card__image-wrapper'>
 				<img class="news-card__image"
-					src="${results[i].multimedia.length==0? DEFAULT_PHOTO : results[i].multimedia[2].url}"
-					alt="${results[i].multimedia.length==0? DEFAULT_CAPTION : results[i].multimedia[2].caption}"
+					src="${
+            results[i].multimedia.length == 0
+              ? DEFAULT_PHOTO
+              : results[i].multimedia[2].url
+          }"
+					alt="${
+            results[i].multimedia.length == 0
+              ? DEFAULT_CAPTION
+              : results[i].multimedia[2].caption
+          }"
 					height="395" />
 
 				<button type="button" class="js-to-fav add-fav-btn">
@@ -119,13 +129,15 @@ function renderMainNewsList(results, curPage) {
 		</div>
 		<div class="news-card__details">
 			<span class="news-card__date">${dateForRender[i]}</span>
-			<a class="news-card__news-link link" href="${results[i].url}" target="_blank">Read more</a>
+			<a class="news-card__news-link link" href="${
+        results[i].url
+      }" target="_blank">Read more</a>
 		</div>
 	</li>`;
-    };
-} else {
-		for (let i = (curPage * newsPerPage - newsPerPage); i < results.length; i++) {
-			markup += `
+    }
+  } else {
+    for (let i = curPage * newsPerPage - newsPerPage; i < results.length; i++) {
+      markup += `
 			<li class="list-news__item">
 				<div class="news-card" id="${results[i].uri}">
 					<span class="read-card-text visually-hidden"> Already read
@@ -137,8 +149,16 @@ function renderMainNewsList(results, curPage) {
 
 					<div class='news-card__image-wrapper'>
 						<img class="news-card__image"
-						src="${results[i].multimedia.length==0? DEFAULT_PHOTO : results[i].multimedia[2].url}"
-						alt="${results[i].multimedia.length==0? DEFAULT_CAPTION : results[i].multimedia[2].caption}"
+						src="${
+              results[i].multimedia.length == 0
+                ? DEFAULT_PHOTO
+                : results[i].multimedia[2].url
+            }"
+						alt="${
+              results[i].multimedia.length == 0
+                ? DEFAULT_CAPTION
+                : results[i].multimedia[2].caption
+            }"
 						height="395" />
 
 						<button type="button" class="js-to-fav add-fav-btn">
@@ -159,17 +179,19 @@ function renderMainNewsList(results, curPage) {
 				</div>
 				<div class="news-card__details">
 					<span class="news-card__date">${dateForRender[i]}</span>
-					<a class="news-card__news-link link" href="${results[i].url}" target="_blank">Read more</a>
+					<a class="news-card__news-link link" href="${
+            results[i].url
+          }" target="_blank">Read more</a>
 				</div>
 			</li>`;
-		}
-}
+    }
+  }
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
   const arrayItem = refs.mainNewsList.children;
-  const arrayRead = load('read')
-  const arrayFav = load('favorite')
-  const readId = arrayRead.map(item => item.id)
-  const favId = arrayFav.map(item => item.id)
+  const arrayRead = load('read');
+  const arrayFav = load('favorite');
+  const readId = arrayRead.map(item => item.id);
+  const favId = arrayFav.map(item => item.id);
 
   Array.from(arrayItem).map(item => {
     if (readId.includes(item.firstElementChild.id)) {
@@ -178,18 +200,23 @@ function renderMainNewsList(results, curPage) {
       card.firstElementChild.classList.remove('visually-hidden');
     }
     if (favId.includes(item.firstElementChild.id)) {
-		const Btn = item.firstElementChild.firstElementChild.nextElementSibling.lastElementChild
-		Btn.classList.remove('js-to-fav');
-        Btn.classList.add('js-from-fav');
-      Btn.firstElementChild.textContent = "Remove from favorites";
+      const Btn =
+        item.firstElementChild.firstElementChild.nextElementSibling
+          .lastElementChild;
+      Btn.classList.remove('js-to-fav');
+      Btn.classList.add('js-from-fav');
+      Btn.firstElementChild.textContent = 'Remove from favorites';
       Btn.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
-      Btn.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
+      Btn.lastElementChild.firstElementChild.setAttribute(
+        'style',
+        'fill: var(--color1, #4b48da)'
+      );
     }
   });
-    return 
+  return;
 }
 
 function clearmainNewsListContainer() {
-	refs.mainNewsList.innerHTML = '';
-	return;
+  refs.mainNewsList.innerHTML = '';
+  return;
 }

@@ -1,25 +1,21 @@
-import FavoriteLS from './localStorageClass';
+import FavoriteLS from '../local-storage/localStorageClass';
 
-export default (() => {
-    const FavLS = new FavoriteLS();
-    //const FAV_KEY = 'favorite';
-    
+export default () => {
+  const FavLS = new FavoriteLS();
+  //const FAV_KEY = 'favorite';
 
-    const refs = {
-        favList: document.querySelector('.favorite-list'),
-    
-    }
+  const refs = {
+    favList: document.querySelector('.favorite-list'),
+  };
 
-    const { favList } = refs;
-    
-    FavLS.isFavListEmpty();
-    favList.addEventListener('click', onRemoveBtnClick);
+  const { favList } = refs;
 
-    function onRemoveBtnClick(e) {
+  FavLS.isFavListEmpty();
+  favList.addEventListener('click', onRemoveBtnClick);
 
-        if (e.target.classList.contains('js-from-fav')) {
-
-           /* let dataArr = load(FAV_KEY);
+  function onRemoveBtnClick(e) {
+    if (e.target.classList.contains('js-from-fav')) {
+      /* let dataArr = load(FAV_KEY);
 
             dataArr.splice(findCardIndexByCardID(e.target.parentNode.parentNode.id), 1);
         
@@ -27,24 +23,23 @@ export default (() => {
             
             insertMarkupToUL(modifyData(dataArr));*/
 
-            FavLS.removeFromFavOnFavPage(e.target.parentNode.parentNode.id);
-            FavLS.insertMarkupToUL(favList);
-            FavLS.isFavListEmpty();
-
-        } else {
-            console.log('you clicked outside the button');
-        }
+      FavLS.removeFromFavOnFavPage(e.target.parentNode.parentNode.id);
+      FavLS.insertMarkupToUL(favList);
+      FavLS.isFavListEmpty();
+    } else {
+      console.log('you clicked outside the button');
     }
+  }
 
-   /* function isFavListEmpty() {
+  /* function isFavListEmpty() {
         if (favList.innerHTML === "") {
             favEmpty.classList.remove('visually-hidden');
         } else {
             favEmpty.classList.add('visually-hidden');
         }
     }*/
-    // returns index of the object to delete
-   /* function findCardIndexByCardID(cardID) {
+  // returns index of the object to delete
+  /* function findCardIndexByCardID(cardID) {
       return load(FAV_KEY).findIndex(obj => obj.id === cardID);
     }
 
@@ -59,8 +54,7 @@ export default (() => {
        favList.innerHTML = ""; 
     } */
 
-
-   /* function insertMarkupToUL(markupArr) {
+  /* function insertMarkupToUL(markupArr) {
         
         if (markupArr !== undefined) {
 
@@ -78,5 +72,4 @@ export default (() => {
         }
         
     } */
-    
-});
+};

@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
-import { resize } from './resize';
+import { resize } from '../responsivity/resize';
 
 const listNews = document.querySelector('.js-list-new');
 

@@ -1,13 +1,13 @@
-import FavoriteLS from './localStorageClass';
+import FavoriteLS from '../local-storage/localStorageClass';
 
-export default (() => {
-    const FavLS = new FavoriteLS();
+export default () => {
+  const FavLS = new FavoriteLS();
 
-    FavLS.isFavListEmpty();
-    FavLS.insertMarkupToUL();
+  FavLS.isFavListEmpty();
+  FavLS.insertMarkupToUL();
 
-    //returns array of strings
-    /*function modifyData(dataArr) {
+  //returns array of strings
+  /*function modifyData(dataArr) {
         if (dataArr !== undefined) {
             return dataArr.map(obj =>
                 obj.dataString);    
@@ -28,13 +28,12 @@ export default (() => {
         isFavListEmpty();
     } */
 
-
-    // checks if the default image is needed
-    /*function isFavListEmpty() {
+  // checks if the default image is needed
+  /*function isFavListEmpty() {
         if (favList.innerHTML === "") {
             favEmpty.classList.remove('visually-hidden');
         } else {
             favEmpty.classList.add('visually-hidden');
         }
     }*/
-});
+};
