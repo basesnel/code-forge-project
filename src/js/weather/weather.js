@@ -1,5 +1,5 @@
 // Import Class WeatherApiService:
-import WeatherApiService from './api/weater-service';
+import WeatherApiService from '../api/weater-service';
 
 // Object of Class WeatherApiService:
 const weatherService = new WeatherApiService();

@@ -1,7 +1,7 @@
-import getResponsePopular from './news-data/news-popular';
-import getResponseNewsByCategory from './news-data/news-search-by-category';
-import getResponseNewsBySearch from './news-data/news-by-search';
-import onWindowResize from './news-data/function-of-resize-render';
+import getResponsePopular from '../news-data/news-popular';
+import getResponseNewsByCategory from '../news-data/news-search-by-category';
+import getResponseNewsBySearch from '../news-data/news-by-search';
+import onWindowResize from '../news-data/function-of-resize-render';
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 

@@ -3,15 +3,15 @@ import { getResponseForFilterByDatePopular } from './news-popular-by-date';
 import NewsApiService from '../api/news-main-api';
 import WeatherApiService from '../api/weater-service';
 import Notiflix from 'notiflix';
-import '../weather';
-import { resize } from '../resize';
-import { rebuild } from '../dom-rebuild';
+import '../weather/weather';
+import { resize } from '../responsivity/resize';
+import { rebuild } from '../weather/dom-rebuild';
 import { dateForRender } from './news-popular-by-date';
-import { load } from '../locale-storage';
-import { getTotalNewsPopular } from '../pagination-v2';
+import { load } from '../local-storage/locale-storage';
+import { getTotalNewsPopular } from '../pagination/pagination-v2';
 import onWindowResize from './function-of-resize-render';
-import FavoriteLS from '../localStorageClass';
-// при перезавантаженні сторінки з пустим сховищем 
+import FavoriteLS from '../local-storage/localStorageClass';
+// при перезавантаженні сторінки з пустим сховищем
 //в сховище записується пустий масив favorite щоб не було поередження
 const FavLS = new FavoriteLS();
 FavLS.saveEmptyArr();

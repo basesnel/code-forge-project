@@ -1,13 +1,10 @@
-import './js/switcher-theme';
+import './js/theme-switcher/switcher-theme';
 import './js/news-data/news-by-search';
-import { load } from './js/locale-storage';
-import mobileMenu from './js/mobile-menu';
-import headerResponsive from './js/headerResponsive';
-import render from './js/render-favorite';
-import removeFromFavorite from './js/removeFromFavorite';
-import './js/localStorageClass';
-
-
+import mobileMenu from './js/mobile-menu/mobile-menu';
+import headerResponsive from './js/responsivity/headerResponsive';
+import render from './js/favorite/render-favorite';
+import removeFromFavorite from './js/favorite/removeFromFavorite';
+import './js/local-storage/localStorageClass';
 
 mobileMenu();
 headerResponsive();
@@ -22,4 +19,3 @@ const idArr = load(FAV_KEY).map(obj => obj.id);
 const liIdArr = Array.from(favList.children).map(child => child.firstElementChild.getAttribute('id'));
 
 const fullIDArr = [...idArr, ...liIDArr]; */
-

@@ -1,7 +1,7 @@
-import { getCalendarDateForSearch } from './news-data/news-by-search';
-import { getCalendarDateBySearch } from './news-data/news-by-search-by-date';
-import { getCalendarDateByCategory } from './news-data/news-search-by-category-by-date';
-import { getCalendarDatePopular } from './news-data/news-popular-by-date';
+import { getCalendarDateForSearch } from '../news-data/news-by-search';
+import { getCalendarDateBySearch } from '../news-data/news-by-search-by-date';
+import { getCalendarDateByCategory } from '../news-data/news-search-by-category-by-date';
+import { getCalendarDatePopular } from '../news-data/news-popular-by-date';
 const refs = {
   calendarInput: document.querySelector('.js-calendar-input'),
   modal: document.querySelector('[data-calendar-modal]'),
@@ -40,7 +40,6 @@ function toggleModal() {
   refs.iconCalendarOpen.classList.toggle('display-none');
   refs.iconCalendarClose.classList.toggle('display-active');
   refs.clickToBackdrop.classList.toggle('display-none');
-
 }
 
 // Вибір дати по кліку
@@ -163,7 +162,9 @@ function selectionDate(evt) {
   )}/${addLeadingZero(currMonth + 1)}/${currYear}`;
   toggleModal();
   // дата для фільтру по пошуковому слові
-  const dateForSearch=`${currYear}${addLeadingZero(currMonth + 1)}${addLeadingZero(selectedDateToInput)}`;
+  const dateForSearch = `${currYear}${addLeadingZero(
+    currMonth + 1
+  )}${addLeadingZero(selectedDateToInput)}`;
   // Виділення активної дати кольором
 
   selectedItem.classList.add('selected-date');
@@ -176,8 +177,12 @@ function selectionDate(evt) {
   });
   getCalendarDateForSearch(dateForSearch);
   getCalendarDatePopular(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
-  getCalendarDateByCategory(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
-  getCalendarDateBySearch(`${selectedDateToInput}/${currMonth + 1}/${currYear}`);
+  getCalendarDateByCategory(
+    `${selectedDateToInput}/${currMonth + 1}/${currYear}`
+  );
+  getCalendarDateBySearch(
+    `${selectedDateToInput}/${currMonth + 1}/${currYear}`
+  );
 }
 
 // =======================================
