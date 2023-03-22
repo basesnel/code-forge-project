@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
-import { resize } from './resize';
+import { resize } from '../responsivity/resize';
 
 const listNews = document.querySelector('.js-list-new');
 
@@ -10,7 +10,7 @@ window.addEventListener(
   }, 1000)
 );
 
-function rebuild(newPosition) {
+export function rebuild(newPosition) {
   let oldPosition = 0;
   for (let i = 0; i < listNews.children.length; i++) {
     // if(listNews.shildren[i].child)

@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { load } from '../locale-storage';
+import { load } from '../local-storage/locale-storage';
 
 // import { getTotalNews } from '../pagination_m';
 
@@ -7,11 +7,12 @@ import onWindowResize from './function-of-resize-render';
 // кількість карток новин на сторінці
 const newsPerPage = onWindowResize();
 const DEFAULT_BASE_URL = 'https://static01.nyt.com/';
-const DEFAULT_PHOTO = "https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png";
-const DEFAULT_CAPTION = "photo";
+const DEFAULT_PHOTO =
+  'https://static01.nyt.com/vi-assets/images/share/1200x675_nameplate.png';
+const DEFAULT_CAPTION = 'photo';
 const refs = {
-	mainNewsList: document.querySelector('.js-list-new'),
-}
+  mainNewsList: document.querySelector('.js-list-new'),
+};
 
 let results = null;
 let datesString = [];
@@ -20,54 +21,48 @@ let dateForRender = [];
 let amountOfFilterCards = 0;
 
 export function getResponseForFilterByDatePopular(response) {
-	results = response;
+  results = response;
 }
 
 export function getDatesPopular(requestDate) {
-
-    for (let date of requestDate) {
-
+  for (let date of requestDate) {
     const dataNormal = new Date(date);
     let day = dataNormal.getDate();
     let month = dataNormal.getMonth() + 1;
     let year = dataNormal.getFullYear();
-        
-	const dateString = `${day}/${month}/${year}`;
-		datesString.push(dateString);
-		
-		const dayForRender = (day).toString().padStart(2, 0);
-        const monthForRender = (month).toString().padStart(2, 0);
-		dateForRender.push(`${dayForRender}/${monthForRender}/${year}`);
-    }
 
+    const dateString = `${day}/${month}/${year}`;
+    datesString.push(dateString);
+
+    const dayForRender = day.toString().padStart(2, 0);
+    const monthForRender = month.toString().padStart(2, 0);
+    dateForRender.push(`${dayForRender}/${monthForRender}/${year}`);
+  }
 }
 
 export function getCalendarDatePopular(currentDate) {
-	if (results) {
-		try {
-			filterByDate(currentDate); 
-		} catch (error) {
-			console.log(error);
-		}
-       
+  if (results) {
+    try {
+      filterByDate(currentDate);
+    } catch (error) {
+      console.log(error);
     }
+  }
 }
 
 function filterByDate(currentDate) {
-    selectedDate = currentDate;
-    clearmainNewsListContainer();
-    renderMainNewsList();
+  selectedDate = currentDate;
+  clearmainNewsListContainer();
+  renderMainNewsList();
 }
 
 function renderMainNewsList() {
-	let markup = '';
+  let markup = '';
   if (results.length > newsPerPage) {
-	  for (let i = 0; i < newsPerPage; i++) {
-		  
-         
-        if (datesString[i] === selectedDate) {
-			amountOfFilterCards += 1;
-     markup += `<li class="list-news__item">
+    for (let i = 0; i < newsPerPage; i++) {
+      if (datesString[i] === selectedDate) {
+        amountOfFilterCards += 1;
+        markup += `<li class="list-news__item">
 		<div class="news-card" id="${results[i].asset_id}">
 			<span class="read-card-text visually-hidden"> Already read
 				<svg width="18" heigth="18" viewBox="0 0 32 32">
@@ -79,8 +74,16 @@ function renderMainNewsList() {
 
 			<div class='news-card__image-wrapper'>
 				<img class="news-card__image"
-					src="${results[i].media.length == 0 ? DEFAULT_PHOTO : results[i].media[0]['media-metadata'][2].url}"
-					alt="${results[i].media.length == 0 ? DEFAULT_CAPTION : results[i].media[0].caption}"
+					src="${
+            results[i].media.length == 0
+              ? DEFAULT_PHOTO
+              : results[i].media[0]['media-metadata'][2].url
+          }"
+					alt="${
+            results[i].media.length == 0
+              ? DEFAULT_CAPTION
+              : results[i].media[0].caption
+          }"
 					height="395" />
 
 				<button type="button" class="js-to-fav add-fav-btn">
@@ -103,34 +106,32 @@ function renderMainNewsList() {
 		</div>
 		<div class="news-card__details">
 			<span class="news-card__date">${dateForRender[i]}</span>
-			<a class="news-card__news-link link" href="${results[i].url}" target="_blank">Read more</a>
+			<a class="news-card__news-link link" href="${
+        results[i].url
+      }" target="_blank">Read more</a>
 		</div>
 	</li>`;
-        };
-    };
-
-  }
-
-  else {
-	  for (let i = 0; i < results.length; i++) {
-		  
-          if (datesString[i] === selectedDate) {
-              amountOfFilterCards += 1;
-				markup += `<li class="list-news__item">
+      }
+    }
+  } else {
+    for (let i = 0; i < results.length; i++) {
+      if (datesString[i] === selectedDate) {
+        amountOfFilterCards += 1;
+        markup += `<li class="list-news__item">
 
 			<div class="news-card" id="${results[i].asset_id}">
 			<img
 				class="news-card__image"
 				src="${
-				results[i].media.length == 0
-					? DEFAULT_PHOTO
-					: results[i].media[0]['media-metadata'][2].url
-				}"
+          results[i].media.length == 0
+            ? DEFAULT_PHOTO
+            : results[i].media[0]['media-metadata'][2].url
+        }"
 				alt="${
-				results[i].media.length == 0
-					? DEFAULT_CAPTION
-					: results[i].media[0].caption
-				}"
+          results[i].media.length == 0
+            ? DEFAULT_CAPTION
+            : results[i].media[0].caption
+        }"
 				width="288"
 				height="395"
 			/>
@@ -150,23 +151,23 @@ function renderMainNewsList() {
 			<div class="news-card__details">
 				<a class="news-card__date-link link" href="">${dateForRender[i]}</a>
 				<a class="news-card__news-link link" href="${
-				results[i].url
-				}" target="_blank">Read more</a>
+          results[i].url
+        }" target="_blank">Read more</a>
 			</div>
 			</div>
 
 			</li>`;
-          }
-    };
-	};
-	// getTotalNews(amountOfFilterCards);
+      }
+    }
+  }
+  // getTotalNews(amountOfFilterCards);
 
   refs.mainNewsList.insertAdjacentHTML('beforeend', markup);
   const arrayItem = refs.mainNewsList.children;
-  const arrayRead = load('read')
-  const arrayFav = load('favorite')
-  const readId = arrayRead.map(item => item.id)
-  const favId = arrayFav.map(item => item.id)
+  const arrayRead = load('read');
+  const arrayFav = load('favorite');
+  const readId = arrayRead.map(item => item.id);
+  const favId = arrayFav.map(item => item.id);
 
   Array.from(arrayItem).map(item => {
     if (readId.includes(item.firstElementChild.id)) {
@@ -175,23 +176,28 @@ function renderMainNewsList() {
       card.firstElementChild.classList.remove('visually-hidden');
     }
     if (favId.includes(item.firstElementChild.id)) {
-      const Btn = item.firstElementChild.firstElementChild.nextElementSibling.lastElementChild
+      const Btn =
+        item.firstElementChild.firstElementChild.nextElementSibling
+          .lastElementChild;
       Btn.classList.remove('js-to-fav');
-        Btn.classList.add('js-from-fav');
-      Btn.firstElementChild.textContent = "Remove from favorites";
+      Btn.classList.add('js-from-fav');
+      Btn.firstElementChild.textContent = 'Remove from favorites';
       Btn.lastElementChild.firstElementChild.setAttribute('fill', '#4b48da');
-      Btn.lastElementChild.firstElementChild.setAttribute('style', "fill: var(--color1, #4b48da)");
+      Btn.lastElementChild.firstElementChild.setAttribute(
+        'style',
+        'fill: var(--color1, #4b48da)'
+      );
     }
   });
-    if (markup = '') {
-        Notiflix.Notify.info('Sorry, no matches for this request!')
-    }
-    return 
+  if ((markup = '')) {
+    Notiflix.Notify.info('Sorry, no matches for this request!');
+  }
+  return;
 }
 
-function clearmainNewsListContainer(){
-	refs.mainNewsList.innerHTML = '';
-	return
+function clearmainNewsListContainer() {
+  refs.mainNewsList.innerHTML = '';
+  return;
 }
 
 export { dateForRender };
